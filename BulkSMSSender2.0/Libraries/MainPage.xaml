@@ -9,6 +9,7 @@
             Spacing="20">
 
             <Label 
+                x:Name="connectedPhonesLabel"
                 Text="Waiting for phone to be connected..." 
                 VerticalOptions="Center"
                 HorizontalOptions="CenterAndExpand"

@@ -1,10 +1,9 @@
 ﻿using AdvancedSharpAdbClient;
 using AdvancedSharpAdbClient.Models;
-using AdvancedSharpAdbClient.Receivers;
 
 namespace BulkSMSSender2._0.Libraries
 {
-    internal class PhoneConnection
+    public sealed class PhoneConnection
     {
         private static string adbPath = @"C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\adb\adb.exe"; // temporary hardcoded
         private readonly static AdbServer adbServer = new();
@@ -12,31 +11,31 @@ namespace BulkSMSSender2._0.Libraries
 
         private static List<DeviceData> devices = new();
 
-        public void CheckConnectionAtStart()
+        private Label connectedPhonesLabel;
+
+        public async Task StartAsync(Label connectedPhonesLabel)
         {
+            this.connectedPhonesLabel = connectedPhonesLabel;
+
             StartServerResult adbServerResult = adbServer.StartServer(adbPath, restartServerIfNewer: false);
 
             if (adbServerResult != StartServerResult.Started && adbServerResult != StartServerResult.AlreadyRunning)
             {
-
-                return;
+                connectedPhonesLabel.Text = "Error starting adb!";
             }
 
-            devices = CheckConnection();
+            devices = await CheckConnectionAsync();
 
-            adbClient.ExecuteRemoteCommand("echo 'Hello from ADB'", devices[0], new ConsoleOutputReceiver());
+            this.connectedPhonesLabel.Text = $"{devices[0].Name} - {devices[0].Serial}";
         }
 
-        public List<DeviceData> CheckConnection()
+        private async Task<List<DeviceData>> CheckConnectionAsync()
         {
-            IEnumerable<DeviceData> devices;
+            IEnumerable<DeviceData> devices = adbClient.GetDevices();
 
-            do
+            while (!devices.Any())
             {
-                devices = adbClient.GetDevices();
-            }
-            while (!devices.Any());
-            {
+                await Task.Delay(500);
                 devices = adbClient.GetDevices();
             }
             return devices.ToList();
