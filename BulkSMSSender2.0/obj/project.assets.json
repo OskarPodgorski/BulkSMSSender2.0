@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net8.0-android34.0": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "GoogleGson/2.10.1.4": {
         "type": "package",
         "compile": {
@@ -2210,6 +2223,19 @@
       }
     },
     "net8.0-android34.0/android-arm": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "GoogleGson/2.10.1.4": {
         "type": "package",
         "compile": {
@@ -4418,6 +4444,19 @@
       }
     },
     "net8.0-android34.0/android-arm64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "GoogleGson/2.10.1.4": {
         "type": "package",
         "compile": {
@@ -6626,6 +6665,19 @@
       }
     },
     "net8.0-android34.0/android-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "GoogleGson/2.10.1.4": {
         "type": "package",
         "compile": {
@@ -8834,6 +8886,19 @@
       }
     },
     "net8.0-android34.0/android-x86": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "GoogleGson/2.10.1.4": {
         "type": "package",
         "compile": {
@@ -11042,6 +11107,19 @@
       }
     },
     "net8.0-android34.0/iossimulator-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "GoogleGson/2.10.1.4": {
         "type": "package",
         "compile": {
@@ -13250,6 +13328,19 @@
       }
     },
     "net8.0-android34.0/maccatalyst-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "GoogleGson/2.10.1.4": {
         "type": "package",
         "compile": {
@@ -15458,6 +15549,19 @@
       }
     },
     "net8.0-android34.0/win10-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "GoogleGson/2.10.1.4": {
         "type": "package",
         "compile": {
@@ -17666,6 +17770,19 @@
       }
     },
     "net8.0-ios17.0": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -18088,6 +18205,19 @@
       }
     },
     "net8.0-ios17.0/android-arm": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -18510,6 +18640,19 @@
       }
     },
     "net8.0-ios17.0/android-arm64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -18932,6 +19075,19 @@
       }
     },
     "net8.0-ios17.0/android-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -19354,6 +19510,19 @@
       }
     },
     "net8.0-ios17.0/android-x86": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -19776,6 +19945,19 @@
       }
     },
     "net8.0-ios17.0/iossimulator-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -20198,6 +20380,19 @@
       }
     },
     "net8.0-ios17.0/maccatalyst-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -20620,6 +20815,19 @@
       }
     },
     "net8.0-ios17.0/win10-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -21042,6 +21250,19 @@
       }
     },
     "net8.0-maccatalyst17.0": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -21464,6 +21685,19 @@
       }
     },
     "net8.0-maccatalyst17.0/android-arm": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -21886,6 +22120,19 @@
       }
     },
     "net8.0-maccatalyst17.0/android-arm64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -22308,6 +22555,19 @@
       }
     },
     "net8.0-maccatalyst17.0/android-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -22730,6 +22990,19 @@
       }
     },
     "net8.0-maccatalyst17.0/android-x86": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -23152,6 +23425,19 @@
       }
     },
     "net8.0-maccatalyst17.0/iossimulator-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -23574,6 +23860,19 @@
       }
     },
     "net8.0-maccatalyst17.0/maccatalyst-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -23996,6 +24295,19 @@
       }
     },
     "net8.0-maccatalyst17.0/win10-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -24418,6 +24730,22 @@
       }
     },
     "net8.0-windows10.0.19041": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "8.0.7"
+        },
+        "compile": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -24888,6 +25216,28 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
         "type": "package",
         "build": {
@@ -24980,9 +25330,44 @@
             "rid": "win10-x86"
           }
         }
+      },
+      "System.Drawing.Common/8.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
       }
     },
     "net8.0-windows10.0.19041/android-arm": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "8.0.7"
+        },
+        "compile": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -25439,6 +25824,22 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
         "type": "package",
         "build": {
@@ -25516,10 +25917,45 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "System.Drawing.Common/8.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       }
     },
     "net8.0-windows10.0.19041/android-arm64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "8.0.7"
+        },
+        "compile": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -25976,6 +26412,22 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
         "type": "package",
         "build": {
@@ -26053,10 +26505,45 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "System.Drawing.Common/8.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       }
     },
     "net8.0-windows10.0.19041/android-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "8.0.7"
+        },
+        "compile": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -26513,6 +27000,22 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
         "type": "package",
         "build": {
@@ -26590,10 +27093,45 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "System.Drawing.Common/8.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       }
     },
     "net8.0-windows10.0.19041/android-x86": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "8.0.7"
+        },
+        "compile": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -27050,6 +27588,22 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
         "type": "package",
         "build": {
@@ -27127,10 +27681,45 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "System.Drawing.Common/8.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       }
     },
     "net8.0-windows10.0.19041/iossimulator-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "8.0.7"
+        },
+        "compile": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -27587,6 +28176,22 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
         "type": "package",
         "build": {
@@ -27664,10 +28269,45 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "System.Drawing.Common/8.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       }
     },
     "net8.0-windows10.0.19041/maccatalyst-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "8.0.7"
+        },
+        "compile": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -28124,6 +28764,22 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
         "type": "package",
         "build": {
@@ -28202,9 +28858,44 @@
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
+      },
+      "System.Drawing.Common/8.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
       }
     },
     "net8.0-windows10.0.19041/win10-x64": {
+      "AdvancedSharpAdbClient/3.3.13": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "8.0.7"
+        },
+        "compile": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Extensions.Configuration/8.0.0": {
         "type": "package",
         "dependencies": {
@@ -28664,6 +29355,22 @@
           "buildTransitive/Microsoft.Maui.Resizetizer.targets": {}
         }
       },
+      "Microsoft.Win32.SystemEvents/8.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
         "type": "package",
         "build": {
@@ -28745,10 +29452,80 @@
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
+      },
+      "System.Drawing.Common/8.0.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/System.Drawing.Common.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
       }
     }
   },
   "libraries": {
+    "AdvancedSharpAdbClient/3.3.13": {
+      "sha512": "hD/P0KkJJylQX6Om31JmdZXNy4DyfyRPjBPSvqXIWiBzuKezXo89tD5Hw40ZgkfgfEIRcvN+xz3a8gEmLAUKJw==",
+      "type": "package",
+      "path": "advancedsharpadbclient/3.3.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "README.md",
+        "advancedsharpadbclient.3.3.13.nupkg.sha512",
+        "advancedsharpadbclient.nuspec",
+        "lib/net20/AdvancedSharpAdbClient.dll",
+        "lib/net20/AdvancedSharpAdbClient.xml",
+        "lib/net35/AdvancedSharpAdbClient.dll",
+        "lib/net35/AdvancedSharpAdbClient.xml",
+        "lib/net40/AdvancedSharpAdbClient.dll",
+        "lib/net40/AdvancedSharpAdbClient.xml",
+        "lib/net45/AdvancedSharpAdbClient.dll",
+        "lib/net45/AdvancedSharpAdbClient.xml",
+        "lib/net461/AdvancedSharpAdbClient.dll",
+        "lib/net461/AdvancedSharpAdbClient.xml",
+        "lib/net48/AdvancedSharpAdbClient.dll",
+        "lib/net48/AdvancedSharpAdbClient.xml",
+        "lib/net6.0-windows10.0.17763/AdvancedSharpAdbClient.dll",
+        "lib/net6.0-windows10.0.17763/AdvancedSharpAdbClient.xml",
+        "lib/net6.0/AdvancedSharpAdbClient.dll",
+        "lib/net6.0/AdvancedSharpAdbClient.xml",
+        "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.dll",
+        "lib/net8.0-windows10.0.17763/AdvancedSharpAdbClient.xml",
+        "lib/net8.0/AdvancedSharpAdbClient.dll",
+        "lib/net8.0/AdvancedSharpAdbClient.xml",
+        "lib/netcore50/AdvancedSharpAdbClient.dll",
+        "lib/netcore50/AdvancedSharpAdbClient.xml",
+        "lib/netcoreapp2.1/AdvancedSharpAdbClient.dll",
+        "lib/netcoreapp2.1/AdvancedSharpAdbClient.xml",
+        "lib/netcoreapp3.1/AdvancedSharpAdbClient.dll",
+        "lib/netcoreapp3.1/AdvancedSharpAdbClient.xml",
+        "lib/netstandard1.3/AdvancedSharpAdbClient.dll",
+        "lib/netstandard1.3/AdvancedSharpAdbClient.xml",
+        "lib/netstandard2.0/AdvancedSharpAdbClient.dll",
+        "lib/netstandard2.0/AdvancedSharpAdbClient.xml",
+        "lib/netstandard2.1/AdvancedSharpAdbClient.dll",
+        "lib/netstandard2.1/AdvancedSharpAdbClient.xml",
+        "lib/uap10.0.15138/AdvancedSharpAdbClient.dll",
+        "lib/uap10.0.15138/AdvancedSharpAdbClient.pri",
+        "lib/uap10.0.15138/AdvancedSharpAdbClient.xml",
+        "lib/uap10.0/AdvancedSharpAdbClient.dll",
+        "lib/uap10.0/AdvancedSharpAdbClient.pri",
+        "lib/uap10.0/AdvancedSharpAdbClient.xml"
+      ]
+    },
     "GoogleGson/2.10.1.4": {
       "sha512": "L1vdbwbQzvKUoUGiMpMoJG5fqfLXaP6zMy1a26AYJQJSQKUO7Ojr2U5BAmgQoRxQ8J2GDjBfnfgnrsnorb4y5Q==",
       "type": "package",
@@ -30026,6 +30803,41 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Microsoft.Win32.SystemEvents/8.0.0": {
+      "sha512": "9opKRyOKMCi2xJ7Bj7kxtZ1r9vbzosMvRrdEhVhDz8j8MoBGgB+WmC94yH839NPH+BclAjtQ/pyagvi/8gDLkw==",
+      "type": "package",
+      "path": "microsoft.win32.systemevents/8.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Win32.SystemEvents.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Win32.SystemEvents.targets",
+        "lib/net462/Microsoft.Win32.SystemEvents.dll",
+        "lib/net462/Microsoft.Win32.SystemEvents.xml",
+        "lib/net6.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/net6.0/Microsoft.Win32.SystemEvents.xml",
+        "lib/net7.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/net7.0/Microsoft.Win32.SystemEvents.xml",
+        "lib/net8.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/net8.0/Microsoft.Win32.SystemEvents.xml",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.dll",
+        "lib/netstandard2.0/Microsoft.Win32.SystemEvents.xml",
+        "microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+        "microsoft.win32.systemevents.nuspec",
+        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.xml",
+        "runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.xml",
+        "runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.dll",
+        "runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.xml",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "Microsoft.Windows.SDK.BuildTools/10.0.22621.756": {
       "sha512": "7ZL2sFSioYm1Ry067Kw1hg0SCcW5kuVezC2SwjGbcPE61Nn+gTbH86T73G3LcEOVj0S3IZzNuE/29gZvOLS7VA==",
       "type": "package",
@@ -30864,6 +31676,46 @@
         "tools/net5.0/zh-TW/Microsoft.Build.Msix.resources.dll",
         "tools/x64/GenXbf.dll",
         "tools/x86/GenXbf.dll"
+      ]
+    },
+    "System.Drawing.Common/8.0.7": {
+      "sha512": "DoeBae0gZvxs3mtfoub6F1k28fSkFPzmhFuvblplKMnLYKmTMVy0j4Yxahh96KM532JzHGDxhJn1VpMKSB1pyg==",
+      "type": "package",
+      "path": "system.drawing.common/8.0.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Drawing.Common.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Drawing.Common.targets",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net462/System.Drawing.Common.dll",
+        "lib/net462/System.Drawing.Common.pdb",
+        "lib/net462/System.Drawing.Common.xml",
+        "lib/net6.0/System.Drawing.Common.dll",
+        "lib/net6.0/System.Drawing.Common.pdb",
+        "lib/net6.0/System.Drawing.Common.xml",
+        "lib/net7.0/System.Drawing.Common.dll",
+        "lib/net7.0/System.Drawing.Common.pdb",
+        "lib/net7.0/System.Drawing.Common.xml",
+        "lib/net8.0/System.Drawing.Common.dll",
+        "lib/net8.0/System.Drawing.Common.pdb",
+        "lib/net8.0/System.Drawing.Common.xml",
+        "lib/netstandard2.0/System.Drawing.Common.dll",
+        "lib/netstandard2.0/System.Drawing.Common.pdb",
+        "lib/netstandard2.0/System.Drawing.Common.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "system.drawing.common.8.0.7.nupkg.sha512",
+        "system.drawing.common.nuspec",
+        "useSharedDesignerContext.txt"
       ]
     },
     "Xamarin.Android.Glide/4.15.1.2": {
@@ -32906,24 +33758,28 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-android34.0": [
+      "AdvancedSharpAdbClient >= 3.3.13",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.3",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.3",
       "Microsoft.NET.ILLink.Tasks >= 8.0.1"
     ],
     "net8.0-ios17.0": [
+      "AdvancedSharpAdbClient >= 3.3.13",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.3",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.3",
       "Microsoft.NET.ILLink.Tasks >= 8.0.1"
     ],
     "net8.0-maccatalyst17.0": [
+      "AdvancedSharpAdbClient >= 3.3.13",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.3",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.3",
       "Microsoft.NET.ILLink.Tasks >= 8.0.1"
     ],
     "net8.0-windows10.0.19041": [
+      "AdvancedSharpAdbClient >= 3.3.13",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.3",
       "Microsoft.Maui.Controls.Compatibility >= 8.0.3"
@@ -32990,6 +33846,10 @@
       "net8.0-android34.0": {
         "targetAlias": "net8.0-android",
         "dependencies": {
+          "AdvancedSharpAdbClient": {
+            "target": "Package",
+            "version": "[3.3.13, )"
+          },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
             "version": "[8.0.0, )"
@@ -33033,6 +33893,10 @@
       "net8.0-ios17.0": {
         "targetAlias": "net8.0-ios",
         "dependencies": {
+          "AdvancedSharpAdbClient": {
+            "target": "Package",
+            "version": "[3.3.13, )"
+          },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
             "version": "[8.0.0, )"
@@ -33076,6 +33940,10 @@
       "net8.0-maccatalyst17.0": {
         "targetAlias": "net8.0-maccatalyst",
         "dependencies": {
+          "AdvancedSharpAdbClient": {
+            "target": "Package",
+            "version": "[3.3.13, )"
+          },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
             "version": "[8.0.0, )"
@@ -33120,6 +33988,10 @@
       "net8.0-windows10.0.19041": {
         "targetAlias": "net8.0-windows10.0.19041.0",
         "dependencies": {
+          "AdvancedSharpAdbClient": {
+            "target": "Package",
+            "version": "[3.3.13, )"
+          },
           "Microsoft.Extensions.Logging.Debug": {
             "target": "Package",
             "version": "[8.0.0, )"

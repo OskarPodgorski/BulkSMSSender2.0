@@ -61,6 +61,10 @@
         "net8.0-android34.0": {
           "targetAlias": "net8.0-android",
           "dependencies": {
+            "AdvancedSharpAdbClient": {
+              "target": "Package",
+              "version": "[3.3.13, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -104,6 +108,10 @@
         "net8.0-ios17.0": {
           "targetAlias": "net8.0-ios",
           "dependencies": {
+            "AdvancedSharpAdbClient": {
+              "target": "Package",
+              "version": "[3.3.13, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -147,6 +155,10 @@
         "net8.0-maccatalyst17.0": {
           "targetAlias": "net8.0-maccatalyst",
           "dependencies": {
+            "AdvancedSharpAdbClient": {
+              "target": "Package",
+              "version": "[3.3.13, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -191,6 +203,10 @@
         "net8.0-windows10.0.19041": {
           "targetAlias": "net8.0-windows10.0.19041.0",
           "dependencies": {
+            "AdvancedSharpAdbClient": {
+              "target": "Package",
+              "version": "[3.3.13, )"
+            },
             "Microsoft.Extensions.Logging.Debug": {
               "target": "Package",
               "version": "[8.0.0, )"

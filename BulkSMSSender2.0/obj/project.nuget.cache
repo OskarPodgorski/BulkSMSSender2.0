@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "vRGMTRARmZjai6ih5dBPmtM411t9dLDB9cUohFDKsopEF2asRV12tIoGTO80S/RwGcO7yWf/zdQ1/wvvqvshlQ==",
+  "dgSpecHash": "08JUalLYuYgNX2U1Zct+O+YWVSvjyYMxrNGxG58vn9q3Oxyk0x3bhHbW4dshn8F2UnA2a9u76IDPypguBy8x+A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Strix\\Documents\\GitHub\\BulkSMSSender2.0\\BulkSMSSender2.0\\BulkSMSSender2.0.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Strix\\.nuget\\packages\\advancedsharpadbclient\\3.3.13\\advancedsharpadbclient.3.3.13.nupkg.sha512",
     "C:\\Users\\Strix\\.nuget\\packages\\googlegson\\2.10.1.4\\googlegson.2.10.1.4.nupkg.sha512",
     "C:\\Users\\Strix\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\Strix\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
@@ -26,8 +27,10 @@
     "C:\\Users\\Strix\\.nuget\\packages\\microsoft.maui.graphics.win2d.winui.desktop\\8.0.3\\microsoft.maui.graphics.win2d.winui.desktop.8.0.3.nupkg.sha512",
     "C:\\Users\\Strix\\.nuget\\packages\\microsoft.maui.resizetizer\\8.0.3\\microsoft.maui.resizetizer.8.0.3.nupkg.sha512",
     "C:\\Users\\Strix\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.1\\microsoft.net.illink.tasks.8.0.1.nupkg.sha512",
+    "C:\\Users\\Strix\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\Strix\\.nuget\\packages\\microsoft.windowsappsdk\\1.3.230724000\\microsoft.windowsappsdk.1.3.230724000.nupkg.sha512",
+    "C:\\Users\\Strix\\.nuget\\packages\\system.drawing.common\\8.0.7\\system.drawing.common.8.0.7.nupkg.sha512",
     "C:\\Users\\Strix\\.nuget\\packages\\xamarin.android.glide\\4.15.1.2\\xamarin.android.glide.4.15.1.2.nupkg.sha512",
     "C:\\Users\\Strix\\.nuget\\packages\\xamarin.android.glide.annotations\\4.15.1.2\\xamarin.android.glide.annotations.4.15.1.2.nupkg.sha512",
     "C:\\Users\\Strix\\.nuget\\packages\\xamarin.android.glide.disklrucache\\4.15.1.2\\xamarin.android.glide.disklrucache.4.15.1.2.nupkg.sha512",
