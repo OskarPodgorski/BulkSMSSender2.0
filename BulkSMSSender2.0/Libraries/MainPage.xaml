@@ -19,7 +19,12 @@
                 <Entry 
             Placeholder="Type test number" 
             HorizontalOptions="FillAndExpand" />
-           
+
+                <Button
+                    x:Name="sendButton"
+                    Text="Send"
+                    HorizontalOptions="CenterAndExpand"/>
+
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
