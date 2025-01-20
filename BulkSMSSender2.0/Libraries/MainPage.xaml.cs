@@ -1,6 +1,4 @@
-﻿using BulkSMSSender2._0.Libraries;
-
-namespace BulkSMSSender2._0
+﻿namespace BulkSMSSender2._0
 {
     public partial class MainPage : ContentPage
     {

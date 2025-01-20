@@ -7,9 +7,17 @@
     Shell.FlyoutBehavior="Disabled"
     Title="BulkSMSSender2._0">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar 
+        Shell.TabBarBackgroundColor="Transparent">
+
+        <Tab Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+
+        <Tab Title="Data">
+            <ShellContent ContentTemplate="{DataTemplate local:DataPage}" />
+        </Tab>
+
+    </TabBar>
 
 </Shell>

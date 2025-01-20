@@ -6,6 +6,7 @@
     <ScrollView>
         
         <VerticalStackLayout
+            Padding="30"
             Spacing="20">
 
             <Label 
@@ -15,7 +16,7 @@
                 HorizontalOptions="CenterAndExpand"
                 FontSize="20"/>
 
-            <HorizontalStackLayout Spacing="20" Padding="20">
+            <HorizontalStackLayout Spacing="20">
 
                 <Entry 
             Placeholder="Type test number" 

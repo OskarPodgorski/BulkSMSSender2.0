@@ -1,7 +1,7 @@
 ﻿using AdvancedSharpAdbClient;
 using AdvancedSharpAdbClient.Models;
 
-namespace BulkSMSSender2._0.Libraries
+namespace BulkSMSSender2._0
 {
     public sealed class PhoneConnection(Label connectedPhonesLabel)
     {
