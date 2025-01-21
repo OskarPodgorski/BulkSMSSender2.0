@@ -26,16 +26,29 @@
                     Text="Clear"
                     HorizontalOptions="EndAndExpand"
                     Clicked="ClearEditorField"/>
+                
+                <Button
+                    x:Name="acceptButtonTop"
+                    Text="Accept"
+                    HorizontalOptions="End"
+                    Clicked="ClearEditorField"/>
 
             </HorizontalStackLayout>
 
             <Editor 
                 x:Name="textEditor"
-                MinimumHeightRequest="200"
+                MinimumHeightRequest="400"
                 VerticalOptions="FillAndExpand" 
                 VerticalTextAlignment="Start"
                 HorizontalTextAlignment="Start"
-                AutoSize="TextChanges"/>
+                AutoSize="TextChanges"
+                Placeholder="Insert text here and click accept"/>
+
+            <Button
+                x:Name="acceptButtonBottom"
+                Text="Accept"
+                HorizontalOptions="EndAndExpand"
+                Clicked="ClearEditorField"/>
 
         </VerticalStackLayout>
 

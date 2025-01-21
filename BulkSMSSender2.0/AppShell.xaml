@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:BulkSMSSender2._0"
     Shell.FlyoutBehavior="Disabled"
-    Title="BulkSMSSender2._0">
+    Title="Bulk SMS Sender 2.0">
 
     <TabBar 
         Shell.TabBarBackgroundColor="Transparent">
@@ -16,6 +16,10 @@
 
         <Tab Title="Data">
             <ShellContent ContentTemplate="{DataTemplate local:DataPage}" />
+        </Tab>
+
+        <Tab Title="Final">
+            <ShellContent ContentTemplate="{DataTemplate local:FinalPage}" />
         </Tab>
 
     </TabBar>

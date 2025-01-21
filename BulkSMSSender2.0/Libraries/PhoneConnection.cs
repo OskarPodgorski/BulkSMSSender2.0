@@ -13,6 +13,8 @@ namespace BulkSMSSender2._0
 
         public async Task StartAsync()
         {
+            await Task.Delay(100);
+
             StartServerResult adbServerResult = adbServer.StartServer(adbPath, restartServerIfNewer: false);
 
             if (adbServerResult != StartServerResult.Started && adbServerResult != StartServerResult.AlreadyRunning)
