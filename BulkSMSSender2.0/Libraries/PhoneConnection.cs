@@ -7,9 +7,9 @@ namespace BulkSMSSender2._0
     {
         private static string adbPath = @"C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\adb\adb.exe"; // temporary hardcoded
         private readonly static AdbServer adbServer = new();
-        private readonly static AdbClient adbClient = new();
+        public readonly static AdbClient adbClient = new();
 
-        public List<DeviceData> devicesList { get; private set; } = new();
+        public static List<DeviceData> devicesList { get; private set; } = new();
 
         public async Task StartAsync()
         {

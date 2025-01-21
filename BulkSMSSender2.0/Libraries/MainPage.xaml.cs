@@ -6,7 +6,8 @@ namespace BulkSMSSender2._0
     {
         public static MainPage? ins {  get; private set; }
 
-        private readonly PhoneConnection phoneConnection;
+        public readonly PhoneConnection phoneConnection;
+
         public MainPage()
         {
             InitializeComponent();
@@ -21,6 +22,12 @@ namespace BulkSMSSender2._0
             base.OnAppearing();
 
             await phoneConnection.StartAsync();
-        }      
+        } 
+        
+        private void SendSingleSMS(object sender, EventArgs e)
+        {
+            SMSSending sending = new();
+            sending.SendSingleAsync(numberEntry.Text, "Test");
+        }
     }
 }

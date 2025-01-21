@@ -21,13 +21,15 @@
                 HorizontalOptions ="CenterAndExpand">
 
                 <Entry 
+                    x:Name="numberEntry"
                     Placeholder="Type test number" 
                     HorizontalOptions="CenterAndExpand"
                     MaxLength="12"/>
 
                 <Button
                     Text="Send"
-                    HorizontalOptions="CenterAndExpand"/>
+                    HorizontalOptions="CenterAndExpand"
+                    Clicked="SendSingleSMS"/>
 
             </HorizontalStackLayout>
 
