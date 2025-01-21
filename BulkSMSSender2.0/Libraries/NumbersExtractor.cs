@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace BulkSMSSender2._0
 {
@@ -9,11 +8,14 @@ namespace BulkSMSSender2._0
 
         public void ExtractNumbers(string siteText)
         {
-            MatchCollection matches = Regex.Matches(siteText, regexPattern);
-
-            foreach (Match match in matches.Cast<Match>())
+            if (FinalPage.ins != null)
             {
-                Debug.WriteLine(match.Value.Trim());
+                MatchCollection matches = Regex.Matches(siteText, regexPattern);
+
+                foreach (Match match in matches.Cast<Match>())
+                {
+                    FinalPage.ins.AddNumber(match.Value.Trim());
+                }
             }
         }
     }

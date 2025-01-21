@@ -11,34 +11,17 @@
         HorizontalOptions="FillAndExpand">
 
             <Label 
-                    x:Name="finalMainLabel"
                     Text="Final numbers list:" 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="20"/>
 
-            <Frame
-                x:Name="numberFrame"
-                    BackgroundColor="DeepPink"
-                    HasShadow="False"
-                    CornerRadius="10"
-                    Padding="10"/>
-
-            <HorizontalStackLayout
-                x:Name="numberLayout"
-                    Padding="10"
+            <VerticalStackLayout
+                x:Name="numbersLayout"
+                Spacing="5"
                     HorizontalOptions="FillAndExpand">
 
-                <Label 
-                        x:Name="numberLabel"
-                        Text="987654321" 
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="Start"
-                        FontSize="20"/>
-
-                </HorizontalStackLayout>
-
-                <Frame/>
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
 
