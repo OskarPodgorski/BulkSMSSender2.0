@@ -21,11 +21,20 @@ namespace BulkSMSSender2._0
 
                 foreach (Match match in matches.Cast<Match>())
                 {
-                    numbers.Add(new(match.Value.Trim(), true));
+                    string trimmed = match.Value.Trim();
+                    numbers.Add(new(trimmed, UserValidationNeededTest(trimmed)));
                 }
 
                 FinalPage.ins.AddNumbers(numbers);
             }
+        }
+
+        private static bool UserValidationNeededTest(string number)
+        {
+            if (number.Length != 9)
+                return true;
+            else
+                return false;
         }
     }
 }

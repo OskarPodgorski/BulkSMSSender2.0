@@ -17,11 +17,11 @@ public partial class FinalPage : ContentPage
 
         foreach (NumberPack numberPack in numbers)
         {
-            AddNumber(numberPack.number);
+            AddNumber(numberPack.number, numberPack.validCheck);
         }
     }
 
-    private void AddNumber(string number)
+    private void AddNumber(string number, bool checkValid)
     {
         HorizontalStackLayout horizontalLayout = new()
         {
@@ -42,7 +42,7 @@ public partial class FinalPage : ContentPage
 
         Frame frame = new()
         {
-            BackgroundColor = Color.FromArgb("73669d"),
+            BackgroundColor = checkValid ? Color.FromArgb("dbc975") : Color.FromArgb("73669d"),
             HasShadow = false,
             CornerRadius = 10,
             Padding = 10,
@@ -50,5 +50,5 @@ public partial class FinalPage : ContentPage
         };
 
         numbersLayout.Children.Add(frame);
-    }    
+    }
 }
