@@ -42,10 +42,10 @@ public partial class FinalPage : ContentPage
 
         Frame frame = new()
         {
-            BackgroundColor = checkValid ? Color.FromArgb("dbc975") : Color.FromArgb("73669d"),
+            BackgroundColor = checkValid ? Color.FromArgb("dbc975") : Color.FromArgb("ac99ea"),
             HasShadow = false,
             CornerRadius = 10,
-            Padding = 10,
+            Padding = 6,
             Content = horizontalLayout
         };
 

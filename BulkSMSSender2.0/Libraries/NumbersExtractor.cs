@@ -10,7 +10,12 @@ namespace BulkSMSSender2._0
 
     public sealed class NumbersExtractor
     {
-        public static string regexPattern = @"\+?[0-9\s\-\(\)]{9,12}";
+        //public static string regexPattern = @"(\+[0-9]{1,3}[- ]?)?[0-9]{2,3}[- ]?[0-9]{2,3}[- ]?[0-9]{2,3}";
+
+        public static string regexPattern = @"(\+[0-9]{2}[- ]?)?[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
+
+        public static string userValidOne = @"^[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
+        public static string userValidTwo = @"\+[0-9]{2}[- ]?[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
 
         public void ExtractNumbers(string siteText)
         {
@@ -31,7 +36,7 @@ namespace BulkSMSSender2._0
 
         private static bool UserValidationNeededTest(string number)
         {
-            if (number.Length != 9)
+            if (!Regex.IsMatch(number, userValidOne) && !Regex.IsMatch(number, userValidTwo))
                 return true;
             else
                 return false;

@@ -30,7 +30,7 @@ namespace BulkSMSSender2._0
             IEnumerable<DeviceData> devices;
             bool connected = false;
 
-            while (true)
+            while (this != null)
             {
                 devices = adbClient.GetDevices();
 
@@ -49,7 +49,7 @@ namespace BulkSMSSender2._0
                     if (connected)
                     {
                         connectedPhonesLabel.Text = "Phone disconnected!";
-                        await Task.Delay(2500);
+                        await Task.Delay(2000);
                         connectedPhonesLabel.Text = "Waiting for phone to be connected...";
                         connected = false;
                     }

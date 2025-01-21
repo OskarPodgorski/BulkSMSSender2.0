@@ -16,9 +16,13 @@ public partial class DataPage : ContentPage
         siteTextEditor.Text = string.Empty;
     }
 
-    private void AcceptEditorText(object sender, EventArgs e)
+    private async void AcceptEditorText(object sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(siteTextEditor.Text))
+        {
+            await Shell.Current.GoToAsync("//final");
+
             numbersExtractor.ExtractNumbers(siteTextEditor.Text);
+        }
     }
 }
