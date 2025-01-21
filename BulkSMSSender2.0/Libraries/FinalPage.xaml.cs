@@ -6,4 +6,9 @@ public partial class FinalPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	public void AddNumber(string number)
+	{
+
+	}
 }

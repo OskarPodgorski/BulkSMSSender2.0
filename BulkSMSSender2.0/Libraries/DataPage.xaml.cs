@@ -1,14 +1,24 @@
+using System.Diagnostics;
+
 namespace BulkSMSSender2._0;
 
 public partial class DataPage : ContentPage
 {
-	public DataPage()
-	{
-		InitializeComponent();
-	}
+    private readonly NumbersExtractor numbersExtractor = new();
 
-	private void ClearEditorField(object sender, EventArgs e)
-	{
-		textEditor.Text = string.Empty;
-	}
+    public DataPage()
+    {
+        InitializeComponent();
+    }
+
+    private void ClearEditorField(object sender, EventArgs e)
+    {
+        siteTextEditor.Text = string.Empty;
+    }
+
+    private void AcceptEditorText(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(siteTextEditor.Text))
+            numbersExtractor.ExtractNumbers(siteTextEditor.Text);
+    }
 }

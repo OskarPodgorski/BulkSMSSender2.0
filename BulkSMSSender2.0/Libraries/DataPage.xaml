@@ -31,12 +31,12 @@
                     x:Name="acceptButtonTop"
                     Text="Accept"
                     HorizontalOptions="EndAndExpand"
-                    Clicked="ClearEditorField"/>
+                    Clicked="AcceptEditorText"/>
 
             </HorizontalStackLayout>
 
             <Editor 
-                x:Name="textEditor"
+                x:Name="siteTextEditor"
                 MinimumHeightRequest="400"
                 VerticalOptions="FillAndExpand" 
                 VerticalTextAlignment="Start"
@@ -48,7 +48,7 @@
                 x:Name="acceptButtonBottom"
                 Text="Accept"
                 HorizontalOptions="EndAndExpand"
-                Clicked="ClearEditorField"/>
+                Clicked="AcceptEditorText"/>
 
         </VerticalStackLayout>
 
