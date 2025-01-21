@@ -18,7 +18,7 @@
             x:Name="dataMainLabel"
             Text="Insert text from site:" 
             VerticalOptions="FillAndExpand"
-            HorizontalOptions="Center"
+            HorizontalOptions="CenterAndExpand"
             FontSize="20"/>
 
                 <Button
@@ -30,7 +30,7 @@
                 <Button
                     x:Name="acceptButtonTop"
                     Text="Accept"
-                    HorizontalOptions="End"
+                    HorizontalOptions="EndAndExpand"
                     Clicked="ClearEditorField"/>
 
             </HorizontalStackLayout>

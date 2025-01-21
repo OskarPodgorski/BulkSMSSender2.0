@@ -2,22 +2,46 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BulkSMSSender2._0.FinalPage">
-    
-    <VerticalStackLayout>
 
-        <ScrollView>
+    <ScrollView>
 
-            <VerticalStackLayout
+        <VerticalStackLayout
     Padding="30"
     Spacing="30"
         HorizontalOptions="FillAndExpand">
 
-                
+            <Label 
+                    x:Name="finalMainLabel"
+                    Text="Final numbers list:" 
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="20"/>
 
-            </VerticalStackLayout>
+            <Frame
+                x:Name="numberFrame"
+                    BackgroundColor="DeepPink"
+                    HasShadow="False"
+                    CornerRadius="10"
+                    Padding="10"/>
 
-        </ScrollView>
+            <HorizontalStackLayout
+                x:Name="numberLayout"
+                    Padding="10"
+                    HorizontalOptions="FillAndExpand">
 
-    </VerticalStackLayout>
-    
+                <Label 
+                        x:Name="numberLabel"
+                        Text="987654321" 
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="Start"
+                        FontSize="20"/>
+
+                </HorizontalStackLayout>
+
+                <Frame/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
 </ContentPage>

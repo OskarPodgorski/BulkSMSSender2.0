@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2025-01-21T02:54:24.352</Modified>
+      <Modified>2025-01-21T03:30:44.626</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\BulkSMSSender2.0.dll">
       <PackagePath>BulkSMSSender2.0.dll</PackagePath>
-      <Modified>2025-01-21T02:54:24.177</Modified>
+      <Modified>2025-01-21T03:30:44.455</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>BulkSMSSender2.0.exe</PackagePath>
-      <Modified>2025-01-21T02:54:24.179</Modified>
+      <Modified>2025-01-21T03:30:44.458</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
