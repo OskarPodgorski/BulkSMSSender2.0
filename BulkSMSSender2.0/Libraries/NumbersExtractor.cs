@@ -17,18 +17,22 @@ namespace BulkSMSSender2._0
         public static string userValidOne = @"^[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
         public static string userValidTwo = @"\+[0-9]{2}[- ]?[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
 
-        public void ExtractNumbers(string siteText)
+        public async Task ExtractNumbersAsync(string siteText)
         {
             if (FinalPage.ins != null)
             {
-                MatchCollection matches = Regex.Matches(siteText, regexPattern);
                 HashSet<NumberPack> numbers = new();
 
-                foreach (Match match in matches.Cast<Match>())
+                await Task.Run(() =>
                 {
-                    string trimmed = match.Value.Trim();
-                    numbers.Add(new(trimmed, UserValidationNeededTest(trimmed)));
-                }
+                    MatchCollection matches = Regex.Matches(siteText, regexPattern);
+
+                    foreach (Match match in matches.Cast<Match>())
+                    {
+                        string trimmed = match.Value.Trim();
+                        numbers.Add(new(trimmed, UserValidationNeededTest(trimmed)));
+                    }
+                });
 
                 FinalPage.ins.AddNumbers(numbers);
             }

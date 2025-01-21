@@ -6,20 +6,30 @@
     <ScrollView>
 
         <VerticalStackLayout
-    Padding="30"
-    Spacing="30"
-        HorizontalOptions="FillAndExpand">
+            Padding="30"
+            Spacing="30"
+            HorizontalOptions="FillAndExpand">
 
-            <Label 
+            <HorizontalStackLayout 
+                Spacing="30"
+                HorizontalOptions="CenterAndExpand">
+
+                <Label 
                     Text="Final numbers list:" 
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="20"/>
 
+                <Button
+                    Text="Start Sending"
+                    HorizontalOptions="EndAndExpand"/>
+
+            </HorizontalStackLayout>
+
             <VerticalStackLayout
                 x:Name="numbersLayout"
                 Spacing="3"
-                    HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand">
 
             </VerticalStackLayout>
 

@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace BulkSMSSender2._0;
 
 public partial class DataPage : ContentPage
@@ -22,7 +20,7 @@ public partial class DataPage : ContentPage
         {
             await Shell.Current.GoToAsync("//final");
 
-            numbersExtractor.ExtractNumbers(siteTextEditor.Text);
+            await numbersExtractor.ExtractNumbersAsync(siteTextEditor.Text);
         }
     }
 }

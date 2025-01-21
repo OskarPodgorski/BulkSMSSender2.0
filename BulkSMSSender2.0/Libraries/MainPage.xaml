@@ -7,7 +7,7 @@
         
         <VerticalStackLayout
             Padding="30"
-            Spacing="20">
+            Spacing="30">
 
             <Label 
                 x:Name="connectedPhonesLabel"
@@ -16,14 +16,16 @@
                 HorizontalOptions="CenterAndExpand"
                 FontSize="20"/>
 
-            <HorizontalStackLayout Spacing="20">
+            <HorizontalStackLayout 
+                Spacing="30"
+                HorizontalOptions ="CenterAndExpand">
 
                 <Entry 
-            Placeholder="Type test number" 
-            HorizontalOptions="FillAndExpand" />
+                    Placeholder="Type test number" 
+                    HorizontalOptions="CenterAndExpand"
+                    MaxLength="12"/>
 
                 <Button
-                    x:Name="sendButton"
                     Text="Send"
                     HorizontalOptions="CenterAndExpand"/>
 
