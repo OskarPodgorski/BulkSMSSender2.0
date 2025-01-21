@@ -2,6 +2,12 @@
 
 namespace BulkSMSSender2._0
 {
+    public readonly struct NumberPack(string number, bool validCheck)
+    {
+        public readonly string number = number;
+        public readonly bool validCheck = validCheck;
+    }
+
     public sealed class NumbersExtractor
     {
         public static string regexPattern = @"\+?[0-9\s\-\(\)]{9,12}";
@@ -11,11 +17,14 @@ namespace BulkSMSSender2._0
             if (FinalPage.ins != null)
             {
                 MatchCollection matches = Regex.Matches(siteText, regexPattern);
+                HashSet<NumberPack> numbers = new();
 
                 foreach (Match match in matches.Cast<Match>())
                 {
-                    FinalPage.ins.AddNumber(match.Value.Trim());
+                    numbers.Add(new(match.Value.Trim(), true));
                 }
+
+                FinalPage.ins.AddNumbers(numbers);
             }
         }
     }
