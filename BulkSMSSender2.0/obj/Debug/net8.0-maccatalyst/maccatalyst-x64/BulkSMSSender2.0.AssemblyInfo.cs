@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BulkSMSSender2.0")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+52518966382dcf610df9f79765bc1a7b570b95f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+70df32e10ef5cbd54aa3086b57a2ec0a52482877")]
 [assembly: System.Reflection.AssemblyProductAttribute("BulkSMSSender2.0")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BulkSMSSender2.0")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

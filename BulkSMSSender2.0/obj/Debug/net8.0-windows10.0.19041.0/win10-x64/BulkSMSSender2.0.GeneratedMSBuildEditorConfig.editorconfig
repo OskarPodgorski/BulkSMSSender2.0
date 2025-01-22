@@ -42,6 +42,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = BulkSMSSender2._0.Librarie
 build_metadata.AdditionalFiles.TargetPath = Libraries\MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Libraries\MainPage.xaml
 
+[C:/Users/Strix/Documents/GitHub/BulkSMSSender2.0/BulkSMSSender2.0/Libraries/SettingsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = BulkSMSSender2._0.Libraries.SettingsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Libraries\SettingsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Libraries\SettingsPage.xaml
+
 [C:/Users/Strix/Documents/GitHub/BulkSMSSender2.0/BulkSMSSender2.0/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = BulkSMSSender2._0.Resources.Styles.Colors.xaml

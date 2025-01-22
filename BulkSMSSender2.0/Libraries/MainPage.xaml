@@ -35,16 +35,27 @@
             </HorizontalStackLayout>
 
             <VerticalStackLayout
-    x:Name="messagesLayout"
-    Spacing="30"
-    HorizontalOptions="FillAndExpand">
+                x:Name="messagesLayout"
+                Spacing="20"
+                HorizontalOptions="FillAndExpand">
 
             </VerticalStackLayout>
 
-            <Button
+            <HorizontalStackLayout 
+    Spacing="30"
+    HorizontalOptions ="CenterAndExpand">
+
+                <Button
     Text="Add message"
     HorizontalOptions="CenterAndExpand"
     Clicked="AddMessageButton"/>
+
+                <Button
+    Text="Remove message"
+    HorizontalOptions="CenterAndExpand"
+    Clicked="AddMessageButton"/>
+
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
         

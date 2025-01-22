@@ -55,7 +55,7 @@
         {
             Editor newMessageEditor = new()
             {
-                MinimumHeightRequest = 100,
+                MinimumHeightRequest = 80,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalTextAlignment = TextAlignment.Start,

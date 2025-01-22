@@ -12,12 +12,12 @@
 
             <HorizontalStackLayout 
                 Spacing="30"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="CenterAndExpand">
 
                 <Label 
                     Text="Final numbers list:" 
                     VerticalOptions="FillAndExpand"
-                    HorizontalOptions="CenterAndExpand"
+                    HorizontalOptions="FillAndExpand"
                     FontSize="20"/>
 
                 <Button

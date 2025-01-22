@@ -23,6 +23,10 @@
             <ShellContent ContentTemplate="{DataTemplate local:FinalPage}" />
         </Tab>
 
+        <Tab Title="Settings" Route="settings">
+            <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />
+        </Tab>
+
     </TabBar>
 
 </Shell>
