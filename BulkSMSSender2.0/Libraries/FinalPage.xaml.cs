@@ -56,7 +56,7 @@ public partial class FinalPage : ContentPage
     {
         if (MainPage.ins != null)
         {
-            string[] messages = MainPage.ins.Messages;
+            List<string> messages = MainPage.ins.Messages;
 
             foreach (var child in numbersLayout.Children)
             {

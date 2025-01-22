@@ -6,7 +6,7 @@
 
         public readonly PhoneConnection phoneConnection;
 
-        public string[] Messages
+        public List<string> Messages
         {
             get
             {
@@ -18,7 +18,16 @@
                         messages.Add(editor.Text);
                     }
                 }
-                return messages.ToArray();
+                return messages;
+            }
+            set
+            {
+                messagesLayout.Clear();
+
+                for (int i = 0; i < value.Count; i++)
+                {
+                    AddMessageEditor(value[i]);
+                }
             }
         }
 
@@ -53,6 +62,11 @@
 
         private void AddMessageButton(object sender, EventArgs e)
         {
+            AddMessageEditor(string.Empty);
+        }
+
+        private void AddMessageEditor(string message)
+        {
             Editor newMessageEditor = new()
             {
                 MinimumHeightRequest = 80,
@@ -62,6 +76,7 @@
                 HorizontalTextAlignment = TextAlignment.Start,
                 AutoSize = EditorAutoSizeOption.TextChanges,
                 Placeholder = "Type message here:",
+                Text = message,
                 MaxLength = 160,
             };
 

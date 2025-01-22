@@ -22,6 +22,15 @@
         <Tab Title="Final" Route="final">
             <ShellContent ContentTemplate="{DataTemplate local:FinalPage}" />
         </Tab>
+        
+        <Tab Title="Blacklist" Route="blacklist">
+            <ShellContent ContentTemplate="{DataTemplate local:BlacklistPage}" />
+        </Tab>
+
+        <Tab Title="Progress" Route="progress">
+            <ShellContent ContentTemplate="{DataTemplate local:ProgressPage}" />
+        </Tab>
+
 
         <Tab Title="Settings" Route="settings">
             <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />
