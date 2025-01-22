@@ -12,7 +12,7 @@
 
             <HorizontalStackLayout 
                 Spacing="30"
-                HorizontalOptions="CenterAndExpand">
+                HorizontalOptions="FillAndExpand">
 
                 <Label 
                     Text="Final numbers list:" 
@@ -22,7 +22,8 @@
 
                 <Button
                     Text="Start Sending"
-                    HorizontalOptions="EndAndExpand"/>
+                    HorizontalOptions="EndAndExpand"
+                    Clicked="StartSending"/>
 
             </HorizontalStackLayout>
 

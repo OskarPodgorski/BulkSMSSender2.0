@@ -51,4 +51,26 @@ public partial class FinalPage : ContentPage
 
         numbersLayout.Children.Add(frame);
     }
+
+    private async void StartSending(object sender, EventArgs e)
+    {
+        if (MainPage.ins != null)
+        {
+            string[] messages = MainPage.ins.Messages;
+
+            foreach (var child in numbersLayout.Children)
+            {
+                if (child is Frame frame && frame.Content is HorizontalStackLayout layout)
+                {
+                    foreach (var innerChild in layout.Children)
+                    {
+                        if (innerChild is Label label)
+                        {
+                            await SMSSending.SendAsync(label.Text, messages);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

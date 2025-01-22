@@ -1,12 +1,26 @@
-﻿using System.Threading;
-
-namespace BulkSMSSender2._0
+﻿namespace BulkSMSSender2._0
 {
     public partial class MainPage : ContentPage
     {
-        public static MainPage? ins {  get; private set; }
+        public static MainPage? ins { get; private set; }
 
         public readonly PhoneConnection phoneConnection;
+
+        public string[] Messages
+        {
+            get
+            {
+                List<string> messages = new();
+                foreach (var child in messagesLayout)
+                {
+                    if (child is Editor editor)
+                    {
+                        messages.Add(editor.Text);
+                    }
+                }
+                return messages.ToArray();
+            }
+        }
 
         public MainPage()
         {
@@ -15,6 +29,8 @@ namespace BulkSMSSender2._0
             ins ??= this;
 
             phoneConnection = new(connectedPhonesLabel);
+
+            AddMessageButton(this, EventArgs.Empty);
         }
 
         protected override async void OnAppearing()
@@ -22,12 +38,34 @@ namespace BulkSMSSender2._0
             base.OnAppearing();
 
             await phoneConnection.StartAsync();
-        } 
-        
-        private void SendSingleSMS(object sender, EventArgs e)
+        }
+
+        private async void SendSMSOneNumber(object sender, EventArgs e)
         {
-            SMSSending sending = new();
-            sending.SendSingleAsync(numberEntry.Text, "Test");
+            foreach (var child in messagesLayout)
+            {
+                if (child is Editor editor)
+                {
+                    await SMSSending.SendAsync(numberEntry.Text, editor.Text);
+                }
+            }
+        }
+
+        private void AddMessageButton(object sender, EventArgs e)
+        {
+            Editor newMessageEditor = new()
+            {
+                MinimumHeightRequest = 100,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalTextAlignment = TextAlignment.Start,
+                HorizontalTextAlignment = TextAlignment.Start,
+                AutoSize = EditorAutoSizeOption.TextChanges,
+                Placeholder = "Type message here:",
+                MaxLength = 160,
+            };
+
+            messagesLayout.Children.Add(newMessageEditor);
         }
     }
 }

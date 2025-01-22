@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2025-01-21T23:24:06.802</Modified>
+      <Modified>2025-01-22T00:47:30.235</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2025-01-21T22:34:53.656</Modified>
+      <Modified>2025-01-22T00:47:30.186</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\BulkSMSSender2.0.runtimeconfig.json">
       <PackagePath>BulkSMSSender2.0.runtimeconfig.json</PackagePath>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\BulkSMSSender2.0.dll">
       <PackagePath>BulkSMSSender2.0.dll</PackagePath>
-      <Modified>2025-01-21T23:24:06.627</Modified>
+      <Modified>2025-01-22T00:47:30.029</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>BulkSMSSender2.0.exe</PackagePath>
-      <Modified>2025-01-21T23:24:06.629</Modified>
+      <Modified>2025-01-22T00:47:30.032</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>

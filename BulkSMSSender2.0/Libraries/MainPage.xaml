@@ -7,7 +7,8 @@
         
         <VerticalStackLayout
             Padding="30"
-            Spacing="30">
+            Spacing="30"
+            HorizontalOptions="FillAndExpand">
 
             <Label 
                 x:Name="connectedPhonesLabel"
@@ -22,16 +23,28 @@
 
                 <Entry 
                     x:Name="numberEntry"
-                    Placeholder="Type test number" 
+                    Placeholder="Type number here" 
                     HorizontalOptions="CenterAndExpand"
                     MaxLength="12"/>
 
                 <Button
                     Text="Send"
                     HorizontalOptions="CenterAndExpand"
-                    Clicked="SendSingleSMS"/>
+                    Clicked="SendSMSOneNumber"/>
 
             </HorizontalStackLayout>
+
+            <VerticalStackLayout
+    x:Name="messagesLayout"
+    Spacing="30"
+    HorizontalOptions="FillAndExpand">
+
+            </VerticalStackLayout>
+
+            <Button
+    Text="Add message"
+    HorizontalOptions="CenterAndExpand"
+    Clicked="AddMessageButton"/>
 
         </VerticalStackLayout>
         
