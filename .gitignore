@@ -1,3 +1,3 @@
 *.vsidx
 /BulkSMSSender2.0/obj/Debug/net8.0-windows10.0.19041.0/win10-x64
-BulkSMSSender2.0/bin/Debug/net8.0-windows10.0.19041.0/win10-x64/AppX/Settings.json
+/BulkSMSSender2.0/bin/Debug/net8.0-windows10.0.19041.0/win10-x64/AppX
