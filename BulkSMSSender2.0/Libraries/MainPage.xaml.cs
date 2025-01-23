@@ -2,9 +2,12 @@
 {
     public partial class MainPage : ContentPage
     {
+        public static bool isAppExiting { get; private set; } = false;
+
         public static MainPage? ins { get; private set; }
 
         public readonly PhoneConnection phoneConnection;
+        
 
         public List<string> Messages
         {
@@ -43,11 +46,22 @@
 
             LoadSettings();
 
-            Application.Current.Windows[0].Destroying += OnDestroy;
+            if (Application.Current != null)
+                Application.Current.Windows[0].Destroying += OnDestroy;
+            else
+            {
+                Task.Run(async () =>
+                {
+                    await Task.Delay(100);
+
+                    if (Application.Current != null)
+                        Application.Current.Windows[0].Destroying += OnDestroy;
+                });
+            }
         }
         private void OnDestroy(object? sender, EventArgs e)
         {
-            //throw new Exception("test");
+            isAppExiting = true;
             Settings.Loaded.Save();
         }
 
@@ -100,7 +114,7 @@
             messagesLayout.Children.Add(newMessageEditor);
         }
 
-        private void OnEndEditEditor(object sender, EventArgs e)
+        private void OnEndEditEditor(object? sender, EventArgs e)
         {
             Settings.Loaded.messages = Messages;
         }

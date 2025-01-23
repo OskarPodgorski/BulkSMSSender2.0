@@ -30,7 +30,7 @@ namespace BulkSMSSender2._0
             IEnumerable<DeviceData> devices;
             bool connected = false;
 
-            while (this != null)
+            while (!MainPage.isAppExiting)
             {
                 devices = adbClient.GetDevices();
 
