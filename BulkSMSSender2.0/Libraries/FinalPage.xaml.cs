@@ -4,6 +4,29 @@ public partial class FinalPage : ContentPage
 {
     public static FinalPage? ins { get; private set; }
 
+    private List<string> Numbers
+    {
+        get
+        {
+            List<string> numbers = new();
+
+            foreach (var child in numbersLayout.Children)
+            {
+                if (child is Frame frame && frame.Content is HorizontalStackLayout layout)
+                {
+                    foreach (var innerChild in layout.Children)
+                    {
+                        if (innerChild is Label label)
+                        {
+                            numbers.Add(label.Text);
+                        }
+                    }
+                }
+            }
+            return numbers;
+        }
+    }
+
     public FinalPage()
     {
         InitializeComponent();
@@ -58,21 +81,7 @@ public partial class FinalPage : ContentPage
         {
             await Shell.Current.GoToAsync("//progress");
 
-            List<string> messages = MainPage.ins.Messages;
-
-            foreach (var child in numbersLayout.Children)
-            {
-                if (child is Frame frame && frame.Content is HorizontalStackLayout layout)
-                {
-                    foreach (var innerChild in layout.Children)
-                    {
-                        if (innerChild is Label label)
-                        { 
-                            await SMSSending.SendAsync(label.Text, messages);
-                        }
-                    }
-                }
-            }
+            await SMSSending.SendAsync(Numbers, MainPage.ins.Messages);
         }
     }
 }

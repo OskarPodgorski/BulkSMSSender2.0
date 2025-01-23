@@ -17,39 +17,48 @@ namespace BulkSMSSender2._0
             }
         }
 
-        public static async Task SendAsync(IEnumerable<string> numbers, IEnumerable<string> messages)
+        public static async Task SendAsync(IEnumerable<string> numbers, List<string> messages)
         {
             if (ProgressPage.ins != null)
             {
+                ProgressPage.ins.ClearProgress();
+
+                float progressMultiplier = 100f / messages.Count;
+
                 foreach (string number in numbers)
                 {
-                    foreach (string message in messages)
+                    (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(number);
+
+                    for (int i = 0; i < messages.Count; i++)
                     {
-                        await SendAsync(number, message);
+                        await SendAsync(number, messages[i]);
+
+                        progressTuple.Item1.Text = $"{progressMultiplier * i}%";
 
                         await Task.Delay(Settings.Loaded.betweenMessagesDelay);
                     }
 
-                    ProgressPage.ins.AddNumber(number);
+                    progressTuple.Item1.Text = "100%";
+                    progressTuple.Item2.BackgroundColor = Color.FromArgb("72a461");
 
                     await Task.Delay(Settings.Loaded.betweenNumbersDelay);
                 }
             }
         }
 
-        public static async Task SendAsync(string number, IEnumerable<string> messages)
-        {
-            if (ProgressPage.ins != null)
-            {
-                foreach (string message in messages)
-                {
-                    await SendAsync(number, message);
+        //public static async Task SendAsync(string number, IEnumerable<string> messages)
+        //{
+        //    if (ProgressPage.ins != null)
+        //    {
+        //        foreach (string message in messages)
+        //        {
+        //            await SendAsync(number, message);
 
-                    ProgressPage.ins.AddNumber(number);
+        //            ProgressPage.ins.AddNumber(number);
 
-                    await Task.Delay(Settings.Loaded.betweenMessagesDelay);
-                }
-            }
-        }
+        //            await Task.Delay(Settings.Loaded.betweenMessagesDelay);
+        //        }
+        //    }
+        //}
     }
 }

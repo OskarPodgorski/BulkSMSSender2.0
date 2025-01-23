@@ -10,11 +10,12 @@ public partial class ProgressPage : ContentPage
         ins ??= this;
     }
 
-    public void AddNumber(string number)
+    public (Label, Frame) AddNumber(string number)
     {
         HorizontalStackLayout horizontalLayout = new()
         {
             Padding = 0,
+            Spacing = 15,
             HorizontalOptions = LayoutOptions.FillAndExpand
         };
 
@@ -29,9 +30,20 @@ public partial class ProgressPage : ContentPage
 
         horizontalLayout.Children.Add(label);
 
+        Label progressLabel = new()
+        {
+            Text = "0",
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            HorizontalOptions = LayoutOptions.Start,
+            FontSize = 16,
+            TextColor = Colors.Black
+        };
+
+        horizontalLayout.Children.Add(progressLabel);
+
         Frame frame = new()
         {
-            BackgroundColor = Color.FromArgb("72a461"),
+            BackgroundColor = Color.FromArgb("cfdcaa"),
             HasShadow = false,
             CornerRadius = 10,
             Padding = 8,
@@ -39,5 +51,9 @@ public partial class ProgressPage : ContentPage
         };
 
         numbersLayout.Children.Add(frame);
+
+        return new(progressLabel, frame);
     }
+
+    public void ClearProgress() => numbersLayout.Children.Clear();
 }
