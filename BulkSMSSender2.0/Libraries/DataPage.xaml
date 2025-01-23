@@ -24,13 +24,13 @@
                 <Button
                     x:Name="clearButton"
                     Text="Clear"
-                    HorizontalOptions="EndAndExpand"
+                    HorizontalOptions="End"
                     Clicked="ClearEditorField"/>
                 
                 <Button
                     x:Name="acceptButtonTop"
                     Text="Accept"
-                    HorizontalOptions="EndAndExpand"
+                    HorizontalOptions="End"
                     Clicked="AcceptEditorText"/>
 
             </HorizontalStackLayout>
