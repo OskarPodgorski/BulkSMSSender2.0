@@ -21,7 +21,7 @@ namespace BulkSMSSender2._0
         {
             if (ProgressPage.ins != null)
             {
-                ProgressPage.ins.ClearProgress();
+                ProgressPage.ins.InitializeProgress(numbers.Count(), messages.Count);
 
                 float progressMultiplier = 100f / messages.Count;
 
@@ -36,6 +36,8 @@ namespace BulkSMSSender2._0
                         progressTuple.Item1.Text = $"{progressMultiplier * i}%";
 
                         await Task.Delay(Settings.Loaded.betweenMessagesDelay);
+
+                        ProgressPage.ins.EvaluateProgress();
                     }
 
                     progressTuple.Item1.Text = "100%";

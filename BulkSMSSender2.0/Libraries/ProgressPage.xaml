@@ -12,28 +12,39 @@
                 HorizontalOptions="FillAndExpand">
 
             <HorizontalStackLayout 
-                Spacing="30"
+                Spacing="25"
                 HorizontalOptions="CenterAndExpand">
 
                 <Label 
                     Text="Progress:" 
-                    x:Name="progressMainLabel"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="20"/>
+
+                <Label 
+                    Text="0 / 0" 
+                    x:Name="progressLabel"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="CenterAndExpand"
+                    FontSize="20"/>
+
+                <Label 
+                    Text="0%" 
+                    x:Name="progressPercentLabel"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="20"/>
 
                 <Button
-        Text="Abort"
-        HorizontalOptions="End"
-        />
+                    Text="Abort"
+                    HorizontalOptions="End"/>
 
             </HorizontalStackLayout>
 
             <VerticalStackLayout
-    x:Name="numbersLayout"
-    Spacing="3"
-    HorizontalOptions="FillAndExpand"
-                >
+                x:Name="numbersLayout"
+                Spacing="3"
+                HorizontalOptions="FillAndExpand">
 
             </VerticalStackLayout>
 

@@ -55,5 +55,28 @@ public partial class ProgressPage : ContentPage
         return new(progressLabel, frame);
     }
 
-    public void ClearProgress() => numbersLayout.Children.Clear();
+    private void ClearProgressNumbers() => numbersLayout.Children.Clear();
+
+    int allMessagesCount = 0;
+    int progressCount = 0;
+    float progressPercentMultiplier = 0;
+    public void InitializeProgress(int numbersCount, int messagesCount)
+    {
+        ClearProgressNumbers();
+        progressCount = 0;
+
+        allMessagesCount = numbersCount * messagesCount;
+        progressPercentMultiplier = 100f / allMessagesCount;
+
+        progressLabel.Text = $"0 / {allMessagesCount}";
+        progressPercentLabel.Text = "0%";
+    }
+
+    public void EvaluateProgress()
+    {
+        progressCount++;
+
+        progressLabel.Text = $"{progressCount} / {allMessagesCount}";
+        progressPercentLabel.Text = $"{progressCount * progressPercentMultiplier}%";
+    }
 }
