@@ -7,7 +7,7 @@
         public static MainPage? ins { get; private set; }
 
         public readonly PhoneConnection phoneConnection;
-        
+
 
         public List<string> Messages
         {
@@ -42,39 +42,42 @@
 
             phoneConnection = new(connectedPhonesLabel);
 
-            //AddMessageButton(this, EventArgs.Empty);
-
-            LoadSettings();
-
             if (Application.Current != null)
                 Application.Current.Windows[0].Destroying += OnDestroy;
             else
             {
-                Task.Run(async () =>
+                Task.Run(async() =>
                 {
-                    await Task.Delay(100);
+                    while (Application.Current == null)
+                    {
+                        await Task.Delay(50);
 
-                    if (Application.Current != null)
-                        Application.Current.Windows[0].Destroying += OnDestroy;
+                        if (Application.Current != null)
+                        {
+                            Application.Current.Windows[0].Destroying += OnDestroy;
+                            break;
+                        }
+                    }
                 });
             }
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            LoadSettings();
+
+            await phoneConnection.StartAsync();       
+        }
+        private void LoadSettings()
+        {
+            Messages = Settings.Loaded.messages;
+            numberEntry.Text = Settings.Loaded.singleNumber;
         }
         private void OnDestroy(object? sender, EventArgs e)
         {
             isAppExiting = true;
             Settings.Loaded.Save();
-        }
-
-        private void LoadSettings()
-        {
-            Messages = Settings.Loaded.messages;
-        }
-
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
-            await phoneConnection.StartAsync();
         }
 
         private async void SendSMSOneNumber(object sender, EventArgs e)
@@ -109,14 +112,12 @@
 
             };
 
-            newMessageEditor.Unfocused += OnEndEditEditor;
+            newMessageEditor.Unfocused += OnUnfocusedEditor;
 
             messagesLayout.Children.Add(newMessageEditor);
         }
 
-        private void OnEndEditEditor(object? sender, EventArgs e)
-        {
-            Settings.Loaded.messages = Messages;
-        }
+        private void OnUnfocusedEditor(object? sender, EventArgs e) => Settings.Loaded.messages = Messages;
+        private void OnUnfocusedEntry(object? sender, EventArgs e) => Settings.Loaded.singleNumber = numberEntry.Text; 
     }
 }

@@ -8,6 +8,8 @@ namespace Settings
 {
     public class PureDataSettings
     {
+        public string singleNumber = string.Empty;
+
         public string[] messages = new string[0];
     }
 }

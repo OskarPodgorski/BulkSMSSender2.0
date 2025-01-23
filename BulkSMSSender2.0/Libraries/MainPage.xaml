@@ -15,7 +15,7 @@
                 Text="Waiting for phone to be connected..." 
                 VerticalOptions="Center"
                 HorizontalOptions="CenterAndExpand"
-                FontSize="20"/>
+                FontSize="24"/>
 
             <HorizontalStackLayout 
                 Spacing="30"
@@ -23,9 +23,13 @@
 
                 <Entry 
                     x:Name="numberEntry"
-                    Placeholder="Type number here" 
+                    Placeholder="Type number:" 
                     HorizontalOptions="CenterAndExpand"
-                    MaxLength="12"/>
+                    MaxLength="12"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Start"
+                    MinimumWidthRequest="125"
+                    Unfocused="OnUnfocusedEntry"/>
 
                 <Button
                     Text="Send"

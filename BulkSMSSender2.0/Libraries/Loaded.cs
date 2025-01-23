@@ -6,6 +6,7 @@ namespace Settings
     {
         private readonly static string settingsPath = Path.Combine(AppContext.BaseDirectory, "Settings.json");
 
+        public static string singleNumber = string.Empty;
         public static List<string> messages = new();
 
         public static void Load()
@@ -14,6 +15,7 @@ namespace Settings
 
             PureDataSettings pureData = SerializeDeserialize.LoadPureDataFile<PureDataSettings>(settingsPath);
 
+            singleNumber = pureData.singleNumber;
             messages = pureData.messages.ToList();
         }
 
@@ -21,6 +23,7 @@ namespace Settings
         {
             PureDataSettings pureData = new()
             {
+                singleNumber = singleNumber,
                 messages = messages.ToArray()
             };
 
