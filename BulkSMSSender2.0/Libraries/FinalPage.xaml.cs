@@ -45,7 +45,7 @@ public partial class FinalPage : ContentPage
             BackgroundColor = checkValid ? Color.FromArgb("dbc975") : Color.FromArgb("ac99ea"),
             HasShadow = false,
             CornerRadius = 10,
-            Padding = 6,
+            Padding = 8,
             Content = horizontalLayout
         };
 

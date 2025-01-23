@@ -32,15 +32,19 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Picker Grid.Row="0" Grid.Column="0"
+                <Picker x:Name="androidPicker"
+                    Grid.Row="0" Grid.Column="0"
                     Title="Android command compatibility:"
                         ItemsSource="{Binding androidVersionOptions}"
-                        SelectedItem="{Binding AndroidVersion, Mode=TwoWay}"/>
+                        SelectedItem="{Binding AndroidVersion, Mode=TwoWay}"
+                        />
 
-                <Picker Grid.Row="0" Grid.Column="1"
-                    Title="Numbers to extract region:"
+                <Picker x:Name="regionPicker"
+                    Grid.Row="0" Grid.Column="1"
+                    Title="Numbers extraction region:"
                         ItemsSource="{Binding regionOptions}"
-                        SelectedItem="{Binding Region, Mode=TwoWay}"/>
+                        SelectedItem="{Binding Region, Mode=TwoWay}"
+                        />
 
             </Grid>
 
@@ -66,14 +70,20 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Entry Grid.Row="0" Grid.Column="0"
-                    Placeholder="Delay between messages to one number in miliseconds:"/>
+                <Entry x:Name="messageDelayEntry"
+                    Grid.Row="0" Grid.Column="0"
+                    Placeholder="Delay between messages to one number in miliseconds:"
+                       Unfocused="OnUnfocusedEntry"/>
 
-                <Entry Grid.Row="0" Grid.Column="1"
-                    Placeholder="Delay to next number in miliseconds:"/>
+                <Entry x:Name="numbersDelayEntry"
+                    Grid.Row="0" Grid.Column="1"
+                    Placeholder="Delay to next number in miliseconds:"
+                       Unfocused="OnUnfocusedEntry"/>
 
-                <Entry Grid.Row="1" Grid.Column="0"
-                    Placeholder="Max messages safe lock amount:"/>
+                <Entry x:Name="maxMessagesEntry"
+                    Grid.Row="1" Grid.Column="0"
+                    Placeholder="Max messages safe lock amount:"
+                       Unfocused="OnUnfocusedEntry"/>
 
 
             </Grid>

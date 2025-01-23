@@ -16,10 +16,8 @@
                 List<string> messages = new();
                 foreach (var child in messagesLayout)
                 {
-                    if (child is Editor editor)
-                    {
+                    if (child is Editor editor && !string.IsNullOrEmpty(editor.Text))
                         messages.Add(editor.Text);
-                    }
                 }
                 return messages;
             }
@@ -46,7 +44,7 @@
                 Application.Current.Windows[0].Destroying += OnDestroy;
             else
             {
-                Task.Run(async() =>
+                Task.Run(async () =>
                 {
                     while (Application.Current == null)
                     {
@@ -67,7 +65,7 @@
 
             LoadSettings();
 
-            await phoneConnection.StartAsync();       
+            await phoneConnection.StartAsync();
         }
         private void LoadSettings()
         {
@@ -118,6 +116,6 @@
         }
 
         private void OnUnfocusedEditor(object? sender, EventArgs e) => Settings.Loaded.messages = Messages;
-        private void OnUnfocusedEntry(object? sender, EventArgs e) => Settings.Loaded.singleNumber = numberEntry.Text; 
+        private void OnUnfocusedEntry(object? sender, EventArgs e) => Settings.Loaded.singleNumber = numberEntry.Text;
     }
 }

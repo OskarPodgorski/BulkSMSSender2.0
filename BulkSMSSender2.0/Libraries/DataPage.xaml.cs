@@ -11,16 +11,28 @@ public partial class DataPage : ContentPage
 
     private void ClearEditorField(object sender, EventArgs e)
     {
-        siteTextEditor.Text = string.Empty;
+        dataEditor.Text = string.Empty;
     }
 
     private async void AcceptEditorText(object sender, EventArgs e)
     {
-        if (!string.IsNullOrEmpty(siteTextEditor.Text))
+        if (!string.IsNullOrEmpty(dataEditor.Text))
         {
             await Shell.Current.GoToAsync("//final");
 
-            await numbersExtractor.ExtractNumbersAsync(siteTextEditor.Text);
+            await numbersExtractor.ExtractNumbersAsync(dataEditor.Text);
         }
     }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        LoadSettings();
+    }
+    private void LoadSettings()
+    {
+        dataEditor.Text = Settings.Loaded.data;
+    }
+
+    private void OnUnfocusedEditor(object? sender, EventArgs e) => Settings.Loaded.data = dataEditor.Text;
 }

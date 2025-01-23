@@ -36,13 +36,14 @@
             </HorizontalStackLayout>
 
             <Editor 
-                x:Name="siteTextEditor"
+                x:Name="dataEditor"
                 MinimumHeightRequest="400"
                 VerticalOptions="FillAndExpand" 
                 VerticalTextAlignment="Start"
                 HorizontalTextAlignment="Start"
                 AutoSize="TextChanges"
-                Placeholder="Insert text here and click accept"/>
+                Placeholder="Insert text here and click accept"
+                Unfocused="OnUnfocusedEditor"/>
 
             <Button
                 x:Name="acceptButtonBottom"

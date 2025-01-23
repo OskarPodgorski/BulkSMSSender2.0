@@ -49,7 +49,9 @@ namespace BulkSMSSender2._0
 
             regionOptions = new()
             {
-                "Poland"
+                "Poland",
+                "Ukraine",
+                "America"
             };
         }
 
