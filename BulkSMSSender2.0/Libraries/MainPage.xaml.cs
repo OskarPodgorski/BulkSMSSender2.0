@@ -20,7 +20,7 @@
                 }
                 return messages;
             }
-            set
+            private set
             {
                 messagesLayout.Clear();
 
@@ -39,7 +39,21 @@
 
             phoneConnection = new(connectedPhonesLabel);
 
-            AddMessageButton(this, EventArgs.Empty);
+            //AddMessageButton(this, EventArgs.Empty);
+
+            LoadSettings();
+
+            Application.Current.Windows[0].Destroying += OnDestroy;
+        }
+        private void OnDestroy(object? sender, EventArgs e)
+        {
+            //throw new Exception("test");
+            Settings.Loaded.Save();
+        }
+
+        private void LoadSettings()
+        {
+            Messages = Settings.Loaded.messages;
         }
 
         protected override async void OnAppearing()
@@ -78,9 +92,17 @@
                 Placeholder = "Type message here:",
                 Text = message,
                 MaxLength = 160,
+
             };
 
+            newMessageEditor.Unfocused += OnEndEditEditor;
+
             messagesLayout.Children.Add(newMessageEditor);
+        }
+
+        private void OnEndEditEditor(object sender, EventArgs e)
+        {
+            Settings.Loaded.messages = Messages;
         }
     }
 }

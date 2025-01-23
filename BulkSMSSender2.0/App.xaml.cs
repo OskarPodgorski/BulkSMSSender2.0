@@ -13,6 +13,8 @@
             MainPage = new AppShell();
 
             ins ??= this;
+
+            Settings.Loaded.Load();           
         }
     }
 }
