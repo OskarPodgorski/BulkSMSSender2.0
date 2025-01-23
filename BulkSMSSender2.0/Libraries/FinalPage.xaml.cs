@@ -56,6 +56,8 @@ public partial class FinalPage : ContentPage
     {
         if (MainPage.ins != null)
         {
+            await Shell.Current.GoToAsync("//progress");
+
             List<string> messages = MainPage.ins.Messages;
 
             foreach (var child in numbersLayout.Children)
@@ -65,7 +67,7 @@ public partial class FinalPage : ContentPage
                     foreach (var innerChild in layout.Children)
                     {
                         if (innerChild is Label label)
-                        {
+                        { 
                             await SMSSending.SendAsync(label.Text, messages);
                         }
                     }

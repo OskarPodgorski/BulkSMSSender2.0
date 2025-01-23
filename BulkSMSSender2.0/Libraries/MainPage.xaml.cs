@@ -96,9 +96,16 @@
 
         private void AddMessageEditor(string message)
         {
+            HorizontalStackLayout horizontalLayout = new()
+            {
+                Padding = 0,
+                Spacing = 20,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+
             Editor newMessageEditor = new()
             {
-                MinimumHeightRequest = 80,
+                MinimumHeightRequest = 70,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalTextAlignment = TextAlignment.Start,
@@ -107,10 +114,18 @@
                 Placeholder = "Type message here:",
                 Text = message,
                 MaxLength = 160,
+            };
+            newMessageEditor.Unfocused += OnUnfocusedEditor;
 
+            horizontalLayout.Children.Add(newMessageEditor);
+
+            Button button = new()
+            {
+                Text = "X",
+                HorizontalOptions = LayoutOptions.EndAndExpand
             };
 
-            newMessageEditor.Unfocused += OnUnfocusedEditor;
+            horizontalLayout.Children.Add(button);
 
             messagesLayout.Children.Add(newMessageEditor);
         }

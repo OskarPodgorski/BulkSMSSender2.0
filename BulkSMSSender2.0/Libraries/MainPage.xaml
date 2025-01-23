@@ -40,7 +40,7 @@
 
             <VerticalStackLayout
                 x:Name="messagesLayout"
-                Spacing="20"
+                Spacing="10"
                 HorizontalOptions="FillAndExpand">
 
             </VerticalStackLayout>

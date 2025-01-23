@@ -6,7 +6,7 @@ namespace BulkSMSSender2._0
     {
         public static async Task SendAsync(string number, string message)
         {
-            if (!PhoneConnection.devicesList.IsNullOrEmpty())
+            if (!Settings.Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
             {
                 if (Settings.Loaded.androidCompatibility == 0)
                     await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0");
@@ -19,25 +19,36 @@ namespace BulkSMSSender2._0
 
         public static async Task SendAsync(IEnumerable<string> numbers, IEnumerable<string> messages)
         {
-            foreach (string number in numbers)
+            if (ProgressPage.ins != null)
             {
-                foreach (string message in messages)
+                foreach (string number in numbers)
                 {
-                    await SendAsync(number, message);
+                    foreach (string message in messages)
+                    {
+                        await SendAsync(number, message);
 
-                    await Task.Delay(Settings.Loaded.betweenMessagesDelay);
+                        await Task.Delay(Settings.Loaded.betweenMessagesDelay);
+                    }
+
+                    ProgressPage.ins.AddNumber(number);
+
+                    await Task.Delay(Settings.Loaded.betweenNumbersDelay);
                 }
-                await Task.Delay(Settings.Loaded.betweenNumbersDelay);
             }
         }
 
         public static async Task SendAsync(string number, IEnumerable<string> messages)
         {
-            foreach (string message in messages)
+            if (ProgressPage.ins != null)
             {
-                await SendAsync(number, message);
+                foreach (string message in messages)
+                {
+                    await SendAsync(number, message);
 
-                await Task.Delay(Settings.Loaded.betweenMessagesDelay);
+                    ProgressPage.ins.AddNumber(number);
+
+                    await Task.Delay(Settings.Loaded.betweenMessagesDelay);
+                }
             }
         }
     }
