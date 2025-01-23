@@ -14,9 +14,9 @@ namespace Settings
         public static int androidCompatibility = 0;
         public static int numbersExtractionRegion = 0;
 
-        public static string betweenMessagesDelay = "1000";
-        public static string betweenNumbersDelay = "1000";
-        public static string maxMessagesSafeLock = "10000";
+        public static int betweenMessagesDelay = 2000;
+        public static int betweenNumbersDelay = 1000;
+        public static int maxMessagesSafeLock = 10000;
 
         public static void Load()
         {
@@ -30,9 +30,9 @@ namespace Settings
             androidCompatibility = pureData.androidCompatibility;
             numbersExtractionRegion = pureData.numbersExtractionRegion;
 
-            betweenMessagesDelay = pureData.betweenMessagesDelay.ToString();
-            betweenNumbersDelay = pureData.betweenNumbersDelay.ToString();
-            maxMessagesSafeLock = pureData.maxMessagesSafeLock.ToString();
+            betweenMessagesDelay = pureData.betweenMessagesDelay;
+            betweenNumbersDelay = pureData.betweenNumbersDelay;
+            maxMessagesSafeLock = pureData.maxMessagesSafeLock;
         }
 
         public static void Save()
@@ -47,9 +47,9 @@ namespace Settings
                 androidCompatibility = androidCompatibility,
                 numbersExtractionRegion = numbersExtractionRegion,
 
-                betweenMessagesDelay = betweenMessagesDelay.ParseFastI(),
-                betweenNumbersDelay = betweenNumbersDelay.ParseFastI(),
-                maxMessagesSafeLock = maxMessagesSafeLock.ParseFastI()
+                betweenMessagesDelay = betweenMessagesDelay,
+                betweenNumbersDelay = betweenNumbersDelay,
+                maxMessagesSafeLock = maxMessagesSafeLock
             };
 
             SerializeDeserialize.SavePureDataFile(pureData, settingsPath);

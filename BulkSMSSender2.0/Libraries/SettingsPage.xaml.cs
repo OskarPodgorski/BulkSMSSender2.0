@@ -23,16 +23,16 @@ public partial class SettingsPage : ContentPage
         androidPicker.SelectedIndexChanged += OnSelectedPicker;
         regionPicker.SelectedIndexChanged += OnSelectedPicker;
 
-        messageDelayEntry.Text = Settings.Loaded.betweenMessagesDelay;
-        numbersDelayEntry.Text = Settings.Loaded.betweenNumbersDelay;
-        maxMessagesEntry.Text = Settings.Loaded.maxMessagesSafeLock;
+        messageDelayEntry.Text = Settings.Loaded.betweenMessagesDelay.ToString();
+        numbersDelayEntry.Text = Settings.Loaded.betweenNumbersDelay.ToString();
+        maxMessagesEntry.Text = Settings.Loaded.maxMessagesSafeLock.ToString();
     }
 
     private void OnUnfocusedEntry(object? sender, EventArgs e)
     {
-        Settings.Loaded.betweenMessagesDelay = messageDelayEntry.Text;
-        Settings.Loaded.betweenNumbersDelay = numbersDelayEntry.Text;
-        Settings.Loaded.maxMessagesSafeLock = maxMessagesEntry.Text;
+        Settings.Loaded.betweenMessagesDelay = messageDelayEntry.Text.ParseFastI();
+        Settings.Loaded.betweenNumbersDelay = numbersDelayEntry.Text.ParseFastI();
+        Settings.Loaded.maxMessagesSafeLock = maxMessagesEntry.Text.ParseFastI();
     }
 
     private void OnSelectedPicker(object? sender, EventArgs e)

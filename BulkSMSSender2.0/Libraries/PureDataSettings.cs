@@ -16,7 +16,7 @@ namespace Settings
         public int androidCompatibility = 0;
         public int numbersExtractionRegion = 0;
 
-        public int betweenMessagesDelay = 1000;
+        public int betweenMessagesDelay = 2000;
         public int betweenNumbersDelay = 1000;
         public int maxMessagesSafeLock = 10000;
     }

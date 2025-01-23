@@ -7,7 +7,14 @@ namespace BulkSMSSender2._0
         public static async Task SendAsync(string number, string message)
         {
             if (!PhoneConnection.devicesList.IsNullOrEmpty())
-                await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0");
+            {
+                if (Settings.Loaded.androidCompatibility == 0)
+                    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0");
+                else if (Settings.Loaded.androidCompatibility == 1)
+                    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $""); //to search for
+                else if (Settings.Loaded.androidCompatibility == 2)
+                    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $""); //to search for
+            }
         }
 
         public static async Task SendAsync(IEnumerable<string> numbers, IEnumerable<string> messages)
@@ -17,7 +24,10 @@ namespace BulkSMSSender2._0
                 foreach (string message in messages)
                 {
                     await SendAsync(number, message);
+
+                    await Task.Delay(Settings.Loaded.betweenMessagesDelay);
                 }
+                await Task.Delay(Settings.Loaded.betweenNumbersDelay);
             }
         }
 
@@ -26,6 +36,8 @@ namespace BulkSMSSender2._0
             foreach (string message in messages)
             {
                 await SendAsync(number, message);
+
+                await Task.Delay(Settings.Loaded.betweenMessagesDelay);
             }
         }
     }

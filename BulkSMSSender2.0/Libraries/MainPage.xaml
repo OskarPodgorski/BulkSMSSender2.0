@@ -15,7 +15,7 @@
                 Text="Waiting for phone to be connected..." 
                 VerticalOptions="Center"
                 HorizontalOptions="CenterAndExpand"
-                FontSize="22"/>
+                FontSize="24"/>
 
             <HorizontalStackLayout 
                 Spacing="30"
