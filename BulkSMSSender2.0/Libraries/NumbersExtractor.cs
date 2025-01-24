@@ -14,8 +14,8 @@ namespace BulkSMSSender2._0
 
         public static string regexPattern = @"(\+[0-9]{2}[- ]?)?[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
 
-        public static string userValidOne = @"^[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
-        public static string userValidTwo = @"\+[0-9]{2}[- ]?[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
+        //public static string userValidOne = @"^[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
+        public static string userValid = @"\+[0-9]{2}[- ]?[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
 
         public async Task ExtractNumbersAsync(string siteText)
         {
@@ -29,8 +29,9 @@ namespace BulkSMSSender2._0
 
                     foreach (Match match in matches.Cast<Match>())
                     {
-                        string trimmed = match.Value.Trim();
-                        numbers.Add(new(trimmed, UserValidationNeededTest(trimmed)));
+                        string cleaned = match.Value.RemoveAllWhitespaces();
+
+                        numbers.Add(new(cleaned, UserValidationNeededTest(cleaned)));
                     }
                 });
 
@@ -40,7 +41,7 @@ namespace BulkSMSSender2._0
 
         private static bool UserValidationNeededTest(string number)
         {
-            if (!Regex.IsMatch(number, userValidOne) && !Regex.IsMatch(number, userValidTwo))
+            if (Regex.IsMatch(number, userValid))
                 return true;
             else
                 return false;

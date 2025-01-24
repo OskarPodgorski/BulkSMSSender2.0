@@ -9,7 +9,10 @@
 
     <TabBar 
         x:Name="tabs"
-        Shell.TabBarBackgroundColor="Transparent">
+        Shell.TabBarBackgroundColor="#ac99ea"
+        Shell.TabBarUnselectedColor="#242424"
+        Shell.TabBarTitleColor="#242424"
+        Shell.TabBarForegroundColor="#242424">
 
         <Tab Title="Home" Route="home">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />

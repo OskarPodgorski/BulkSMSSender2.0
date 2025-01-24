@@ -43,7 +43,7 @@ public partial class ProgressPage : ContentPage
 
         Frame frame = new()
         {
-            BackgroundColor = Color.FromArgb("cfdcaa"),
+            BackgroundColor = Color.FromArgb("03b5aa"),
             HasShadow = false,
             CornerRadius = 10,
             Padding = 8,
@@ -58,25 +58,37 @@ public partial class ProgressPage : ContentPage
     private void ClearProgressNumbers() => numbersLayout.Children.Clear();
 
     int allMessagesCount = 0;
-    int progressCount = 0;
+    int allNumbersCount = 0;
+    int progressMessagesCount = 0;
+    int progressNumbersCount = 0;
     float progressPercentMultiplier = 0;
     public void InitializeProgress(int numbersCount, int messagesCount)
     {
         ClearProgressNumbers();
-        progressCount = 0;
+        progressMessagesCount = 0;
+        progressNumbersCount = 0;
 
         allMessagesCount = numbersCount * messagesCount;
+        allNumbersCount = numbersCount;
+
         progressPercentMultiplier = 100f / allMessagesCount;
 
-        progressLabel.Text = $"0 / {allMessagesCount}";
+        progressMessagesLabel.Text = $"0 / {allMessagesCount}";
+        progressNumbersLabel.Text = $"0 / {allNumbersCount}";
         progressPercentLabel.Text = "0%";
     }
 
-    public void EvaluateProgress()
+    public void EvaluateMessagesProgress()
     {
-        progressCount++;
+        progressMessagesCount++;
 
-        progressLabel.Text = $"{progressCount} / {allMessagesCount}";
-        progressPercentLabel.Text = $"{progressCount * progressPercentMultiplier}%";
+        progressMessagesLabel.Text = $"{progressMessagesCount} / {allMessagesCount}";
+        progressPercentLabel.Text = $"{MathF.Round(progressMessagesCount * progressPercentMultiplier, 2)}%";
+    }
+    public void EvaluateNumbersProgress()
+    {
+        progressNumbersCount++;
+
+        progressNumbersLabel.Text = $"{progressNumbersCount} / {allNumbersCount}";
     }
 }

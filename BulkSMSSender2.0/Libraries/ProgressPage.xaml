@@ -22,8 +22,15 @@
                     FontSize="20"/>
 
                 <Label 
+    Text="0 / 0" 
+    x:Name="progressNumbersLabel"
+    VerticalOptions="FillAndExpand"
+    HorizontalOptions="CenterAndExpand"
+    FontSize="20"/>
+                
+                <Label 
                     Text="0 / 0" 
-                    x:Name="progressLabel"
+                    x:Name="progressMessagesLabel"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="20"/>
@@ -43,7 +50,7 @@
 
             <VerticalStackLayout
                 x:Name="numbersLayout"
-                Spacing="3"
+                Spacing="4"
                 HorizontalOptions="FillAndExpand">
 
             </VerticalStackLayout>

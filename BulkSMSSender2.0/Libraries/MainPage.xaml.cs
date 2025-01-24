@@ -16,8 +16,9 @@
                 List<string> messages = new();
                 foreach (var child in messagesLayout)
                 {
-                    if (child is Editor editor && !string.IsNullOrEmpty(editor.Text))
-                        messages.Add(editor.Text);
+                    if (child is HorizontalStackLayout layout)
+                        if (layout.Children[0] is Editor editor && !string.IsNullOrEmpty(editor.Text))
+                            messages.Add(editor.Text);
                 }
                 return messages;
             }
@@ -58,20 +59,18 @@
                     }
                 });
             }
-        }
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
 
             LoadSettings();
 
-            await phoneConnection.StartAsync();
+            StartPhoneConnectionAsync();
         }
         private void LoadSettings()
         {
             Messages = Settings.Loaded.messages;
             numberEntry.Text = Settings.Loaded.singleNumber;
         }
+        private async void StartPhoneConnectionAsync() => await phoneConnection.StartAsync();
+
         private void OnDestroy(object? sender, EventArgs e)
         {
             isAppExiting = true;
@@ -98,36 +97,42 @@
         {
             HorizontalStackLayout horizontalLayout = new()
             {
-                Padding = 0,
                 Spacing = 20,
-                HorizontalOptions = LayoutOptions.FillAndExpand
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
             };
 
             Editor newMessageEditor = new()
             {
-                MinimumHeightRequest = 70,
-                VerticalOptions = LayoutOptions.FillAndExpand,
+                MinimumHeightRequest = 80,
+                MinimumWidthRequest = 480,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 VerticalTextAlignment = TextAlignment.Start,
                 HorizontalTextAlignment = TextAlignment.Start,
-                AutoSize = EditorAutoSizeOption.TextChanges,
+                FontSize = 17,
                 Placeholder = "Type message here:",
                 Text = message,
                 MaxLength = 160,
             };
             newMessageEditor.Unfocused += OnUnfocusedEditor;
 
-            horizontalLayout.Children.Add(newMessageEditor);
-
             Button button = new()
             {
-                Text = "X",
-                HorizontalOptions = LayoutOptions.EndAndExpand
+                Text = "Delete",
+                HorizontalOptions = LayoutOptions.End,
+                VerticalOptions = LayoutOptions.Center,
             };
 
+            button.Clicked += (sender, args) =>
+            {
+                messagesLayout.Children.Remove(horizontalLayout);
+            };
+
+            horizontalLayout.Children.Add(newMessageEditor);
             horizontalLayout.Children.Add(button);
 
-            messagesLayout.Children.Add(newMessageEditor);
+            messagesLayout.Children.Add(horizontalLayout);
         }
 
         private void OnUnfocusedEditor(object? sender, EventArgs e) => Settings.Loaded.messages = Messages;

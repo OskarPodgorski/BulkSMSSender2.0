@@ -29,6 +29,7 @@
                     VerticalTextAlignment="Center"
                     HorizontalTextAlignment="Start"
                     MinimumWidthRequest="125"
+                    FontSize="17"
                     Unfocused="OnUnfocusedEntry"/>
 
                 <Button
@@ -41,25 +42,15 @@
             <VerticalStackLayout
                 x:Name="messagesLayout"
                 Spacing="10"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="CenterAndExpand"
+                >
 
             </VerticalStackLayout>
 
-            <HorizontalStackLayout 
-    Spacing="30"
-    HorizontalOptions ="CenterAndExpand">
-
-                <Button
-    Text="Add message"
-    HorizontalOptions="CenterAndExpand"
-    Clicked="AddMessageButton"/>
-
-                <Button
-    Text="Remove message"
-    HorizontalOptions="CenterAndExpand"
-    Clicked="AddMessageButton"/>
-
-            </HorizontalStackLayout>
+            <Button
+Text="Add message"
+HorizontalOptions="CenterAndExpand"
+Clicked="AddMessageButton"/>
 
         </VerticalStackLayout>
         

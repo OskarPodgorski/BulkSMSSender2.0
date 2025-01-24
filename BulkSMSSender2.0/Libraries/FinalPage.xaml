@@ -29,7 +29,7 @@
 
             <VerticalStackLayout
                 x:Name="numbersLayout"
-                Spacing="3"
+                Spacing="4"
                 HorizontalOptions="FillAndExpand">
 
             </VerticalStackLayout>

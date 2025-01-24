@@ -1,6 +1,4 @@
-﻿using AdvancedSharpAdbClient.DeviceCommands;
-
-namespace BulkSMSSender2._0
+﻿namespace BulkSMSSender2._0
 {
     public static class SMSSending
     {
@@ -8,12 +6,12 @@ namespace BulkSMSSender2._0
         {
             if (!Settings.Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
             {
-                if (Settings.Loaded.androidCompatibility == 0)
-                    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0");
-                else if (Settings.Loaded.androidCompatibility == 1)
-                    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $""); //to search for
-                else if (Settings.Loaded.androidCompatibility == 2)
-                    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $""); //to search for
+                //if (Settings.Loaded.androidCompatibility == 0)
+                //    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0");
+                //else if (Settings.Loaded.androidCompatibility == 1)
+                //    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $""); //to search for
+                //else if (Settings.Loaded.androidCompatibility == 2)
+                //    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $""); //to search for
             }
         }
 
@@ -33,15 +31,17 @@ namespace BulkSMSSender2._0
                     {
                         await SendAsync(number, messages[i]);
 
-                        progressTuple.Item1.Text = $"{progressMultiplier * i}%";
+                        progressTuple.Item1.Text = $"{MathF.Round(progressMultiplier * i, 2)}%";
 
                         await Task.Delay(Settings.Loaded.betweenMessagesDelay);
 
-                        ProgressPage.ins.EvaluateProgress();
+                        ProgressPage.ins.EvaluateMessagesProgress();
                     }
 
                     progressTuple.Item1.Text = "100%";
-                    progressTuple.Item2.BackgroundColor = Color.FromArgb("72a461");
+                    progressTuple.Item2.BackgroundColor = Color.FromArgb("a1c349");
+
+                    ProgressPage.ins.EvaluateNumbersProgress();
 
                     await Task.Delay(Settings.Loaded.betweenNumbersDelay);
                 }
