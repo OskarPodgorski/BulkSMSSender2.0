@@ -3,6 +3,9 @@ namespace BulkSMSSender2._0;
 public partial class ProgressPage : ContentPage
 {
     public static ProgressPage? ins { get; private set; }
+
+    public SMSSending SMSSending;
+
     public ProgressPage()
     {
         InitializeComponent();
@@ -91,4 +94,7 @@ public partial class ProgressPage : ContentPage
 
         progressNumbersLabel.Text = $"{progressNumbersCount} / {allNumbersCount}";
     }
+
+    private void PauseButton(object sender, EventArgs e) => SMSSending?.PauseBulkSending();
+    private void ContinueButton(object sender, EventArgs e) => SMSSending?.ContinueBulkSending();
 }

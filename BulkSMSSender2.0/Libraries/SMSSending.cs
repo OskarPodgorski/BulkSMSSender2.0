@@ -1,10 +1,8 @@
-﻿using AdvancedSharpAdbClient.DeviceCommands;
-
-namespace BulkSMSSender2._0
+﻿namespace BulkSMSSender2._0
 {
-    public static class SMSSending
+    public sealed class SMSSending
     {
-        private static IEnumerator<string> messagesEnumerator;
+        private bool paused = false;
 
         public static string GetAndroidCommand(string number, string message)
         {
@@ -23,23 +21,50 @@ namespace BulkSMSSender2._0
             }
         }
 
-        public static async Task SendAsync(IEnumerable<string> numbers, List<string> messages)
+        private IEnumerator<string> numbers;
+        List<string> messages;
+        private int messagesCount;
+        private int numbersCount;
+        private float progressMultiplier;
+
+        public async Task StartSendBulkAsync(List<string> numbersList, List<string> messagesList)
         {
             if (ProgressPage.ins != null)
             {
-                messagesEnumerator = messages.GetEnumerator();
+                ProgressPage.ins.SMSSending = this;
 
-                ProgressPage.ins.InitializeProgress(numbers.Count(), messages.Count);
+                messagesCount = messagesList.Count;
+                numbersCount = numbersList.Count;
+                progressMultiplier = 100f / messagesCount;
+                messages = messagesList;
+                numbers = numbersList.GetEnumerator();
 
-                float progressMultiplier = 100f / messages.Count;
+                ProgressPage.ins.InitializeProgress(numbersCount, messagesCount);
 
-                foreach (string number in numbers)
+                await ContinueSendBulkAsync();
+            }
+        }
+
+        public void PauseBulkSending() => paused = true;
+        public async void ContinueBulkSending()
+        {
+            paused = false;
+
+            if (numbers != null)
+                await ContinueSendBulkAsync();
+        }
+
+        private async Task ContinueSendBulkAsync()
+        {
+            if (ProgressPage.ins != null)
+            {
+                while (!paused && numbers.MoveNext())
                 {
-                    (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(number);
+                    (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(numbers.Current);
 
                     for (int i = 0; i < messages.Count; i++)
                     {
-                        await SendAsync(number, messages[i]);
+                        await SendAsync(numbers.Current, messages[i]);
 
                         progressTuple.Item1.Text = $"{MathF.Round(progressMultiplier * i, 2)}%";
 
@@ -53,7 +78,8 @@ namespace BulkSMSSender2._0
 
                     ProgressPage.ins.EvaluateNumbersProgress();
 
-                    await Task.Delay(Settings.Loaded.betweenNumbersDelay);
+                    if (!paused)
+                        await Task.Delay(Settings.Loaded.betweenNumbersDelay);
                 }
             }
         }

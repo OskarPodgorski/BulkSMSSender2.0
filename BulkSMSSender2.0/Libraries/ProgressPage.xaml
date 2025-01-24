@@ -43,14 +43,16 @@
                     FontSize="20"/>
 
                 <Button
-                    Text="Resume"
+                    Text="Continue"
                     HorizontalOptions="End"
-                    BackgroundColor="{StaticResource MyGreen}"/>
+                    BackgroundColor="{StaticResource MyGreen}"
+                    Clicked="ContinueButton"/>
                 
                 <Button
                     Text="Pause"
                     HorizontalOptions="End"
-                    BackgroundColor="{StaticResource MyBlue}"/>
+                    BackgroundColor="{StaticResource MyBlue}"
+                    Clicked ="PauseButton"/>
 
                 <Button
                     Text="Abort"

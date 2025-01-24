@@ -96,7 +96,7 @@ public partial class FinalPage : ContentPage
         {
             await Task.WhenAll(Shell.Current.GoToAsync("//progress"), Settings.Loaded.SaveAsync());
 
-            await SMSSending.SendAsync(Numbers, MainPage.ins.Messages);
+            await new SMSSending().StartSendBulkAsync(Numbers, MainPage.ins.Messages);
         }
     }
 }
