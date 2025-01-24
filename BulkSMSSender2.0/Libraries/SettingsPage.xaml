@@ -56,7 +56,7 @@
 
             <Grid
                 ColumnSpacing="20"
-                RowSpacing="20"
+                RowSpacing="8"
                 VerticalOptions="StartAndExpand"
                 HorizontalOptions="FillAndExpand">
 
@@ -68,22 +68,55 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="32" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
+                <Label 
+                    Text="Between messages delay (ms):"
+                                    Grid.Row="0" Grid.Column="0"
+                    VerticalOptions="End"
+                    HorizontalOptions="Start"
+                    FontSize="14"
+                    TextColor="#c8c8c8"/>
+                
                 <Entry x:Name="messageDelayEntry"
-                    Grid.Row="0" Grid.Column="0"
+                    Grid.Row="1" Grid.Column="0"
                     Placeholder="Delay between messages to one number in miliseconds:"
                        Unfocused="OnUnfocusedEntry"/>
 
+                <Label 
+                    Text="Between numbers delay (ms):"
+                                    Grid.Row="0" Grid.Column="1"
+                    VerticalOptions="End"
+                    HorizontalOptions="Start"
+                    FontSize="14"
+                    TextColor="#c8c8c8"/>
+
                 <Entry x:Name="numbersDelayEntry"
-                    Grid.Row="0" Grid.Column="1"
+                    Grid.Row="1" Grid.Column="1"
                     Placeholder="Delay to next number in miliseconds:"
                        Unfocused="OnUnfocusedEntry"/>
 
+                <Label 
+                    Text="Max outgoing messages in 30 minutes limit:"
+                                    Grid.Row="2" Grid.Column="0"
+                    VerticalOptions="End"
+                    HorizontalOptions="Start"
+                    FontSize="14"
+                    TextColor="#c8c8c8"/>
+
                 <Entry x:Name="maxMessagesEntry"
-                    Grid.Row="1" Grid.Column="0"
+                    Grid.Row="3" Grid.Column="0"
                     Placeholder="Max messages safe lock amount:"
                        Unfocused="OnUnfocusedEntry"/>
+
+                <Button
+                    Grid.Row="3" Grid.Column="1"
+    Text="Send restore default sms outgoing limit command"
+    HorizontalOptions="StartAndExpand"
+    Clicked="RestoreOutgoingLimitButton"
+    BackgroundColor="{StaticResource MyViolet}"/>
 
 
             </Grid>

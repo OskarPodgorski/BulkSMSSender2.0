@@ -1,4 +1,6 @@
-﻿namespace BulkSMSSender2._0
+﻿using AdvancedSharpAdbClient.DeviceCommands;
+
+namespace BulkSMSSender2._0
 {
     public sealed class SMSSending
     {
@@ -13,12 +15,22 @@
             };
         }
 
-        public static async Task SendAsync(string number, string message)
+        public static async Task SetSMSOutgoingLimitAsync()
         {
             if (!Settings.Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
-            {
-                //await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], GetAndroidCommand(number, message)); // disabled for testing
-            }
+                await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"settings put global sms_outgoing_check_max_count {Settings.Loaded.maxMessagesSafeLock}"); // disabled for testing
+        }
+
+        public static async Task RestoreDefaultSMSOutgoingLimitAsync()
+        {
+            if (!Settings.Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
+                await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"settings put global sms_outgoing_check_max_count 30"); // disabled for testing
+        }
+
+        public static async Task SendAsync(string number, string message)
+        {
+            //if (!Settings.Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
+            //await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], GetAndroidCommand(number, message)); // disabled for testing
         }
 
         private IEnumerator<string> numbers;
@@ -40,7 +52,7 @@
                 numbers = numbersList.GetEnumerator();
 
                 ProgressPage.ins.InitializeProgress(numbersCount, messagesCount);
-
+               
                 await ContinueSendBulkAsync();
             }
         }
@@ -58,6 +70,8 @@
         {
             if (ProgressPage.ins != null)
             {
+                await SetSMSOutgoingLimitAsync();
+
                 while (!paused && numbers.MoveNext())
                 {
                     (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(numbers.Current);

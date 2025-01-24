@@ -40,4 +40,6 @@ public partial class SettingsPage : ContentPage
         Settings.Loaded.androidCompatibility = androidPicker.SelectedIndex;
         Settings.Loaded.numbersExtractionRegion = regionPicker.SelectedIndex;
     }
+
+    private async void RestoreOutgoingLimitButton(object sender, EventArgs e) => await SMSSending.RestoreDefaultSMSOutgoingLimitAsync();
 }
