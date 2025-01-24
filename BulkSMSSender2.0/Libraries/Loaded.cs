@@ -44,9 +44,12 @@
             colors = new(pureDataColors.darkGrayColorUI, pureDataColors.grayColorUI, pureDataColors.violetColorUI, pureDataColors.yellowColorUI, pureDataColors.blueColorUI, pureDataColors.greenColorUI);
         }
 
-        public static void Save()
+        public static void Save() => SerializeDeserialize.SavePureDataFile(PreparePureDataSettings(), settingsPath);
+        public static async Task SaveAsync() => await SerializeDeserialize.SavePureDataFileAsync(PreparePureDataSettings(), settingsPath);
+
+        private static PureDataSettings PreparePureDataSettings()
         {
-            PureDataSettings pureData = new()
+            return new()
             {
                 commandBlock = commandBlock,
 
@@ -62,8 +65,6 @@
 
                 data = data
             };
-
-            SerializeDeserialize.SavePureDataFile(pureData, settingsPath);
         }
     }
 }

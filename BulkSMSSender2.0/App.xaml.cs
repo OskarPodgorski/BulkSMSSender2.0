@@ -12,20 +12,20 @@
 
             Settings.Loaded.Load();
 
-            ApplyColors();
+            ApplyUIColors();
 
             MainPage = new AppShell();
 
             ins ??= this;
         }
 
-        public static void ApplyColors()
+        public static void ApplyUIColors()
         {
             if (Current != null)
             {
                 Current.Resources["MyDarkGray"] = Settings.Loaded.colors.darkGray;
                 Current.Resources["MyGray"] = Settings.Loaded.colors.darkGray;
-                Current.Resources["MyViolet"] = Color.FromArgb("#AC99EA");
+                Current.Resources["MyViolet"] = Settings.Loaded.colors.violet;
                 Current.Resources["MyYellow"] = Settings.Loaded.colors.darkGray;
                 Current.Resources["MyBlue"] = Settings.Loaded.colors.darkGray;
                 Current.Resources["MyGreen"] = Settings.Loaded.colors.darkGray;

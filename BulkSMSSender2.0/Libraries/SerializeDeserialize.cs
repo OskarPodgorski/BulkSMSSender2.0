@@ -26,7 +26,7 @@ public static class SerializeDeserialize
     {
         if (!Directory.Exists(Path.GetDirectoryName(path)))
         {
-            throw new NotImplementedException();
+            throw new DirectoryNotFoundException($"Directory does not exist: {Path.GetDirectoryName(path)}");
         }
         else
         {
@@ -46,18 +46,16 @@ public static class SerializeDeserialize
     {
         if (!Directory.Exists(Path.GetDirectoryName(path)))
         {
-            throw new NotImplementedException();
+            throw new DirectoryNotFoundException($"Directory does not exist: {Path.GetDirectoryName(path)}");
         }
-        else
-        {
-            string json = JsonConvert.SerializeObject(pureData, Formatting.Indented);
 
-            if (string.IsNullOrEmpty(json) == false)
+        string json = await Task.Run(() => JsonConvert.SerializeObject(pureData, Formatting.Indented));
+
+        if (!string.IsNullOrEmpty(json))
+        {
+            await using (StreamWriter writer = new(path, false))
             {
-                using (StreamWriter writer = new(path))
-                {
-                    writer.Write(json);
-                }
+                await writer.WriteAsync(json);
             }
         }
     }

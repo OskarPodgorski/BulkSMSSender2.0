@@ -1,6 +1,3 @@
-using Microsoft.Maui.Controls;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace BulkSMSSender2._0;
 
 public partial class FinalPage : ContentPage
@@ -76,14 +73,14 @@ public partial class FinalPage : ContentPage
             VerticalOptions = LayoutOptions.FillAndExpand,
             HorizontalOptions = LayoutOptions.Start,
             FontSize = 16,
-            TextColor = Colors.Black
+            TextColor = Settings.Loaded.colors.gray
         };
 
         horizontalLayout.Children.Add(label);
 
         Frame frame = new()
         {
-            BackgroundColor = checkValid ? Color.FromArgb("dbad6a") : Color.FromArgb("70C1B3"),
+            BackgroundColor = checkValid ? Settings.Loaded.colors.yellow : Settings.Loaded.colors.blue,
             HasShadow = false,
             CornerRadius = 10,
             Padding = 8,
@@ -97,7 +94,7 @@ public partial class FinalPage : ContentPage
     {
         if (MainPage.ins != null)
         {
-            await Shell.Current.GoToAsync("//progress");
+            await Task.WhenAll(Shell.Current.GoToAsync("//progress"), Settings.Loaded.SaveAsync());
 
             await SMSSending.SendAsync(Numbers, MainPage.ins.Messages);
         }

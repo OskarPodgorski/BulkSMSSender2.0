@@ -45,7 +45,7 @@ namespace BulkSMSSender2._0
                     }
 
                     progressTuple.Item1.Text = "100%";
-                    progressTuple.Item2.BackgroundColor = Color.FromArgb("a1c349");
+                    progressTuple.Item2.BackgroundColor = Settings.Loaded.colors.green;
 
                     ProgressPage.ins.EvaluateNumbersProgress();
 
