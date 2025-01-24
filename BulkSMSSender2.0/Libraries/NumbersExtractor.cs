@@ -10,11 +10,6 @@ namespace BulkSMSSender2._0
 
     public sealed class NumbersExtractor
     {
-        //public static string regexPattern = @"(\+[0-9]{1,3}[- ]?)?[0-9]{2,3}[- ]?[0-9]{2,3}[- ]?[0-9]{2,3}";
-
-        public static string regexPattern = @"(\+[0-9]{2}[- ]?)?[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
-
-        //public static string userValidOne = @"^[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
         public static string userValid = @"\+[0-9]{2}[- ]?[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
 
         public async Task ExtractNumbersAsync(string siteText)
@@ -25,7 +20,7 @@ namespace BulkSMSSender2._0
 
                 await Task.Run(() =>
                 {
-                    MatchCollection matches = Regex.Matches(siteText, regexPattern);
+                    MatchCollection matches = Regex.Matches(siteText, Constants.REGIONREGEX[Settings.Loaded.numbersExtractionRegion]);
 
                     foreach (Match match in matches.Cast<Match>())
                     {

@@ -20,6 +20,8 @@ public partial class DataPage : ContentPage
         {
             await Shell.Current.GoToAsync("//final");
 
+            FinalPage.ins?.RunLoadingLabel();
+
             await numbersExtractor.ExtractNumbersAsync(dataEditor.Text);
         }
     }

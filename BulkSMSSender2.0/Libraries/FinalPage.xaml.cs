@@ -1,3 +1,6 @@
+using Microsoft.Maui.Controls;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace BulkSMSSender2._0;
 
 public partial class FinalPage : ContentPage
@@ -34,6 +37,21 @@ public partial class FinalPage : ContentPage
         ins ??= this;
     }
 
+    public void RunLoadingLabel()
+    {
+        numbersLayout.Children.Clear();
+
+        Label label = new()
+        {
+            Text = "Extracting numbers...",
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            HorizontalOptions = LayoutOptions.CenterAndExpand,
+            FontSize = 18
+        };
+
+        numbersLayout.Children.Add(label);
+    }
+
     public void AddNumbers(IEnumerable<NumberPack> numbers)
     {
         numbersLayout.Children.Clear();
@@ -65,7 +83,7 @@ public partial class FinalPage : ContentPage
 
         Frame frame = new()
         {
-            BackgroundColor = checkValid ? Color.FromArgb("dbad6a") : Color.FromArgb("03b5aa"),
+            BackgroundColor = checkValid ? Color.FromArgb("dbad6a") : Color.FromArgb("70C1B3"),
             HasShadow = false,
             CornerRadius = 10,
             Padding = 8,

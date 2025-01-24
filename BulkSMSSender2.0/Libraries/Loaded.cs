@@ -3,6 +3,7 @@
     public static class Loaded
     {
         private readonly static string settingsPath = Path.Combine(AppContext.BaseDirectory, "Settings.json");
+        private readonly static string colorsPath = Path.Combine(AppContext.BaseDirectory, "Colors.json");
 
         public static bool commandBlock = false;
 
@@ -18,23 +19,29 @@
 
         public static string data = string.Empty;
 
+        public static Colors colors = new();
+
         public static void Load()
         {
-            PureDataSettings pureData = SerializeDeserialize.LoadPureDataFile<PureDataSettings>(settingsPath);
+            PureDataSettings pureDataSettings = SerializeDeserialize.LoadPureDataFile<PureDataSettings>(settingsPath);
 
-            commandBlock = pureData.commandBlock;
+            commandBlock = pureDataSettings.commandBlock;
 
-            singleNumber = pureData.singleNumber;
-            messages = pureData.messages.ToList();
+            singleNumber = pureDataSettings.singleNumber;
+            messages = pureDataSettings.messages.ToList();
 
-            androidCompatibility = pureData.androidCompatibility;
-            numbersExtractionRegion = pureData.numbersExtractionRegion;
+            androidCompatibility = pureDataSettings.androidCompatibility;
+            numbersExtractionRegion = pureDataSettings.numbersExtractionRegion;
 
-            betweenMessagesDelay = pureData.betweenMessagesDelay;
-            betweenNumbersDelay = pureData.betweenNumbersDelay;
-            maxMessagesSafeLock = pureData.maxMessagesSafeLock;
+            betweenMessagesDelay = pureDataSettings.betweenMessagesDelay;
+            betweenNumbersDelay = pureDataSettings.betweenNumbersDelay;
+            maxMessagesSafeLock = pureDataSettings.maxMessagesSafeLock;
 
-            data = pureData.data;
+            data = pureDataSettings.data;
+
+            PureDataColors pureDataColors = SerializeDeserialize.LoadPureDataFile<PureDataColors>(colorsPath);
+
+            colors = new(pureDataColors.darkGrayColorUI, pureDataColors.grayColorUI, pureDataColors.violetColorUI, pureDataColors.yellowColorUI, pureDataColors.blueColorUI, pureDataColors.greenColorUI);
         }
 
         public static void Save()

@@ -9,10 +9,10 @@
 
     <TabBar 
         x:Name="tabs"
-        Shell.TabBarBackgroundColor="#ac99ea"
-        Shell.TabBarUnselectedColor="#242424"
-        Shell.TabBarTitleColor="#242424"
-        Shell.TabBarForegroundColor="#242424">
+        Shell.TabBarBackgroundColor="{StaticResource MyViolet}"
+        Shell.TabBarUnselectedColor="{StaticResource MyGray}"
+        Shell.TabBarTitleColor="{StaticResource MyGray}"
+        Shell.TabBarForegroundColor="{StaticResource MyGray}">
 
         <Tab Title="Home" Route="home">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
@@ -33,7 +33,6 @@
         <Tab Title="Progress" Route="progress">
             <ShellContent ContentTemplate="{DataTemplate local:ProgressPage}" />
         </Tab>
-
 
         <Tab Title="Settings" Route="settings">
             <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />

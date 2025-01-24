@@ -1,17 +1,23 @@
-﻿namespace BulkSMSSender2._0
+﻿using AdvancedSharpAdbClient.DeviceCommands;
+
+namespace BulkSMSSender2._0
 {
     public static class SMSSending
     {
+        public static string GetAndroidCommand(string number, string message)
+        {
+            return Settings.Loaded.androidCompatibility switch
+            {
+                0 => $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0",
+                _ => string.Empty,
+            };
+        }
+
         public static async Task SendAsync(string number, string message)
         {
             if (!Settings.Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
             {
-                //if (Settings.Loaded.androidCompatibility == 0)
-                //    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0");
-                //else if (Settings.Loaded.androidCompatibility == 1)
-                //    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $""); //to search for
-                //else if (Settings.Loaded.androidCompatibility == 2)
-                //    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $""); //to search for
+                //await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], GetAndroidCommand(number, message)); // disabled for testing
             }
         }
 
@@ -47,20 +53,5 @@
                 }
             }
         }
-
-        //public static async Task SendAsync(string number, IEnumerable<string> messages)
-        //{
-        //    if (ProgressPage.ins != null)
-        //    {
-        //        foreach (string message in messages)
-        //        {
-        //            await SendAsync(number, message);
-
-        //            ProgressPage.ins.AddNumber(number);
-
-        //            await Task.Delay(Settings.Loaded.betweenMessagesDelay);
-        //        }
-        //    }
-        //}
     }
 }

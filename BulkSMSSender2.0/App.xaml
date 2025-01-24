@@ -13,6 +13,13 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <Color x:Key="MyDarkGray">#FFFFFF</Color>
+            <Color x:Key="MyGray">#FFFFFF</Color>
+            <Color x:Key="MyViolet">#FFFFFF</Color>
+            <Color x:Key="MyYellow">#FFFFFF</Color>
+            <Color x:Key="MyBlue">#FFFFFF</Color>
+            <Color x:Key="MyGreen">#FFFFFF</Color>
+
         </ResourceDictionary>
         
     </Application.Resources>

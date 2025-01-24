@@ -43,7 +43,7 @@ public partial class ProgressPage : ContentPage
 
         Frame frame = new()
         {
-            BackgroundColor = Color.FromArgb("03b5aa"),
+            BackgroundColor = Color.FromArgb("70C1B3"),
             HasShadow = false,
             CornerRadius = 10,
             Padding = 8,
