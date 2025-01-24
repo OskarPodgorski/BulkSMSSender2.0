@@ -36,16 +36,16 @@ public partial class ProgressPage : ContentPage
             VerticalOptions = LayoutOptions.FillAndExpand,
             HorizontalOptions = LayoutOptions.Start,
             FontSize = 16,
-            TextColor = Colors.Black
+            TextColor = Settings.Loaded.colors.gray
         };
 
         horizontalLayout.Children.Add(progressLabel);
 
         Frame frame = new()
         {
-            BackgroundColor = Color.FromArgb("70C1B3"),
+            BackgroundColor = Settings.Loaded.colors.blue,
             HasShadow = false,
-            CornerRadius = 10,
+            CornerRadius = 8,
             Padding = 8,
             Content = horizontalLayout
         };

@@ -25,13 +25,15 @@
                     x:Name="clearButton"
                     Text="Clear"
                     HorizontalOptions="End"
-                    Clicked="ClearEditorField"/>
+                    Clicked="ClearEditorField"
+                    BackgroundColor="{StaticResource MyYellow}"/>
                 
                 <Button
                     x:Name="acceptButtonTop"
                     Text="Accept"
                     HorizontalOptions="End"
-                    Clicked="AcceptEditorText"/>
+                    Clicked="AcceptEditorText"
+                    BackgroundColor="{StaticResource MyGreen}"/>
 
             </HorizontalStackLayout>
 
@@ -49,7 +51,8 @@
                 x:Name="acceptButtonBottom"
                 Text="Accept"
                 HorizontalOptions="EndAndExpand"
-                Clicked="AcceptEditorText"/>
+                Clicked="AcceptEditorText"
+                BackgroundColor="{StaticResource MyGreen}"/>
 
         </VerticalStackLayout>
 

@@ -23,7 +23,8 @@
                 <Button
                     Text="Start Sending"
                     HorizontalOptions="EndAndExpand"
-                    Clicked="StartSending"/>
+                    Clicked="StartSending"
+                    BackgroundColor="{StaticResource MyGreen}"/>
 
             </HorizontalStackLayout>
 

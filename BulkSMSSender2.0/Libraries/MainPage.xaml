@@ -35,7 +35,8 @@
                 <Button
                     Text="Send"
                     HorizontalOptions="CenterAndExpand"
-                    Clicked="SendSMSOneNumber"/>
+                    Clicked="SendSMSOneNumber"
+                    BackgroundColor="{StaticResource MyViolet}"/>
 
             </HorizontalStackLayout>
 
@@ -50,7 +51,8 @@
             <Button
 Text="Add message"
 HorizontalOptions="CenterAndExpand"
-Clicked="AddMessageButton"/>
+Clicked="AddMessageButton"
+                BackgroundColor="{StaticResource MyViolet}"/>
 
         </VerticalStackLayout>
         

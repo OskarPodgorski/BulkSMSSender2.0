@@ -24,11 +24,11 @@
             if (Current != null)
             {
                 Current.Resources["MyDarkGray"] = Settings.Loaded.colors.darkGray;
-                Current.Resources["MyGray"] = Settings.Loaded.colors.darkGray;
+                Current.Resources["MyGray"] = Settings.Loaded.colors.gray;
                 Current.Resources["MyViolet"] = Settings.Loaded.colors.violet;
-                Current.Resources["MyYellow"] = Settings.Loaded.colors.darkGray;
-                Current.Resources["MyBlue"] = Settings.Loaded.colors.darkGray;
-                Current.Resources["MyGreen"] = Settings.Loaded.colors.darkGray;
+                Current.Resources["MyYellow"] = Settings.Loaded.colors.yellow;
+                Current.Resources["MyBlue"] = Settings.Loaded.colors.blue;
+                Current.Resources["MyGreen"] = Settings.Loaded.colors.green;
             }
             else
             {

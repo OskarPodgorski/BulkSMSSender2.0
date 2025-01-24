@@ -82,7 +82,7 @@ public partial class FinalPage : ContentPage
         {
             BackgroundColor = checkValid ? Settings.Loaded.colors.yellow : Settings.Loaded.colors.blue,
             HasShadow = false,
-            CornerRadius = 10,
+            CornerRadius = 8,
             Padding = 8,
             Content = horizontalLayout
         };
