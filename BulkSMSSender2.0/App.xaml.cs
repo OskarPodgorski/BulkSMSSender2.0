@@ -29,6 +29,7 @@
                 Current.Resources["MyYellow"] = Settings.Loaded.colors.yellow;
                 Current.Resources["MyBlue"] = Settings.Loaded.colors.blue;
                 Current.Resources["MyGreen"] = Settings.Loaded.colors.green;
+                Current.Resources["MyRed"] = Settings.Loaded.colors.red;
             }
             else
             {

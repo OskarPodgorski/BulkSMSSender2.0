@@ -43,9 +43,19 @@
                     FontSize="20"/>
 
                 <Button
+                    Text="Resume"
+                    HorizontalOptions="End"
+                    BackgroundColor="{StaticResource MyGreen}"/>
+                
+                <Button
+                    Text="Pause"
+                    HorizontalOptions="End"
+                    BackgroundColor="{StaticResource MyBlue}"/>
+
+                <Button
                     Text="Abort"
                     HorizontalOptions="End"
-                    BackgroundColor="{StaticResource MyYellow}"/>
+                    BackgroundColor="{StaticResource MyRed}"/>
 
             </HorizontalStackLayout>
 

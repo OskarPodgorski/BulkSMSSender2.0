@@ -4,6 +4,8 @@ namespace BulkSMSSender2._0
 {
     public static class SMSSending
     {
+        private static IEnumerator<string> messagesEnumerator;
+
         public static string GetAndroidCommand(string number, string message)
         {
             return Settings.Loaded.androidCompatibility switch
@@ -25,6 +27,8 @@ namespace BulkSMSSender2._0
         {
             if (ProgressPage.ins != null)
             {
+                messagesEnumerator = messages.GetEnumerator();
+
                 ProgressPage.ins.InitializeProgress(numbers.Count(), messages.Count);
 
                 float progressMultiplier = 100f / messages.Count;

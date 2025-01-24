@@ -122,7 +122,7 @@
                 Text = "Delete",
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Center,
-                BackgroundColor = Settings.Loaded.colors.violet
+                BackgroundColor = Settings.Loaded.colors.red
             };
 
             button.Clicked += (sender, args) =>

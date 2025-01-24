@@ -19,6 +19,7 @@
             <Color x:Key="MyYellow">#FFFFFF</Color>
             <Color x:Key="MyBlue">#FFFFFF</Color>
             <Color x:Key="MyGreen">#FFFFFF</Color>
+            <Color x:Key="MyRed">#FFFFFF</Color>
 
         </ResourceDictionary>
         

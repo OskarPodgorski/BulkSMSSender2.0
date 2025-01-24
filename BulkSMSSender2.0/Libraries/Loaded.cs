@@ -19,7 +19,7 @@
 
         public static string data = string.Empty;
 
-        public static Colors colors = new();
+        public static Colors colors = LoadColors();
 
         public static void Load()
         {
@@ -38,10 +38,21 @@
             maxMessagesSafeLock = pureDataSettings.maxMessagesSafeLock;
 
             data = pureDataSettings.data;
+        }
 
+        private static Colors LoadColors()
+        {
             PureDataColors pureDataColors = SerializeDeserialize.LoadPureDataFile<PureDataColors>(colorsPath);
 
-            colors = new(pureDataColors.darkGrayColorUI, pureDataColors.grayColorUI, pureDataColors.violetColorUI, pureDataColors.yellowColorUI, pureDataColors.blueColorUI, pureDataColors.greenColorUI);
+            return new Colors(
+                pureDataColors.darkGrayColorUI,
+                pureDataColors.grayColorUI,
+                pureDataColors.violetColorUI,
+                pureDataColors.yellowColorUI,
+                pureDataColors.blueColorUI,
+                pureDataColors.greenColorUI,
+                pureDataColors.redColorUI
+            );
         }
 
         public static void Save() => SerializeDeserialize.SavePureDataFile(PreparePureDataSettings(), settingsPath);

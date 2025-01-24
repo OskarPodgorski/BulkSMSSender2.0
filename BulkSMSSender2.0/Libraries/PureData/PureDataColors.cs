@@ -8,5 +8,6 @@
         public string yellowColorUI = "#DBAD6A";
         public string blueColorUI = "#70C1B3";
         public string greenColorUI = "#A1C349";
+        public string redColorUI = "#C25B66";
     }
 }
