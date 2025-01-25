@@ -1,10 +1,11 @@
-﻿namespace Settings
+﻿
+namespace Settings
 {
     public static class Loaded
     {
         private readonly static string settingsPath = Path.Combine(AppContext.BaseDirectory, "Settings.json");
         private readonly static string colorsPath = Path.Combine(AppContext.BaseDirectory, "Colors.json");
-        private readonly static string alreadyDonePath = Path.Combine(AppContext.BaseDirectory, "AlreadyDone.json");
+        private readonly static string alreadyDonePath = Path.Combine(AppContext.BaseDirectory, "AlreadyDone.bss");
 
         public static bool commandBlock = false;
 
@@ -20,7 +21,8 @@
 
         public static string data = string.Empty;
 
-        public static HashSet<string> alreadyDoneNumbers = LoadAlreadyDone();
+        private static HashSet<string> alreadyDoneNumbers = LoadAlreadyDone();
+        public static int AlreadyDoneCount => alreadyDoneNumbers.Count;
 
         public static Colors colors = LoadColors();
 
@@ -58,8 +60,6 @@
             );
         }
 
-        private static HashSet<string> LoadAlreadyDone() => SerializeDeserialize.LoadPureDataFile<PureDataAlreadyDone>(alreadyDonePath).alreadyDoneNumbers.ToHashSet();
-
         public static void SaveSettings() => SerializeDeserialize.SavePureDataFile(PreparePureDataSettings(), settingsPath);
         public static async Task SaveSettingsAsync() => await SerializeDeserialize.SavePureDataFileAsync(PreparePureDataSettings(), settingsPath);
 
@@ -83,6 +83,61 @@
             };
         }
 
-        public static async Task SaveAlreadyDoneAsync() => await SerializeDeserialize.SavePureDataFileAsync(new PureDataAlreadyDone() { alreadyDoneNumbers = alreadyDoneNumbers.ToArray() }, alreadyDonePath);
+        private static HashSet<string> LoadAlreadyDone()
+        {
+            if (File.Exists(alreadyDonePath))
+            {
+                HashSet<string> loaded = new();
+
+                using StreamReader reader = new(alreadyDonePath);
+                {
+                    string? line;
+
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        loaded.Add(line);
+                    }
+                }
+                return loaded;
+            }
+
+            return new();
+        }
+
+        private static StreamWriter? writer;
+        public static void ConnectAlreadyDoneWriter() => writer = new(alreadyDonePath, true);
+        public static void DisconnectAlreadyDoneWriter()
+        {
+            if (writer != null)
+            {
+                writer.Dispose();
+                writer = null;
+            }
+        }
+
+        /// <summary>
+        /// requires ConnectAlreadyDoneWriter() and DisconnectAlreadyDoneWriter() to work properly
+        /// </summary>
+        /// <returns></returns>
+        public static async Task AppendAlreadyDoneAsync(string number)
+        {
+            if (writer != null)
+            {
+                if (alreadyDoneNumbers.Add(number))
+                    await writer.WriteLineAsync(number);
+            }
+        }
+
+        public static void ClearAlreadyDone()
+        {
+            alreadyDoneNumbers.Clear();
+
+            if (File.Exists(alreadyDonePath))
+            {
+                File.Delete(alreadyDonePath);
+            }
+        }
+
+        public static bool AlreadyDoneContains(string number) => alreadyDoneNumbers.Contains(number);
     }
 }

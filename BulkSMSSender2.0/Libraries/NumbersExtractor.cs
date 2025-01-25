@@ -26,7 +26,7 @@ namespace BulkSMSSender2._0
                     {
                         string cleaned = match.Value.RemoveAllWhitespaces();
 
-                        if (!Settings.Loaded.alreadyDoneNumbers.Contains(cleaned))
+                        if (!Settings.Loaded.AlreadyDoneContains(cleaned))
                             numbers.Add(new(cleaned, UserValidationNeededTest(cleaned)));
                     }
                 });

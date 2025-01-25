@@ -71,7 +71,7 @@ public partial class FinalPage : ContentPage
 
         numbersLabel.Text = $"Numbers:  {numbers.Count()}";
         timeLabel.Text = $"Elapsed time:  {GetElapsedTime(numbers.Count())} hours";
-        alreadyDoneLabel.Text = $"Already done numbers:  {Settings.Loaded.alreadyDoneNumbers.Count}";
+        alreadyDoneLabel.Text = $"Already done numbers:  {Settings.Loaded.AlreadyDoneCount}";
     }
 
     private float GetElapsedTime(int numbersCount)
@@ -129,7 +129,7 @@ public partial class FinalPage : ContentPage
 
     private async void ClearAlreadyDone(object sender, EventArgs e)
     {
-        Settings.Loaded.alreadyDoneNumbers.Clear();
+        Settings.Loaded.ClearAlreadyDone();
 
         await RunLoadingLabel();
 

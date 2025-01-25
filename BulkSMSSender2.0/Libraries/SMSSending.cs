@@ -71,12 +71,12 @@ namespace BulkSMSSender2._0
         {
             if (ProgressPage.ins != null)
             {
-                await SetSMSOutgoingLimitAsync();
+                Settings.Loaded.ConnectAlreadyDoneWriter();
 
                 while (!paused && numbers.MoveNext())
                 {
-                    Settings.Loaded.alreadyDoneNumbers.Add(numbers.Current);
-                    await Settings.Loaded.SaveAlreadyDoneAsync();
+                    //Settings.Loaded.alreadyDoneNumbers.Add(numbers.Current);
+                    await Settings.Loaded.AppendAlreadyDoneAsync(numbers.Current);
 
                     (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(numbers.Current);
 
@@ -99,6 +99,8 @@ namespace BulkSMSSender2._0
                     if (!paused)
                         await Task.Delay(Settings.Loaded.betweenNumbersDelay);
                 }
+
+                Settings.Loaded.DisconnectAlreadyDoneWriter();
             }
         }
     }
