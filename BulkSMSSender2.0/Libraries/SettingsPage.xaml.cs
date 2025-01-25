@@ -42,4 +42,6 @@ public partial class SettingsPage : ContentPage
     }
 
     private async void RestoreOutgoingLimitButton(object sender, EventArgs e) => await SMSSending.RestoreDefaultSMSOutgoingLimitAsync();
+    private async void SetOutgoingLimitButton(object sender, EventArgs e) => await SMSSending.SetSMSOutgoingLimitAsync();
+
 }

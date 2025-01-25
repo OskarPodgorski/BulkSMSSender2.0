@@ -111,13 +111,31 @@
                     Placeholder="Max messages safe lock amount:"
                        Unfocused="OnUnfocusedEntry"/>
 
-                <Button
-                    Grid.Row="3" Grid.Column="1"
-    Text="Send restore default sms outgoing limit command"
-    HorizontalOptions="StartAndExpand"
-    Clicked="RestoreOutgoingLimitButton"
-    BackgroundColor="{StaticResource MyViolet}"/>
+                <Label 
+                    Text="Send command to set sms outgoing limit:   (phone reboot required)"
+                    Grid.Row="2" Grid.Column="1"
+                    VerticalOptions="End"
+                    HorizontalOptions="Start"
+                    FontSize="14"
+                    TextColor="#c8c8c8"/>
 
+                <HorizontalStackLayout Grid.Row="3" Grid.Column="1"
+                        Spacing="20"
+                        HorizontalOptions="StartAndExpand">
+
+                    <Button
+                        Text="Set chosen sms outgoing limit"
+                        HorizontalOptions="StartAndExpand"
+                        Clicked="SetOutgoingLimitButton"
+                        BackgroundColor="{StaticResource MyGreen}"/>
+
+                    <Button
+                        Text="Restore default sms outgoing limit"
+                        HorizontalOptions="StartAndExpand"
+                        Clicked="RestoreOutgoingLimitButton"
+                        BackgroundColor="{StaticResource MyBlue}"/>
+
+                </HorizontalStackLayout>
 
             </Grid>
 
