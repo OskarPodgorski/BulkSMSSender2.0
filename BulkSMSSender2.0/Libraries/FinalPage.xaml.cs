@@ -132,9 +132,12 @@ public partial class FinalPage : ContentPage
 
     private async void StartSending(object sender, EventArgs e)
     {
-        if (MainPage.ins != null)
+        if (MainPage.ins != null && Application.Current != null)
         {
             await Task.WhenAll(Shell.Current.GoToAsync("//progress"), Settings.Loaded.SaveSettingsAsync());
+
+            if(ProgressPage.ins != null)
+                Shell.SetTabBarIsVisible(ProgressPage.ins, false);
 
             await new SMSSending().StartSendBulkAsync(Numbers, MainPage.ins.Messages);
         }

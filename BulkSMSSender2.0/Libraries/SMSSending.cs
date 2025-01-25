@@ -39,6 +39,7 @@ namespace BulkSMSSender2._0
         private int messagesCount;
         private int numbersCount;
         private float progressMultiplier;
+        private Task sendingTask;
 
         public async Task StartSendBulkAsync(List<string> numbersList, List<string> messagesList)
         {
@@ -54,7 +55,8 @@ namespace BulkSMSSender2._0
 
                 ProgressPage.ins.InitializeProgress(numbersCount, messagesCount);
 
-                await ContinueSendBulkAsync();
+                sendingTask = ContinueSendBulkAsync();
+                await sendingTask;
             }
         }
 
@@ -63,8 +65,11 @@ namespace BulkSMSSender2._0
         {
             paused = false;
 
-            if (numbers != null)
-                await ContinueSendBulkAsync();
+            if (numbers != null && (sendingTask == null || sendingTask.IsCompleted))
+            {
+                sendingTask = ContinueSendBulkAsync();
+                await sendingTask;
+            }
         }
 
         private async Task ContinueSendBulkAsync()
@@ -75,7 +80,6 @@ namespace BulkSMSSender2._0
 
                 while (!paused && numbers.MoveNext())
                 {
-                    //Settings.Loaded.alreadyDoneNumbers.Add(numbers.Current);
                     await Settings.Loaded.AppendAlreadyDoneAsync(numbers.Current);
 
                     (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(numbers.Current);
