@@ -43,15 +43,13 @@ namespace BulkSMSSender2._0
             androidVersionOptions = new()
             {
                 "Android 13 to 14",
-                "Android 9 to 12",
-                "Android 5 to 9"
+                "Android 6 to 12",
+                "Android oldest to 5"
             };
 
             regionOptions = new()
             {
-                "Poland",
-                "Ukraine",
-                "America"
+                "Poland"
             };
         }
 

@@ -11,7 +11,7 @@
         public int numbersExtractionRegion = 0;
 
         public int betweenMessagesDelay = 2000;
-        public int betweenNumbersDelay = 1000;
+        public int betweenNumbersDelay = 500;
         public int maxMessagesSafeLock = 10000;
 
         public string data = string.Empty;

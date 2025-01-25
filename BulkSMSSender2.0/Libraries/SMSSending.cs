@@ -11,6 +11,7 @@ namespace BulkSMSSender2._0
             return Settings.Loaded.androidCompatibility switch
             {
                 0 => $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0",
+                1 => $"service call isms 7 i32 0 s16 \"com.android.mms.service\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\"",
                 _ => string.Empty,
             };
         }
@@ -29,8 +30,8 @@ namespace BulkSMSSender2._0
 
         public static async Task SendAsync(string number, string message)
         {
-            //if (!Settings.Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
-            //await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], GetAndroidCommand(number, message)); // disabled for testing
+            if (!Settings.Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
+                await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], GetAndroidCommand(number, message)); // disabled for testing
         }
 
         private IEnumerator<string> numbers;
