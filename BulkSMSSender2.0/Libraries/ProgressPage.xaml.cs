@@ -4,7 +4,7 @@ public partial class ProgressPage : ContentPage
 {
     public static ProgressPage? ins { get; private set; }
 
-    public SMSSending SMSSending;
+    public SMSSending? SMSSending;
 
     public ProgressPage()
     {
@@ -58,7 +58,14 @@ public partial class ProgressPage : ContentPage
         return new(progressLabel, frame);
     }
 
-    private void ClearProgressNumbers() => numbersLayout.Children.Clear();
+    private void ClearProgressNumbers()
+    {
+        numbersLayout.Children.Clear();
+
+        progressMessagesLabel.Text = $"0 / 0";
+        progressNumbersLabel.Text = $"0 / 0";
+        progressPercentLabel.Text = "0%";
+    }
 
     int allMessagesCount = 0;
     int allNumbersCount = 0;
@@ -97,4 +104,18 @@ public partial class ProgressPage : ContentPage
 
     private void PauseButton(object sender, EventArgs e) => SMSSending?.PauseBulkSending();
     private void ContinueButton(object sender, EventArgs e) => SMSSending?.ContinueBulkSending();
+
+    private async void AbortButton(object sender, EventArgs e)
+    {
+        if (SMSSending != null)
+        {
+            SMSSending.aborted = true;
+            await SMSSending.sendingTask;
+            SMSSending = null;
+
+            Shell.SetTabBarIsVisible(this, true);
+
+            ClearProgressNumbers();
+        }
+    }
 }

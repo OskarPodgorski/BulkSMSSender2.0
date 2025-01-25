@@ -5,6 +5,7 @@ namespace BulkSMSSender2._0
     public sealed class SMSSending
     {
         private bool paused = false;
+        public bool aborted = false;
 
         public static string GetAndroidCommand(string number, string message)
         {
@@ -39,7 +40,7 @@ namespace BulkSMSSender2._0
         private int messagesCount;
         private int numbersCount;
         private float progressMultiplier;
-        private Task sendingTask;
+        public Task sendingTask { get; private set; }
 
         public async Task StartSendBulkAsync(List<string> numbersList, List<string> messagesList)
         {
@@ -78,13 +79,13 @@ namespace BulkSMSSender2._0
             {
                 Settings.Loaded.ConnectAlreadyDoneWriter();
 
-                while (!paused && numbers.MoveNext())
+                while (!paused && !aborted && numbers.MoveNext())
                 {
                     await Settings.Loaded.AppendAlreadyDoneAsync(numbers.Current);
 
                     (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(numbers.Current);
 
-                    for (int i = 0; i < messages.Count; i++)
+                    for (int i = 0; i < messages.Count && !aborted; i++)
                     {
                         await SendAsync(numbers.Current, messages[i]);
 
@@ -95,13 +96,16 @@ namespace BulkSMSSender2._0
                         ProgressPage.ins.EvaluateMessagesProgress();
                     }
 
-                    progressTuple.Item1.Text = "100%";
-                    progressTuple.Item2.BackgroundColor = Settings.Loaded.colors.green;
+                    if (!aborted)
+                    {
+                        progressTuple.Item1.Text = "100%";
+                        progressTuple.Item2.BackgroundColor = Settings.Loaded.colors.green;
 
-                    ProgressPage.ins.EvaluateNumbersProgress();
+                        ProgressPage.ins.EvaluateNumbersProgress();
 
-                    if (!paused)
-                        await Task.Delay(Settings.Loaded.betweenNumbersDelay);
+                        if (!paused)
+                            await Task.Delay(Settings.Loaded.betweenNumbersDelay);
+                    }
                 }
 
                 Settings.Loaded.DisconnectAlreadyDoneWriter();

@@ -57,7 +57,8 @@
                 <Button
                     Text="Abort"
                     HorizontalOptions="End"
-                    BackgroundColor="{StaticResource MyRed}"/>
+                    BackgroundColor="{StaticResource MyRed}"
+                    Clicked ="AbortButton"/>
 
             </HorizontalStackLayout>
 
