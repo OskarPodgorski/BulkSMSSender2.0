@@ -51,12 +51,29 @@ public partial class FinalPage : ContentPage
 
     public void AddNumbers(IEnumerable<NumberPack> numbers)
     {
+        numbersLabel.Text = "Numbers:";
+        timeLabel.Text = "Estimated time:";
         numbersLayout.Children.Clear();
 
         foreach (NumberPack numberPack in numbers)
         {
             AddNumber(numberPack.number, numberPack.validCheck);
         }
+
+        numbersLabel.Text = $"Numbers:  {numbers.Count()}";
+        timeLabel.Text = $"Elapsed time:  {GetElapsedTime(numbers.Count())} hours";
+    }
+
+    private float GetElapsedTime(int numbersCount)
+    {
+        if (MainPage.ins != null)
+        {
+            long msTime = (numbersCount * Settings.Loaded.betweenNumbersDelay) + (numbersCount * MainPage.ins.MessagesCount * Settings.Loaded.betweenMessagesDelay);
+
+            return MathF.Round(msTime / 3600000f, 1);
+        }
+
+        return 0f;
     }
 
     private void AddNumber(string number, bool checkValid)

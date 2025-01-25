@@ -33,6 +33,8 @@
             }
         }
 
+        public int MessagesCount => messagesLayout.Count;
+
         public MainPage()
         {
             InitializeComponent();

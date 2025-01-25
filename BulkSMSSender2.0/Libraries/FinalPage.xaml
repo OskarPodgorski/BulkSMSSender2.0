@@ -28,6 +28,38 @@
 
             </HorizontalStackLayout>
 
+            <HorizontalStackLayout 
+    Spacing="30"
+    HorizontalOptions="CenterAndExpand">
+       
+                <Label 
+                    x:Name ="numbersLabel"
+Text="Numbers:" 
+VerticalOptions="CenterAndExpand"
+HorizontalOptions="CenterAndExpand"
+FontSize="18"/>
+
+                <Label 
+                    x:Name ="timeLabel"
+Text="Estimated time:" 
+VerticalOptions="CenterAndExpand"
+HorizontalOptions="CenterAndExpand"
+FontSize="18"/>
+                
+                <Label 
+                    x:Name ="alreadyDoneLabel"
+Text="Already done numbers:" 
+VerticalOptions="CenterAndExpand"
+HorizontalOptions="CenterAndExpand"
+FontSize="18"/>
+
+                <Button
+Text="Reset done filter"
+HorizontalOptions="EndAndExpand"
+BackgroundColor="{StaticResource MyYellow}"/>
+
+            </HorizontalStackLayout>
+
             <VerticalStackLayout
                 x:Name="numbersLayout"
                 Spacing="4"
