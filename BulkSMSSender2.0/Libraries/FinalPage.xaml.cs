@@ -4,6 +4,8 @@ public partial class FinalPage : ContentPage
 {
     public static FinalPage? ins { get; private set; }
 
+    private readonly NumbersExtractor numbersExtractor = new();
+
     private List<string> Numbers
     {
         get
@@ -34,7 +36,15 @@ public partial class FinalPage : ContentPage
         ins ??= this;
     }
 
-    public async Task RunLoadingLabel()
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        await RunLoadingLabel(true);
+        await numbersExtractor.ExtractNumbersAsync();
+    }
+
+    public async Task RunLoadingLabel(bool animationDelay)
     {
         numbersLabel.Text = "Numbers:";
         timeLabel.Text = "Estimated time:";
@@ -53,7 +63,10 @@ public partial class FinalPage : ContentPage
 
         numbersLayout.Children.Add(label);
 
-        await Task.Delay(40);
+        if (animationDelay)
+            await Task.Delay(800);
+        else
+            await Task.Delay(50);
     }
 
     public void AddNumbers(IEnumerable<NumberPack> numbers)
@@ -131,14 +144,14 @@ public partial class FinalPage : ContentPage
     {
         Settings.Loaded.ClearAlreadyDone();
 
-        await RunLoadingLabel();
+        await RunLoadingLabel(false);
 
         await new NumbersExtractor().ExtractNumbersAsync();
     }
 
     private async void RecalculateButton(object sender, EventArgs e)
     {
-        await RunLoadingLabel();
+        await RunLoadingLabel(false);
 
         await new NumbersExtractor().ExtractNumbersAsync();
     }

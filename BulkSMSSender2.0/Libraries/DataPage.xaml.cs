@@ -4,8 +4,6 @@ public partial class DataPage : ContentPage
 {
     public static DataPage? ins { get; private set; }
 
-    private readonly NumbersExtractor numbersExtractor = new();
-
     public string Data => dataEditor.Text;
 
     public DataPage()
@@ -25,13 +23,7 @@ public partial class DataPage : ContentPage
     private async void AcceptEditorText(object sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(Data))
-        {
             await Shell.Current.GoToAsync("//final");
-
-            FinalPage.ins?.RunLoadingLabel();
-
-            await numbersExtractor.ExtractNumbersAsync();
-        }
     }
     private void LoadSettings()
     {
