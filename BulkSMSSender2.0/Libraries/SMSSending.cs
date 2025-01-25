@@ -52,7 +52,7 @@ namespace BulkSMSSender2._0
                 numbers = numbersList.GetEnumerator();
 
                 ProgressPage.ins.InitializeProgress(numbersCount, messagesCount);
-               
+
                 await ContinueSendBulkAsync();
             }
         }
@@ -74,6 +74,9 @@ namespace BulkSMSSender2._0
 
                 while (!paused && numbers.MoveNext())
                 {
+                    Settings.Loaded.alreadyDoneNumbers.Add(numbers.Current);
+                    await Settings.Loaded.SaveAlreadyDoneAsync();
+
                     (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(numbers.Current);
 
                     for (int i = 0; i < messages.Count; i++)

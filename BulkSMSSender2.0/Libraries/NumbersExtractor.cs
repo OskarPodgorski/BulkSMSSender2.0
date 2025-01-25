@@ -12,21 +12,22 @@ namespace BulkSMSSender2._0
     {
         public static string userValid = @"\+[0-9]{2}[- ]?[0-9]{3}[- ]?[0-9]{3}[- ]?[0-9]{3}";
 
-        public async Task ExtractNumbersAsync(string siteText)
+        public async Task ExtractNumbersAsync()
         {
-            if (FinalPage.ins != null)
+            if (FinalPage.ins != null && DataPage.ins != null)
             {
                 HashSet<NumberPack> numbers = new();
 
                 await Task.Run(() =>
                 {
-                    MatchCollection matches = Regex.Matches(siteText, Constants.REGIONREGEX[Settings.Loaded.numbersExtractionRegion]);
+                    MatchCollection matches = Regex.Matches(DataPage.ins.Data, Constants.REGIONREGEX[Settings.Loaded.numbersExtractionRegion]);
 
                     foreach (Match match in matches.Cast<Match>())
                     {
                         string cleaned = match.Value.RemoveAllWhitespaces();
 
-                        numbers.Add(new(cleaned, UserValidationNeededTest(cleaned)));
+                        if (!Settings.Loaded.alreadyDoneNumbers.Contains(cleaned))
+                            numbers.Add(new(cleaned, UserValidationNeededTest(cleaned)));
                     }
                 });
 

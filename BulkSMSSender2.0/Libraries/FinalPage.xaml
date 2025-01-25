@@ -31,7 +31,13 @@
             <HorizontalStackLayout 
     Spacing="30"
     HorizontalOptions="CenterAndExpand">
-       
+
+                <Button
+Text="Recalculate"
+HorizontalOptions="StartAndExpand"
+BackgroundColor="{StaticResource MyBlue}"
+                    Clicked="RecalculateButton"/>
+
                 <Label 
                     x:Name ="numbersLabel"
 Text="Numbers:" 
@@ -56,7 +62,8 @@ FontSize="18"/>
                 <Button
 Text="Reset done filter"
 HorizontalOptions="EndAndExpand"
-BackgroundColor="{StaticResource MyYellow}"/>
+BackgroundColor="{StaticResource MyYellow}"
+                    Clicked="ClearAlreadyDone"/>
 
             </HorizontalStackLayout>
 

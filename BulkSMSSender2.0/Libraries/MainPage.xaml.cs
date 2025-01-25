@@ -76,7 +76,7 @@
         private void OnDestroy(object? sender, EventArgs e)
         {
             isAppExiting = true;
-            Settings.Loaded.Save();
+            Settings.Loaded.SaveSettings();
         }
 
         private async void SendSMSOneNumber(object sender, EventArgs e)

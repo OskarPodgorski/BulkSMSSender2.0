@@ -11,7 +11,7 @@
             HorizontalOptions="FillAndExpand">
 
             <HorizontalStackLayout 
-                Spacing="30"
+                Spacing="25"
                 HorizontalOptions="CenterAndExpand">
                 
             <Label 

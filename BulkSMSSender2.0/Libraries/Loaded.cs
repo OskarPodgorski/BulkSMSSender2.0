@@ -4,6 +4,7 @@
     {
         private readonly static string settingsPath = Path.Combine(AppContext.BaseDirectory, "Settings.json");
         private readonly static string colorsPath = Path.Combine(AppContext.BaseDirectory, "Colors.json");
+        private readonly static string alreadyDonePath = Path.Combine(AppContext.BaseDirectory, "AlreadyDone.json");
 
         public static bool commandBlock = false;
 
@@ -18,6 +19,8 @@
         public static int maxMessagesSafeLock = 10000;
 
         public static string data = string.Empty;
+
+        public static HashSet<string> alreadyDoneNumbers = LoadAlreadyDone();
 
         public static Colors colors = LoadColors();
 
@@ -55,8 +58,10 @@
             );
         }
 
-        public static void Save() => SerializeDeserialize.SavePureDataFile(PreparePureDataSettings(), settingsPath);
-        public static async Task SaveAsync() => await SerializeDeserialize.SavePureDataFileAsync(PreparePureDataSettings(), settingsPath);
+        private static HashSet<string> LoadAlreadyDone() => SerializeDeserialize.LoadPureDataFile<PureDataAlreadyDone>(alreadyDonePath).alreadyDoneNumbers.ToHashSet();
+
+        public static void SaveSettings() => SerializeDeserialize.SavePureDataFile(PreparePureDataSettings(), settingsPath);
+        public static async Task SaveSettingsAsync() => await SerializeDeserialize.SavePureDataFileAsync(PreparePureDataSettings(), settingsPath);
 
         private static PureDataSettings PreparePureDataSettings()
         {
@@ -74,8 +79,10 @@
                 betweenNumbersDelay = betweenNumbersDelay,
                 maxMessagesSafeLock = maxMessagesSafeLock,
 
-                data = data
+                data = data,
             };
         }
+
+        public static async Task SaveAlreadyDoneAsync() => await SerializeDeserialize.SavePureDataFileAsync(new PureDataAlreadyDone() { alreadyDoneNumbers = alreadyDoneNumbers.ToArray() }, alreadyDonePath);
     }
 }

@@ -34,25 +34,34 @@ public partial class FinalPage : ContentPage
         ins ??= this;
     }
 
-    public void RunLoadingLabel()
+    public async Task RunLoadingLabel()
     {
+        numbersLabel.Text = "Numbers:";
+        timeLabel.Text = "Estimated time:";
+        alreadyDoneLabel.Text = "Already done numbers:";
+
         numbersLayout.Children.Clear();
 
         Label label = new()
         {
-            Text = "Extracting numbers...",
-            VerticalOptions = LayoutOptions.FillAndExpand,
+            Text = "Extracting numbers ...",
+            VerticalOptions = LayoutOptions.CenterAndExpand,
             HorizontalOptions = LayoutOptions.CenterAndExpand,
-            FontSize = 18
+            FontSize = 26,
+            TextColor = Settings.Loaded.colors.yellow
         };
 
         numbersLayout.Children.Add(label);
+
+        await Task.Delay(40);
     }
 
     public void AddNumbers(IEnumerable<NumberPack> numbers)
     {
         numbersLabel.Text = "Numbers:";
         timeLabel.Text = "Estimated time:";
+        alreadyDoneLabel.Text = "Already done numbers:";
+
         numbersLayout.Children.Clear();
 
         foreach (NumberPack numberPack in numbers)
@@ -62,6 +71,7 @@ public partial class FinalPage : ContentPage
 
         numbersLabel.Text = $"Numbers:  {numbers.Count()}";
         timeLabel.Text = $"Elapsed time:  {GetElapsedTime(numbers.Count())} hours";
+        alreadyDoneLabel.Text = $"Already done numbers:  {Settings.Loaded.alreadyDoneNumbers.Count}";
     }
 
     private float GetElapsedTime(int numbersCount)
@@ -111,9 +121,25 @@ public partial class FinalPage : ContentPage
     {
         if (MainPage.ins != null)
         {
-            await Task.WhenAll(Shell.Current.GoToAsync("//progress"), Settings.Loaded.SaveAsync());
+            await Task.WhenAll(Shell.Current.GoToAsync("//progress"), Settings.Loaded.SaveSettingsAsync());
 
             await new SMSSending().StartSendBulkAsync(Numbers, MainPage.ins.Messages);
         }
+    }
+
+    private async void ClearAlreadyDone(object sender, EventArgs e)
+    {
+        Settings.Loaded.alreadyDoneNumbers.Clear();
+
+        await RunLoadingLabel();
+
+        await new NumbersExtractor().ExtractNumbersAsync();
+    }
+
+    private async void RecalculateButton(object sender, EventArgs e)
+    {
+        await RunLoadingLabel();
+
+        await new NumbersExtractor().ExtractNumbersAsync();
     }
 }

@@ -2,11 +2,19 @@ namespace BulkSMSSender2._0;
 
 public partial class DataPage : ContentPage
 {
+    public static DataPage? ins { get; private set; }
+
     private readonly NumbersExtractor numbersExtractor = new();
+
+    public string Data => dataEditor.Text;
 
     public DataPage()
     {
         InitializeComponent();
+
+        ins ??= this;
+
+        LoadSettings();
     }
 
     private void ClearEditorField(object sender, EventArgs e)
@@ -16,20 +24,14 @@ public partial class DataPage : ContentPage
 
     private async void AcceptEditorText(object sender, EventArgs e)
     {
-        if (!string.IsNullOrEmpty(dataEditor.Text))
+        if (!string.IsNullOrEmpty(Data))
         {
             await Shell.Current.GoToAsync("//final");
 
             FinalPage.ins?.RunLoadingLabel();
 
-            await numbersExtractor.ExtractNumbersAsync(dataEditor.Text);
+            await numbersExtractor.ExtractNumbersAsync();
         }
-    }
-    protected override void OnAppearing()
-    {
-        base.OnAppearing();
-
-        LoadSettings();
     }
     private void LoadSettings()
     {
