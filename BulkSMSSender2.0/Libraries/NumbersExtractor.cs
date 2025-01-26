@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using Settings;
 
 namespace BulkSMSSender2._0
 {
@@ -14,19 +15,19 @@ namespace BulkSMSSender2._0
 
         public async Task ExtractNumbersAsync()
         {
-            if (FinalPage.ins != null && DataPage.ins != null)
+            if (FinalPage.ins != null)
             {
                 HashSet<NumberPack> numbers = new();
 
                 await Task.Run(() =>
                 {
-                    MatchCollection matches = Regex.Matches(DataPage.ins.Data, Constants.REGIONREGEX[Settings.Loaded.numbersExtractionRegion]);
+                    MatchCollection matches = Regex.Matches(Loaded.data, Constants.REGIONREGEX[Loaded.numbersExtractionRegion]);
 
                     foreach (Match match in matches.Cast<Match>())
                     {
                         string cleaned = match.Value.RemoveAllWhitespaces();
 
-                        if (!Settings.Loaded.AlreadyDoneContains(cleaned))
+                        if (!Loaded.AlreadyDoneContains(cleaned))
                             numbers.Add(new(cleaned, UserValidationNeededTest(cleaned)));
                     }
                 });

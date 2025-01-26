@@ -18,6 +18,10 @@
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
 
+        <Tab Title="Messages" Route="messages">
+            <ShellContent ContentTemplate="{DataTemplate local:MessagesPage}" />
+        </Tab>
+
         <Tab Title="Data" Route="data">
             <ShellContent ContentTemplate="{DataTemplate local:DataPage}" />
         </Tab>

@@ -15,6 +15,9 @@
     <MauiXaml Update="Libraries\FinalPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Libraries\MessagesPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Libraries\ProgressPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

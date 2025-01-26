@@ -89,14 +89,9 @@ public partial class FinalPage : ContentPage
 
     private float GetElapsedTime(int numbersCount)
     {
-        if (MainPage.ins != null)
-        {
-            long msTime = (numbersCount * Settings.Loaded.betweenNumbersDelay) + (numbersCount * MainPage.ins.MessagesCount * Settings.Loaded.betweenMessagesDelay);
+        long msTime = (numbersCount * Settings.Loaded.betweenNumbersDelay) + (numbersCount * Settings.Loaded.messages.Count * Settings.Loaded.betweenMessagesDelay);
 
-            return MathF.Round(msTime / 3600000f, 1);
-        }
-
-        return 0f;
+        return MathF.Round(msTime / 3600000f, 1);
     }
 
     private void AddNumber(string number, bool checkValid)
@@ -136,10 +131,10 @@ public partial class FinalPage : ContentPage
         {
             await Task.WhenAll(Shell.Current.GoToAsync("//progress"), Settings.Loaded.SaveSettingsAsync());
 
-            if(ProgressPage.ins != null)
+            if (ProgressPage.ins != null)
                 Shell.SetTabBarIsVisible(ProgressPage.ins, false);
 
-            await new SMSSending().StartSendBulkAsync(Numbers, MainPage.ins.Messages);
+            await new SMSSending().StartSendBulkAsync(Numbers, Settings.Loaded.messages);
         }
     }
 

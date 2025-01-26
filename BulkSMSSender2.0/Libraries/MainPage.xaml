@@ -5,6 +5,8 @@
 
     <ScrollView>
         
+        
+        
         <VerticalStackLayout
             Padding="30"
             Spacing="30"
@@ -18,41 +20,27 @@
                 FontSize="24"/>
 
             <HorizontalStackLayout 
-                Spacing="30"
-                HorizontalOptions ="CenterAndExpand">
+        Spacing="25"
+        HorizontalOptions ="CenterAndExpand">
 
                 <Entry 
-                    x:Name="numberEntry"
-                    Placeholder="Type number:" 
-                    HorizontalOptions="CenterAndExpand"
-                    MaxLength="12"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Start"
-                    MinimumWidthRequest="125"
-                    FontSize="17"
-                    Unfocused="OnUnfocusedEntry"/>
+            x:Name="numberEntry"
+            Placeholder="Type number:" 
+            HorizontalOptions="CenterAndExpand"
+            MaxLength="12"
+            VerticalTextAlignment="Center"
+            HorizontalTextAlignment="Start"
+            MinimumWidthRequest="125"
+            FontSize="17"
+            Unfocused="OnUnfocusedEntry"/>
 
                 <Button
-                    Text="Send"
-                    HorizontalOptions="CenterAndExpand"
-                    Clicked="SendSMSOneNumber"
-                    BackgroundColor="{StaticResource MyViolet}"/>
+            Text="Send"
+            HorizontalOptions="CenterAndExpand"
+            Clicked="SendSMSOneNumber"
+            BackgroundColor="{StaticResource MyViolet}"/>
 
             </HorizontalStackLayout>
-
-            <VerticalStackLayout
-                x:Name="messagesLayout"
-                Spacing="10"
-                HorizontalOptions="CenterAndExpand"
-                >
-
-            </VerticalStackLayout>
-
-            <Button
-Text="Add message"
-HorizontalOptions="CenterAndExpand"
-Clicked="AddMessageButton"
-                BackgroundColor="{StaticResource MyViolet}"/>
 
         </VerticalStackLayout>
         
