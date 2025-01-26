@@ -2,33 +2,37 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BulkSMSSender2._0.MessagesPage">
-    
-    <VerticalStackLayout
+
+    <ScrollView>
+
+        <VerticalStackLayout
         Padding="30"
 Spacing="30"
 HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand">
 
-        <Label 
+            <Label 
 Text="Messages:" 
 VerticalOptions="FillAndExpand"
 HorizontalOptions="CenterAndExpand"
 FontSize="20"/>
 
-        <VerticalStackLayout
+            <VerticalStackLayout
                 x:Name="messagesLayout"
                 Spacing="10"
                 HorizontalOptions="CenterAndExpand"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="StartAndExpand">
 
-        </VerticalStackLayout>
+            </VerticalStackLayout>
 
-        <Button
-Text="Add message"
+            <Button
+Text="Add message +"
 HorizontalOptions="CenterAndExpand"
 Clicked="AddMessageButton"
                 BackgroundColor="{StaticResource MyViolet}"/>
 
-    </VerticalStackLayout>
-    
+        </VerticalStackLayout>
+
+    </ScrollView>
+
 </ContentPage>

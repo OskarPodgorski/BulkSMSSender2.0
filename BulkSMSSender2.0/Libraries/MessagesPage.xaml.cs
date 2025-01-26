@@ -42,39 +42,36 @@ public partial class MessagesPage : ContentPage
     }
     public int MessagesCount => messagesLayout.Count;
 
-    private void AddMessageButton(object sender, EventArgs e)
-    {
-        AddMessageEditor(string.Empty);
-    }
-
+    private void AddMessageButton(object sender, EventArgs e) => AddMessageEditor(string.Empty);
     private void AddMessageEditor(string message)
     {
         HorizontalStackLayout horizontalLayout = new()
         {
-            Spacing = 20,
-            HorizontalOptions = LayoutOptions.CenterAndExpand,
-            VerticalOptions = LayoutOptions.StartAndExpand,
+            Spacing = 10,
+            HorizontalOptions = LayoutOptions.FillAndExpand,
+            VerticalOptions = LayoutOptions.FillAndExpand,
         };
 
         Editor newMessageEditor = new()
         {
-            MinimumHeightRequest = 80,
-            MinimumWidthRequest = 480,
+            HeightRequest = 154,
+            WidthRequest = 550,
             HorizontalOptions = LayoutOptions.FillAndExpand,
-            VerticalOptions = LayoutOptions.StartAndExpand,
+            VerticalOptions = LayoutOptions.FillAndExpand,
             VerticalTextAlignment = TextAlignment.Start,
             HorizontalTextAlignment = TextAlignment.Start,
             FontSize = 17,
             Placeholder = "Type message here:",
             Text = message,
             MaxLength = 160,
+            AutoSize = EditorAutoSizeOption.TextChanges
         };
         newMessageEditor.Unfocused += OnUnfocusedEditor;
 
         Button button = new()
         {
             Text = "Delete",
-            HorizontalOptions = LayoutOptions.End,
+            HorizontalOptions = LayoutOptions.Start,
             VerticalOptions = LayoutOptions.Center,
             BackgroundColor = Settings.Loaded.colors.red
         };
@@ -82,6 +79,7 @@ public partial class MessagesPage : ContentPage
         button.Clicked += (sender, args) =>
         {
             messagesLayout.Children.Remove(horizontalLayout);
+            OnUnfocusedEditor(sender, args);
         };
 
         horizontalLayout.Children.Add(newMessageEditor);

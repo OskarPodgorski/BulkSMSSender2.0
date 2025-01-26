@@ -4,9 +4,7 @@
              x:Class="BulkSMSSender2._0.MainPage">
 
     <ScrollView>
-        
-        
-        
+              
         <VerticalStackLayout
             Padding="30"
             Spacing="30"
