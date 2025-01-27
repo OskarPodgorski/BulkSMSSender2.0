@@ -2,14 +2,53 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BulkSMSSender2._0.BlacklistPage">
-    
-    <VerticalStackLayout>
-        
-        <Label 
-            Text="Soon..."
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        
-    </VerticalStackLayout>
-    
+
+    <ScrollView>
+
+        <VerticalStackLayout
+        Padding="30"
+        Spacing="30"
+        HorizontalOptions="FillAndExpand">
+
+            <Label 
+            Text="Blacklist:" 
+            VerticalOptions="Center"
+            HorizontalOptions="CenterAndExpand"
+            FontSize="20"/>
+
+            <HorizontalStackLayout 
+    Spacing="25"
+    HorizontalOptions ="CenterAndExpand">
+
+                <Entry 
+        x:Name="numberEntry"
+        Placeholder="Type number:" 
+        HorizontalOptions="CenterAndExpand"
+        MaxLength="12"
+        VerticalTextAlignment="Center"
+        HorizontalTextAlignment="Start"
+        MinimumWidthRequest="140"
+        FontSize="17"/>
+
+                <Button
+        Text="Add to blacklist +"
+        HorizontalOptions="CenterAndExpand"
+        BackgroundColor="{StaticResource MyRed}"
+                    Clicked="AddToBlacklistButton"/>
+
+            </HorizontalStackLayout>
+
+            <Grid
+    x:Name="numbersGrid"
+    RowSpacing="2"
+    ColumnSpacing="2"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="FillAndExpand">
+
+            </Grid>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
 </ContentPage>

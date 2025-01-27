@@ -28,7 +28,7 @@
             MaxLength="12"
             VerticalTextAlignment="Center"
             HorizontalTextAlignment="Start"
-            MinimumWidthRequest="125"
+            MinimumWidthRequest="140"
             FontSize="17"
             Unfocused="OnUnfocusedEntry"/>
 

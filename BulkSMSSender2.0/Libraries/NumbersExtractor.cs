@@ -1,5 +1,5 @@
-﻿using System.Text.RegularExpressions;
-using Settings;
+﻿using Settings;
+using System.Text.RegularExpressions;
 
 namespace BulkSMSSender2._0
 {
@@ -27,7 +27,7 @@ namespace BulkSMSSender2._0
                     {
                         string cleaned = match.Value.RemoveAllWhitespaces();
 
-                        if (!Loaded.AlreadyDoneContains(cleaned))
+                        if (!Loaded.AlreadyDoneContains(cleaned) && !Loaded.blacklist.Contains(cleaned))
                             numbers.Add(new(cleaned, UserValidationNeededTest(cleaned)));
                     }
                 });

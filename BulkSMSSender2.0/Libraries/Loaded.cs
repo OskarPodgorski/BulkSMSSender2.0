@@ -28,7 +28,7 @@
         private static HashSet<string> alreadyDoneNumbers = LoadAlreadyDone();
         public static int AlreadyDoneCount => alreadyDoneNumbers.Count;
 
-        private static HashSet<string> blacklist = LoadBlacklist();
+        public static HashSet<string> blacklist { get; private set; } = LoadBlacklist();
 
         public static Colors colors = LoadColors();
 
@@ -68,16 +68,7 @@
             );
         }
         private static HashSet<string> LoadBlacklist() => SerializeDeserialize.LoadPureDataFile<PureDataBlacklist>(blacklistPath).blacklisted.ToHashSet();
-
-        public static async Task SaveBlacklistAsync()
-        {
-            PureDataBlacklist pureData = new()
-            {
-                blacklisted = blacklist.ToArray(),
-            };
-
-            await SerializeDeserialize.SavePureDataFileAsync(pureData, blacklistPath);
-        }
+        public static async Task SaveBlacklistAsync() => await SerializeDeserialize.SavePureDataFileAsync(new PureDataBlacklist() { blacklisted = blacklist.ToArray() }, blacklistPath);
 
         public static void SaveSettings() => SerializeDeserialize.SavePureDataFile(PreparePureDataSettings(), settingsPath);
         public static async Task SaveSettingsAsync() => await SerializeDeserialize.SavePureDataFileAsync(PreparePureDataSettings(), settingsPath);
