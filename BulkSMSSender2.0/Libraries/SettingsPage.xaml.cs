@@ -26,6 +26,8 @@ public partial class SettingsPage : ContentPage
         messageDelayEntry.Text = Settings.Loaded.betweenMessagesDelay.ToString();
         numbersDelayEntry.Text = Settings.Loaded.betweenNumbersDelay.ToString();
         maxMessagesEntry.Text = Settings.Loaded.maxMessagesSafeLock.ToString();
+
+        charTableEntry.Text = Settings.Loaded.charFormulaSerialized;
     }
 
     private void OnUnfocusedEntry(object? sender, EventArgs e)
@@ -33,6 +35,11 @@ public partial class SettingsPage : ContentPage
         Settings.Loaded.betweenMessagesDelay = messageDelayEntry.Text.ParseFastI();
         Settings.Loaded.betweenNumbersDelay = numbersDelayEntry.Text.ParseFastI();
         Settings.Loaded.maxMessagesSafeLock = maxMessagesEntry.Text.ParseFastI();
+    }
+
+    private void OnUnfocusedCharFormulaEntry(object? sender, EventArgs e)
+    {
+        Settings.Loaded.InsertCharsFromCharFormula(charTableEntry.Text);
     }
 
     private void OnSelectedPicker(object? sender, EventArgs e)

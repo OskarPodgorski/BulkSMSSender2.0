@@ -1,5 +1,4 @@
-﻿
-namespace Settings
+﻿namespace Settings
 {
     public static class Loaded
     {
@@ -18,6 +17,10 @@ namespace Settings
         public static int betweenMessagesDelay = 2000;
         public static int betweenNumbersDelay = 1000;
         public static int maxMessagesSafeLock = 10000;
+
+        public static string charFormulaSerialized = string.Empty;
+        public static char[] charsOld { get; private set; }
+        public static char[] charsNew { get; private set; }
 
         public static string data = string.Empty;
 
@@ -41,6 +44,8 @@ namespace Settings
             betweenMessagesDelay = pureDataSettings.betweenMessagesDelay;
             betweenNumbersDelay = pureDataSettings.betweenNumbersDelay;
             maxMessagesSafeLock = pureDataSettings.maxMessagesSafeLock;
+
+            InsertCharsFromCharFormula(pureDataSettings.charReplaceFormula);
 
             data = pureDataSettings.data;
         }
@@ -78,6 +83,8 @@ namespace Settings
                 betweenMessagesDelay = betweenMessagesDelay,
                 betweenNumbersDelay = betweenNumbersDelay,
                 maxMessagesSafeLock = maxMessagesSafeLock,
+
+                charReplaceFormula = charFormulaSerialized,
 
                 data = data,
             };
@@ -139,5 +146,26 @@ namespace Settings
         }
 
         public static bool AlreadyDoneContains(string number) => alreadyDoneNumbers.Contains(number);
+
+        public static void InsertCharsFromCharFormula(string charFormula)
+        {
+            List<char> charsNewList = new();
+            List<char> charsOldList = new();
+
+            charFormulaSerialized = charFormula.RemoveAllWhitespaces();
+
+            string[] splittedOut = charFormulaSerialized.Split('|');
+
+            foreach (string s in splittedOut)
+            {
+                string[] splittedIn = s.Split("=");
+
+                charsOldList.Add(splittedIn[0][0]);
+                charsNewList.Add(splittedIn[1][0]);
+            }
+
+            charsOld = charsOldList.ToArray();
+            charsNew = charsNewList.ToArray();
+        }
     }
 }

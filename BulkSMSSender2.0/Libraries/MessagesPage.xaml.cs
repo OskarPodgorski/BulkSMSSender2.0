@@ -26,7 +26,7 @@ public partial class MessagesPage : ContentPage
             {
                 if (child is HorizontalStackLayout layout)
                     if (layout.Children[0] is Editor editor && !string.IsNullOrEmpty(editor.Text))
-                        messages.Add(editor.Text);
+                        messages.Add(editor.Text.ReplaceMultiple(Settings.Loaded.charsOld, Settings.Loaded.charsNew));
             }
             return messages;
         }
@@ -40,10 +40,6 @@ public partial class MessagesPage : ContentPage
             }
         }
     }
-    //private string MessageUnification(string message)
-    //{
-    //    message.Replace
-    //}
 
     private void AddMessageButton(object sender, EventArgs e) => AddMessageEditor(string.Empty);
     private void AddMessageEditor(string message)

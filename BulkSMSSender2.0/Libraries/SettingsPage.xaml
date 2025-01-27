@@ -70,6 +70,8 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="32" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="32" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Label 
@@ -136,6 +138,19 @@
                         BackgroundColor="{StaticResource MyBlue}"/>
 
                 </HorizontalStackLayout>
+
+                <Label 
+    Text="Characters to replace in message:   (adb can't send regional characters)   (old1=new1|old2=new2...)"
+                    Grid.Row="4" Grid.Column="0"
+    VerticalOptions="End"
+    HorizontalOptions="Start"
+    FontSize="14"
+    TextColor="#c8c8c8"/>
+
+                <Entry x:Name="charTableEntry"
+    Grid.Row="5" Grid.Column="0"
+    Placeholder="Enter characters by formula from info:"
+       Unfocused="OnUnfocusedCharFormulaEntry"/>
 
             </Grid>
 
