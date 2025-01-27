@@ -1,3 +1,4 @@
+
 namespace BulkSMSSender2._0;
 
 public partial class FinalPage : ContentPage
@@ -134,7 +135,7 @@ public partial class FinalPage : ContentPage
             if (ProgressPage.ins != null)
                 Shell.SetTabBarIsVisible(ProgressPage.ins, false);
 
-            await new SMSSending().StartSendBulkAsync(Numbers, Settings.Loaded.messages);
+            await new SMSSending().StartSendBulkAsync(Numbers);
         }
     }
 

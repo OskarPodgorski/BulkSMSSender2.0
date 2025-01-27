@@ -40,7 +40,10 @@ public partial class MessagesPage : ContentPage
             }
         }
     }
-    public int MessagesCount => messagesLayout.Count;
+    //private string MessageUnification(string message)
+    //{
+    //    message.Replace
+    //}
 
     private void AddMessageButton(object sender, EventArgs e) => AddMessageEditor(string.Empty);
     private void AddMessageEditor(string message)

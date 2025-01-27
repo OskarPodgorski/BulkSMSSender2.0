@@ -81,6 +81,26 @@ public static class ExtensionMethods
         return string.Join("", input.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
     }
 
+    public static string ReplaceMultiple(this string input, char[] oldChars, char[] newChars)
+    {
+        if (oldChars.Length == newChars.Length && !string.IsNullOrEmpty(input))
+        {
+            StringBuilder builder = new();
+            int charIndex;
+
+            foreach (char c in input)
+            {
+                if ((charIndex = Array.IndexOf(oldChars, c)) != -1)
+                    builder.Append(newChars[charIndex]);
+                else
+                    builder.Append(c);
+            }
+
+            return builder.ToString();
+        }
+        return input;
+    }
+
     public static void ResizeWithJoin<T>(this T[] array, T[] secondArray)
     {
         int lengthBuffer = array.Length;
