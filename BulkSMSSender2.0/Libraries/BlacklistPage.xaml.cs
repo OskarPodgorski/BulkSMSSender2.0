@@ -104,7 +104,7 @@ public partial class BlacklistPage : ContentPage
         HorizontalStackLayout horizontalLayout = new()
         {
             Padding = 0,
-            Spacing = 20,
+            Spacing = 60,
             HorizontalOptions = column == 1 ? LayoutOptions.StartAndExpand : LayoutOptions.EndAndExpand
         };
 
@@ -127,23 +127,9 @@ public partial class BlacklistPage : ContentPage
             Padding = 0,
             HeightRequest = 24,
             MinimumHeightRequest = 24,
-            WidthRequest = 78,
-            MinimumWidthRequest = 78,
+            WidthRequest = 81,
+            MinimumWidthRequest = 81,
             Margin = 0,
-            BindingContext = number
-
-        };
-
-        button.Clicked += async (sender, args) =>
-        {
-            if (sender is Button btn && btn.BindingContext is string numberToRemove)
-            {
-                Settings.Loaded.blacklist.Remove(numberToRemove);
-
-                await Task.WhenAll(RunLoadingLabel(false), Settings.Loaded.SaveBlacklistAsync());
-
-                AddNumbers(Settings.Loaded.blacklist);
-            }
         };
 
         if (column == 1)
@@ -164,6 +150,15 @@ public partial class BlacklistPage : ContentPage
             CornerRadius = 8,
             Padding = 8,
             Content = horizontalLayout
+        };
+
+        button.Clicked += async (sender, args) =>
+        {
+            Settings.Loaded.blacklist.Remove(number);
+
+            await Task.WhenAll(RunLoadingLabel(false), Settings.Loaded.SaveBlacklistAsync());
+
+            AddNumbers(Settings.Loaded.blacklist);
         };
 
         numbersGrid.Children.Add(frame);

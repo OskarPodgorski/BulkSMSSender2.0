@@ -4,7 +4,9 @@ public partial class FinalPage : ContentPage
 {
     public static FinalPage? ins { get; private set; }
 
-    private readonly NumbersExtractor numbersExtractor = new();
+    //private readonly NumbersExtractor numbersExtractor = new();
+
+    private bool forceReExtract = false;
 
     private List<string> Numbers
     {
@@ -41,7 +43,16 @@ public partial class FinalPage : ContentPage
         base.OnAppearing();
 
         await RunLoadingLabel(true);
-        await numbersExtractor.ExtractNumbersAsync();
+
+        await new NumbersExtractor().ExtractNumbersAsync();
+
+        startSendingButtonTop.BackgroundColor = Settings.Loaded.colors.green;
+        startSendingButtonBottom.BackgroundColor = Settings.Loaded.colors.green;
+
+        startSendingButtonTop.Text = "Start sending";
+        startSendingButtonBottom.Text = "Start sending";
+
+        forceReExtract = false;
     }
 
     public async Task RunLoadingLabel(bool animationDelay)
@@ -126,6 +137,7 @@ public partial class FinalPage : ContentPage
         HorizontalStackLayout horizontalLayout = new()
         {
             Padding = 0,
+            Spacing = 60,
             HorizontalOptions = column == 1 ? LayoutOptions.StartAndExpand : LayoutOptions.EndAndExpand
         };
 
@@ -139,7 +151,30 @@ public partial class FinalPage : ContentPage
             TextColor = Settings.Loaded.colors.gray
         };
 
-        horizontalLayout.Children.Add(label);
+        Button button = new()
+        {
+            Text = "Add to blacklist +",
+            VerticalOptions = LayoutOptions.Center,
+            HorizontalOptions = column == 1 ? LayoutOptions.Start : LayoutOptions.End,
+            BackgroundColor = Settings.Loaded.colors.red,
+            Padding = 0,
+            HeightRequest = 24,
+            MinimumHeightRequest = 24,
+            WidthRequest = 130,
+            MinimumWidthRequest = 130,
+            Margin = 0,
+        };
+
+        if (column == 1)
+        {
+            horizontalLayout.Add(label);
+            horizontalLayout.Add(button);
+        }
+        else
+        {
+            horizontalLayout.Add(button);
+            horizontalLayout.Add(label);
+        }
 
         Frame frame = new()
         {
@@ -150,6 +185,25 @@ public partial class FinalPage : ContentPage
             Content = horizontalLayout
         };
 
+        button.Clicked += async (sender, args) =>
+        {
+            Settings.Loaded.blacklist.Add(number);
+
+            frame.BackgroundColor = Settings.Loaded.colors.red;
+
+            forceReExtract = true;
+
+            startSendingButtonTop.BackgroundColor = Settings.Loaded.colors.blue;
+            startSendingButtonBottom.BackgroundColor = Settings.Loaded.colors.blue;
+
+            startSendingButtonTop.Text = "ReExtract before sending";
+            startSendingButtonBottom.Text = "ReExtract before sending";
+
+            await Settings.Loaded.SaveBlacklistAsync();
+
+            button.IsEnabled = false;
+        };
+
         numbersGrid.Children.Add(frame);
         Grid.SetRow(frame, row);
         Grid.SetColumn(frame, column);
@@ -157,7 +211,7 @@ public partial class FinalPage : ContentPage
 
     private async void StartSending(object sender, EventArgs e)
     {
-        if (MainPage.ins != null && Application.Current != null)
+        if (!forceReExtract)
         {
             await Task.WhenAll(Shell.Current.GoToAsync("//progress"), Settings.Loaded.SaveSettingsAsync());
 
@@ -166,6 +220,8 @@ public partial class FinalPage : ContentPage
 
             await new SMSSending().StartSendBulkAsync(Numbers);
         }
+        else
+            RecalculateButton(sender, e);
     }
 
     private async void ClearAlreadyDone(object sender, EventArgs e)
@@ -182,5 +238,13 @@ public partial class FinalPage : ContentPage
         await RunLoadingLabel(false);
 
         await new NumbersExtractor().ExtractNumbersAsync();
+
+        startSendingButtonTop.BackgroundColor = Settings.Loaded.colors.green;
+        startSendingButtonBottom.BackgroundColor = Settings.Loaded.colors.green;
+
+        startSendingButtonTop.Text = "Start sending";
+        startSendingButtonBottom.Text = "Start sending";
+
+        forceReExtract = false;
     }
 }

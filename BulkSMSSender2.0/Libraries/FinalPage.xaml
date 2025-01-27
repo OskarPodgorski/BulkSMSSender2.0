@@ -21,7 +21,8 @@
                     FontSize="20"/>
 
                 <Button
-                    Text="Start Sending"
+                    x:Name="startSendingButtonTop"
+                    Text="Start sending"
                     HorizontalOptions="End"
                     VerticalOptions="Center"
                     Clicked="StartSending"
@@ -34,7 +35,7 @@
     HorizontalOptions="CenterAndExpand">
 
                 <Button
-Text="Recalculate"
+Text="ReCalculate"
 HorizontalOptions="StartAndExpand"
 BackgroundColor="{StaticResource MyBlue}"
                     Clicked="RecalculateButton"/>
@@ -78,7 +79,8 @@ BackgroundColor="{StaticResource MyYellow}"
             </Grid>
 
             <Button
-    Text="Start Sending"
+                x:Name="startSendingButtonBottom"
+    Text="Start sending"
     HorizontalOptions="CenterAndExpand"
                 VerticalOptions="Start"
     Clicked="StartSending"
