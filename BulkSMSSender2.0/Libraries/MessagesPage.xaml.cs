@@ -26,7 +26,7 @@ public partial class MessagesPage : ContentPage
             {
                 if (child is HorizontalStackLayout layout)
                     if (layout.Children[0] is Editor editor && !string.IsNullOrEmpty(editor.Text))
-                        messages.Add(editor.Text.ReplaceMultiple(Settings.Loaded.charsOld, Settings.Loaded.charsNew));
+                        messages.Add(editor.Text);
             }
             return messages;
         }
@@ -66,6 +66,12 @@ public partial class MessagesPage : ContentPage
             AutoSize = EditorAutoSizeOption.TextChanges
         };
         newMessageEditor.Unfocused += OnUnfocusedEditor;
+
+        newMessageEditor.TextChanged += (sender, args) =>
+        {
+            if (args.NewTextValue != null)
+                newMessageEditor.Text = args.NewTextValue.Replace("…", "...").ReplaceMultiple(Settings.Loaded.charsOld, Settings.Loaded.charsNew);
+        };
 
         Button button = new()
         {
