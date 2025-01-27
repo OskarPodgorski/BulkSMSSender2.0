@@ -17,7 +17,7 @@
             <Label 
             x:Name="dataMainLabel"
             Text="Insert data:" 
-            VerticalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand"
             HorizontalOptions="CenterAndExpand"
             FontSize="20"/>
 
@@ -25,13 +25,14 @@
                     x:Name="clearButton"
                     Text="Clear"
                     HorizontalOptions="End"
+                    VerticalOptions="Center"
                     Clicked="ClearEditorField"
                     BackgroundColor="{StaticResource MyYellow}"/>
                 
                 <Button
-                    x:Name="acceptButtonTop"
                     Text="Accept"
                     HorizontalOptions="End"
+                    VerticalOptions="Center"
                     Clicked="AcceptEditorText"
                     BackgroundColor="{StaticResource MyGreen}"/>
 
@@ -48,9 +49,8 @@
                 Unfocused="OnUnfocusedEditor"/>
 
             <Button
-                x:Name="acceptButtonBottom"
                 Text="Accept"
-                HorizontalOptions="EndAndExpand"
+                HorizontalOptions="CenterAndExpand"
                 Clicked="AcceptEditorText"
                 BackgroundColor="{StaticResource MyGreen}"/>
 

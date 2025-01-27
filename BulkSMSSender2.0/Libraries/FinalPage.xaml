@@ -16,13 +16,14 @@
 
                 <Label 
                     Text="Final numbers list:" 
-                    VerticalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     HorizontalOptions="FillAndExpand"
                     FontSize="20"/>
 
                 <Button
                     Text="Start Sending"
-                    HorizontalOptions="EndAndExpand"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
                     Clicked="StartSending"
                     BackgroundColor="{StaticResource MyGreen}"/>
 
@@ -74,6 +75,13 @@ BackgroundColor="{StaticResource MyYellow}"
 
             </VerticalStackLayout>
 
+            <Button
+    Text="Start Sending"
+    HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Start"
+    Clicked="StartSending"
+    BackgroundColor="{StaticResource MyGreen}"/>
+            
         </VerticalStackLayout>
 
     </ScrollView>

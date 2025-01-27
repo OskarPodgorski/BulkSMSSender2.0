@@ -88,20 +88,21 @@ namespace BulkSMSSender2._0
 
                         progressTuple.Item1.Text = $"{MathF.Round(progressMultiplier * i, 2)}%";
 
-                        await Task.Delay(Loaded.betweenMessagesDelay);
+                        if (i < Loaded.messages.Count - 1)
+                            await Task.Delay(Loaded.betweenMessagesDelay);
 
                         ProgressPage.ins.EvaluateMessagesProgress();
                     }
 
                     if (!aborted)
                     {
+                        if (!paused)
+                            await Task.Delay(Loaded.betweenNumbersDelay);
+
                         progressTuple.Item1.Text = "100%";
                         progressTuple.Item2.BackgroundColor = Loaded.colors.green;
 
                         ProgressPage.ins.EvaluateNumbersProgress();
-
-                        if (!paused)
-                            await Task.Delay(Loaded.betweenNumbersDelay);
                     }
                 }
 

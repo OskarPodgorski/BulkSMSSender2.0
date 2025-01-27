@@ -17,46 +17,49 @@
 
                 <Label 
                     Text="Progress:" 
-                    VerticalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="20"/>
 
                 <Label 
     Text="0 / 0" 
     x:Name="progressNumbersLabel"
-    VerticalOptions="FillAndExpand"
+    VerticalOptions="CenterAndExpand"
     HorizontalOptions="CenterAndExpand"
     FontSize="20"/>
                 
                 <Label 
                     Text="0 / 0" 
                     x:Name="progressMessagesLabel"
-                    VerticalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="20"/>
 
                 <Label 
                     Text="0%" 
                     x:Name="progressPercentLabel"
-                    VerticalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     HorizontalOptions="CenterAndExpand"
                     FontSize="20"/>
 
                 <Button
                     Text="Continue"
                     HorizontalOptions="End"
+                    VerticalOptions="Center"
                     BackgroundColor="{StaticResource MyGreen}"
                     Clicked="ContinueButton"/>
                 
                 <Button
                     Text="Pause"
                     HorizontalOptions="End"
+                    VerticalOptions="Center"
                     BackgroundColor="{StaticResource MyBlue}"
                     Clicked ="PauseButton"/>
 
                 <Button
                     Text="Abort"
                     HorizontalOptions="End"
+                    VerticalOptions="Center"
                     BackgroundColor="{StaticResource MyRed}"
                     Clicked ="AbortButton"/>
 

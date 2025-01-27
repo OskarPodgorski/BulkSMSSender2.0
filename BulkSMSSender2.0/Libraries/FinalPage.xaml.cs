@@ -90,7 +90,7 @@ public partial class FinalPage : ContentPage
 
     private float GetElapsedTime(int numbersCount)
     {
-        long msTime = (numbersCount * Settings.Loaded.betweenNumbersDelay) + (numbersCount * Settings.Loaded.messages.Count * Settings.Loaded.betweenMessagesDelay);
+        long msTime = (numbersCount * Settings.Loaded.betweenNumbersDelay) + (numbersCount * (Settings.Loaded.messages.Count > 1 ? (Settings.Loaded.messages.Count - 1) * Settings.Loaded.betweenMessagesDelay : 0));
 
         return MathF.Round(msTime / 3600000f, 1);
     }
