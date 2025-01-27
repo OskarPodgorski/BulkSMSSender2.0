@@ -5,6 +5,7 @@
         private readonly static string settingsPath = Path.Combine(AppContext.BaseDirectory, "Settings.json");
         private readonly static string colorsPath = Path.Combine(AppContext.BaseDirectory, "Colors.json");
         private readonly static string alreadyDonePath = Path.Combine(AppContext.BaseDirectory, "AlreadyDone.bss");
+        private readonly static string blacklistPath = Path.Combine(AppContext.BaseDirectory, "Blacklist.json");
 
         public static bool commandBlock = false;
 
@@ -26,6 +27,8 @@
 
         private static HashSet<string> alreadyDoneNumbers = LoadAlreadyDone();
         public static int AlreadyDoneCount => alreadyDoneNumbers.Count;
+
+        private static HashSet<string> blacklist = LoadBlacklist();
 
         public static Colors colors = LoadColors();
 
@@ -52,17 +55,28 @@
 
         private static Colors LoadColors()
         {
-            PureDataColors pureDataColors = SerializeDeserialize.LoadPureDataFile<PureDataColors>(colorsPath);
+            PureDataColors pureData = SerializeDeserialize.LoadPureDataFile<PureDataColors>(colorsPath);
 
             return new Colors(
-                pureDataColors.darkGrayColorUI,
-                pureDataColors.grayColorUI,
-                pureDataColors.violetColorUI,
-                pureDataColors.yellowColorUI,
-                pureDataColors.blueColorUI,
-                pureDataColors.greenColorUI,
-                pureDataColors.redColorUI
+                pureData.darkGrayColorUI,
+                pureData.grayColorUI,
+                pureData.violetColorUI,
+                pureData.yellowColorUI,
+                pureData.blueColorUI,
+                pureData.greenColorUI,
+                pureData.redColorUI
             );
+        }
+        private static HashSet<string> LoadBlacklist() => SerializeDeserialize.LoadPureDataFile<PureDataBlacklist>(blacklistPath).blacklisted.ToHashSet();
+
+        public static async Task SaveBlacklistAsync()
+        {
+            PureDataBlacklist pureData = new()
+            {
+                blacklisted = blacklist.ToArray(),
+            };
+
+            await SerializeDeserialize.SavePureDataFileAsync(pureData, blacklistPath);
         }
 
         public static void SaveSettings() => SerializeDeserialize.SavePureDataFile(PreparePureDataSettings(), settingsPath);
