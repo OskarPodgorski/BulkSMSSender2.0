@@ -1,4 +1,3 @@
-
 namespace BulkSMSSender2._0;
 
 public partial class FinalPage : ContentPage
@@ -13,7 +12,7 @@ public partial class FinalPage : ContentPage
         {
             List<string> numbers = new();
 
-            foreach (var child in numbersLayout.Children)
+            foreach (var child in numbersGrid.Children)
             {
                 if (child is Frame frame && frame.Content is HorizontalStackLayout layout)
                 {
@@ -51,18 +50,24 @@ public partial class FinalPage : ContentPage
         timeLabel.Text = "Estimated time:";
         alreadyDoneLabel.Text = "Already done numbers:";
 
-        numbersLayout.Children.Clear();
+        numbersGrid.Children.Clear();
+        numbersGrid.RowDefinitions.Clear();
+        numbersGrid.ColumnDefinitions.Clear();
+
+        numbersGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
         Label label = new()
         {
             Text = "Extracting numbers ...",
-            VerticalOptions = LayoutOptions.CenterAndExpand,
+            VerticalOptions = LayoutOptions.Start,
             HorizontalOptions = LayoutOptions.CenterAndExpand,
             FontSize = 26,
             TextColor = Settings.Loaded.colors.yellow
         };
 
-        numbersLayout.Children.Add(label);
+        numbersGrid.Children.Add(label);
+        Grid.SetRow(label, 0);
+        Grid.SetColumn(label, 0);
 
         if (animationDelay)
             await Task.Delay(800);
@@ -76,11 +81,32 @@ public partial class FinalPage : ContentPage
         timeLabel.Text = "Estimated time:";
         alreadyDoneLabel.Text = "Already done numbers:";
 
-        numbersLayout.Children.Clear();
+        numbersGrid.Children.Clear();
+        numbersGrid.RowDefinitions.Clear();
+        numbersGrid.ColumnDefinitions.Clear();
+
+        numbersGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+        numbersGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+
+        int row = 0;
+        int col = 0;
 
         foreach (NumberPack numberPack in numbers)
         {
-            AddNumber(numberPack.number, numberPack.validCheck);
+            if (col == 0)
+            {
+                numbersGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            }
+
+            AddNumber(numberPack.number, numberPack.validCheck, row, col);
+
+            col++;
+
+            if (col >= 2)
+            {
+                col = 0;
+                row++;
+            }
         }
 
         numbersLabel.Text = $"Numbers:  {numbers.Count()}";
@@ -95,19 +121,20 @@ public partial class FinalPage : ContentPage
         return MathF.Round(msTime / 3600000f, 1);
     }
 
-    private void AddNumber(string number, bool checkValid)
+    private void AddNumber(string number, bool checkValid, int row, int column)
     {
         HorizontalStackLayout horizontalLayout = new()
         {
             Padding = 0,
-            HorizontalOptions = LayoutOptions.FillAndExpand
+            HorizontalOptions = column == 1 ? LayoutOptions.StartAndExpand : LayoutOptions.EndAndExpand
         };
 
         Label label = new()
         {
             Text = number,
             VerticalOptions = LayoutOptions.FillAndExpand,
-            HorizontalOptions = LayoutOptions.Start,
+            HorizontalOptions = column == 1 ? LayoutOptions.Start : LayoutOptions.End,
+            HorizontalTextAlignment = column == 1 ? TextAlignment.Start : TextAlignment.End,
             FontSize = 16,
             TextColor = Settings.Loaded.colors.gray
         };
@@ -123,7 +150,9 @@ public partial class FinalPage : ContentPage
             Content = horizontalLayout
         };
 
-        numbersLayout.Children.Add(frame);
+        numbersGrid.Children.Add(frame);
+        Grid.SetRow(frame, row);
+        Grid.SetColumn(frame, column);
     }
 
     private async void StartSending(object sender, EventArgs e)

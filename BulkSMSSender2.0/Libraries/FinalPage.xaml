@@ -68,12 +68,14 @@ BackgroundColor="{StaticResource MyYellow}"
 
             </HorizontalStackLayout>
 
-            <VerticalStackLayout
-                x:Name="numbersLayout"
-                Spacing="4"
-                HorizontalOptions="FillAndExpand">
+            <Grid
+                x:Name="numbersGrid"
+                RowSpacing="2"
+                ColumnSpacing="2"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
 
-            </VerticalStackLayout>
+            </Grid>
 
             <Button
     Text="Start Sending"
