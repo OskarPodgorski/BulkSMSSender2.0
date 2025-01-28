@@ -7,7 +7,7 @@
 
     Po więcej informacji o plikach manifestu pakietów, zobacz http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="com.companyname.bulksmssender2.0" Publisher="CN=User Name" Version="1.0.0.1" ProcessorArchitecture="x64" />
+  <Identity Name="com.companyname.bulksmssender2.0" Publisher="CN=Oskar Podgórski" Version="0.0.5.0" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="5B42E986-A143-4292-9A98-C87CFD7DA468" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>BulkSMSSender2.0</DisplayName>

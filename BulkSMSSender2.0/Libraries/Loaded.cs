@@ -2,10 +2,10 @@
 {
     public static class Loaded
     {
-        private readonly static string settingsPath = Path.Combine(AppContext.BaseDirectory, "Settings.json");
-        private readonly static string colorsPath = Path.Combine(AppContext.BaseDirectory, "Colors.json");
-        private readonly static string alreadyDonePath = Path.Combine(AppContext.BaseDirectory, "AlreadyDone.bss");
-        private readonly static string blacklistPath = Path.Combine(AppContext.BaseDirectory, "Blacklist.json");
+        private readonly static string settingsPath = @"C:\bss\Settings.json";
+        private readonly static string colorsPath = @"C:\bss\Colors.json";
+        private readonly static string alreadyDonePath = @"C:\bss\AlreadyDone.bss";
+        private readonly static string blacklistPath = @"C:\bss\Blacklist.json";
 
         public static bool commandBlock = false;
 

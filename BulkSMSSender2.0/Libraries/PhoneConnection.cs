@@ -5,9 +5,15 @@ namespace BulkSMSSender2._0
 {
     public sealed class PhoneConnection(Label connectedPhonesLabel)
     {
-        private static string adbPath = @"C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\adb\adb.exe"; // temporary hardcoded
+        //private static string adbPath = @"C:\Users\Strix\Documents\GitHub\BulkSMSSender2.0\BulkSMSSender2.0\adb\adb.exe"; // temporary hardcoded
+
+        private readonly static string adbPath = @"C:\adb\adb.exe";
+
         private readonly static AdbServer adbServer = new();
         public readonly static AdbClient adbClient = new();
+
+        public Task connectionLoop;
+        private bool disableConnectionLoop = false;
 
         public static List<DeviceData> devicesList { get; private set; } = new();
 
@@ -15,14 +21,41 @@ namespace BulkSMSSender2._0
         {
             await Task.Delay(200);
 
-            StartServerResult adbServerResult = adbServer.StartServer(adbPath, restartServerIfNewer: false);
-
-            if (adbServerResult != StartServerResult.Started && adbServerResult != StartServerResult.AlreadyRunning)
+            if (File.Exists(adbPath))
             {
-                connectedPhonesLabel.Text = "Error starting adb!";
-            }
+                StartServerResult adbServerResult = adbServer.StartServer(adbPath, restartServerIfNewer: false);
 
-            await CheckConnectionAsync();
+                if (adbServerResult != StartServerResult.Started && adbServerResult != StartServerResult.AlreadyRunning)
+                {
+                    connectedPhonesLabel.Text = "Error starting adb!";
+                }
+                else
+                {
+                    connectionLoop = CheckConnectionAsync();
+                    await connectionLoop;
+                }
+            }
+            else
+            {
+                connectedPhonesLabel.Text = "No ADB libraries!";
+            }
+        }
+
+        public async void DisableConnectionLoop()
+        {
+            disableConnectionLoop = true;
+
+            if (connectionLoop != null)
+            {
+                await connectionLoop;
+            }
+        }
+
+        public async void EnableConnectionLoop()
+        {
+            disableConnectionLoop = false;
+            connectionLoop = CheckConnectionAsync();
+            await connectionLoop;
         }
 
         private async Task CheckConnectionAsync()
@@ -30,7 +63,7 @@ namespace BulkSMSSender2._0
             IEnumerable<DeviceData> devices;
             bool connected = false;
 
-            while (!MainPage.isAppExiting)
+            while (!disableConnectionLoop || !MainPage.isAppExiting)
             {
                 devices = adbClient.GetDevices();
 
@@ -57,5 +90,7 @@ namespace BulkSMSSender2._0
                 }
             }
         }
+
+        public static List<DeviceData> GetDevices() => devicesList = adbClient.GetDevices().ToList();
     }
 }

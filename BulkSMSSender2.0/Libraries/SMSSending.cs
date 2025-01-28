@@ -13,7 +13,8 @@ namespace BulkSMSSender2._0
             return Loaded.androidCompatibility switch
             {
                 0 => $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0",
-                1 => $"service call isms 7 i32 0 s16 \"com.android.mms.service\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\"",
+                1 => $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\"",
+                2 => $"service call isms 7 i32 0 s16 \"com.android.mms.service\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\"",
                 _ => string.Empty,
             };
         }
@@ -72,15 +73,21 @@ namespace BulkSMSSender2._0
 
         private async Task ContinueSendBulkAsync()
         {
-            if (ProgressPage.ins != null && numbers != null)
+            if (ProgressPage.ins != null && MainPage.ins != null && numbers != null)
             {
+                MainPage.ins.phoneConnection.DisableConnectionLoop();
+
                 Loaded.ConnectAlreadyDoneWriter();
+
+                await WaitForConnection();
 
                 while (!paused && !aborted && numbers.MoveNext())
                 {
                     await Loaded.AppendAlreadyDoneAsync(numbers.Current);
 
                     (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(numbers.Current);
+
+                    await WaitForConnection();
 
                     for (int i = 0; i < Loaded.messages.Count && !aborted; i++)
                     {
@@ -92,6 +99,8 @@ namespace BulkSMSSender2._0
                             await Task.Delay(Loaded.betweenMessagesDelay);
 
                         ProgressPage.ins.EvaluateMessagesProgress();
+
+                        await WaitForConnection();
                     }
 
                     if (!aborted)
@@ -107,6 +116,16 @@ namespace BulkSMSSender2._0
                 }
 
                 Loaded.DisconnectAlreadyDoneWriter();
+
+                MainPage.ins.phoneConnection.EnableConnectionLoop();
+            }
+        }
+
+        private async Task WaitForConnection()
+        {
+            while (PhoneConnection.GetDevices().Count == 0 && !aborted)
+            {
+                await Task.Delay(500);
             }
         }
     }
