@@ -12,6 +12,25 @@
                 HorizontalOptions="FillAndExpand">
 
             <HorizontalStackLayout 
+    Spacing="25"
+    HorizontalOptions="CenterAndExpand">
+
+                <Label 
+Text="Connection status:" 
+VerticalOptions="CenterAndExpand"
+HorizontalOptions="CenterAndExpand"
+FontSize="20"/>
+
+                <Label 
+                    x:Name ="connectionStatusLabel"
+Text="" 
+VerticalOptions="CenterAndExpand"
+HorizontalOptions="CenterAndExpand"
+FontSize="22"/>
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout 
                 Spacing="25"
                 HorizontalOptions="CenterAndExpand">
 

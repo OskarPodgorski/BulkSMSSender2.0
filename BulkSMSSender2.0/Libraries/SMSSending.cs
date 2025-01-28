@@ -1,4 +1,5 @@
 ﻿using AdvancedSharpAdbClient.DeviceCommands;
+using AdvancedSharpAdbClient.Models;
 using Settings;
 
 namespace BulkSMSSender2._0
@@ -13,8 +14,9 @@ namespace BulkSMSSender2._0
             return Loaded.androidCompatibility switch
             {
                 0 => $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0",
-                1 => $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\"",
-                2 => $"service call isms 7 i32 0 s16 \"com.android.mms.service\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\"",
+                1 => $"service call isms 7 i32 0 s16 \"com.android.mms.service\" s16 \"null\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\" i32 0 i64 0",
+                2 => $"service call isms 5 i32 0 s16 \"com.android.mms.service\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\"",
+                3 => $"service call isms 7 i32 0 s16 \"com.android.mms.service\" s16 \"{number}\" s16 \"null\" s16 \"{message}\" s16 \"null\" s16 \"null\"",
                 _ => string.Empty,
             };
         }
@@ -33,8 +35,8 @@ namespace BulkSMSSender2._0
 
         public static async Task SendAsync(string number, string message)
         {
-            if (!Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
-                await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], GetAndroidCommand(number, message)); // disabled for testing
+            //if (!Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
+            //    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], GetAndroidCommand(number, message)); // disabled for testing
         }
 
         private IEnumerator<string>? numbers;
@@ -123,10 +125,17 @@ namespace BulkSMSSender2._0
 
         private async Task WaitForConnection()
         {
-            while (PhoneConnection.GetDevices().Count == 0 && !aborted)
+            List<DeviceData> devices;
+
+            while ((devices = PhoneConnection.GetDevices()).Count == 0 && !aborted)
             {
+                ProgressPage.ins?.SetDisconnectedLabel();
+
                 await Task.Delay(500);
             }
+
+            if (!aborted)
+                ProgressPage.ins?.SetConnectedLabel($"{devices[0].Model} - {devices[0].Name} - {devices[0].Serial}");
         }
     }
 }

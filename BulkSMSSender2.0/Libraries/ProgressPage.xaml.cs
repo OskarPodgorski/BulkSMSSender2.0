@@ -65,6 +65,7 @@ public partial class ProgressPage : ContentPage
         progressMessagesLabel.Text = $"0 / 0";
         progressNumbersLabel.Text = $"0 / 0";
         progressPercentLabel.Text = "0%";
+        connectionStatusLabel.Text = "";
     }
 
     int allMessagesCount = 0;
@@ -117,5 +118,16 @@ public partial class ProgressPage : ContentPage
 
             ClearProgressNumbers();
         }
+    }
+
+    public void SetDisconnectedLabel()
+    {
+        connectionStatusLabel.Text = "Disconnected! Paused sending";
+        connectionStatusLabel.TextColor = Settings.Loaded.colors.red;
+    }
+    public void SetConnectedLabel(string deviceInfo)
+    {
+        connectionStatusLabel.Text = $"Connected {deviceInfo}";
+        connectionStatusLabel.TextColor = Settings.Loaded.colors.green;
     }
 }

@@ -55,15 +55,20 @@ public partial class FinalPage : ContentPage
         forceReExtract = false;
     }
 
+    private void ClearGrid()
+    {
+        numbersGrid.Children.Clear();
+        numbersGrid.RowDefinitions.Clear();
+        numbersGrid.ColumnDefinitions.Clear();
+    }
+
     public async Task RunLoadingLabel(bool animationDelay)
     {
         numbersLabel.Text = "Numbers:";
         timeLabel.Text = "Estimated time:";
         alreadyDoneLabel.Text = "Already done numbers:";
 
-        numbersGrid.Children.Clear();
-        numbersGrid.RowDefinitions.Clear();
-        numbersGrid.ColumnDefinitions.Clear();
+        ClearGrid();
 
         numbersGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
@@ -92,9 +97,7 @@ public partial class FinalPage : ContentPage
         timeLabel.Text = "Estimated time:";
         alreadyDoneLabel.Text = "Already done numbers:";
 
-        numbersGrid.Children.Clear();
-        numbersGrid.RowDefinitions.Clear();
-        numbersGrid.ColumnDefinitions.Clear();
+        ClearGrid();
 
         numbersGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
         numbersGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });

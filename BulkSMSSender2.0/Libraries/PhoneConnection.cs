@@ -72,7 +72,7 @@ namespace BulkSMSSender2._0
                     if (!connected)
                     {
                         devicesList = devices.ToList();
-                        connectedPhonesLabel.Text = $"Connected:  {devicesList[0].Name} - {devicesList[0].Serial}";
+                        connectedPhonesLabel.Text = $"Connected: {devicesList[0].Model} - {devicesList[0].Name} - {devicesList[0].Serial}";
                         connected = true;
                     }
                     await Task.Delay(1000);

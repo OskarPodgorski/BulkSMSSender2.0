@@ -29,15 +29,16 @@ public partial class BlacklistPage : ContentPage
         }
     }
 
-    public async Task RunLoadingLabel(bool animationDelay)
+    private void ClearGrid()
     {
-        //numbersLabel.Text = "Numbers:";
-        //timeLabel.Text = "Estimated time:";
-        //alreadyDoneLabel.Text = "Already done numbers:";
-
         numbersGrid.Children.Clear();
         numbersGrid.RowDefinitions.Clear();
         numbersGrid.ColumnDefinitions.Clear();
+    }
+
+    public async Task RunLoadingLabel(bool animationDelay)
+    {
+        ClearGrid();
 
         numbersGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
 
@@ -62,13 +63,7 @@ public partial class BlacklistPage : ContentPage
 
     public void AddNumbers(IEnumerable<string> numbers)
     {
-        //numbersLabel.Text = "Numbers:";
-        //timeLabel.Text = "Estimated time:";
-        //alreadyDoneLabel.Text = "Already done numbers:";
-
-        numbersGrid.Children.Clear();
-        numbersGrid.RowDefinitions.Clear();
-        numbersGrid.ColumnDefinitions.Clear();
+        ClearGrid();
 
         numbersGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
         numbersGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
@@ -93,10 +88,6 @@ public partial class BlacklistPage : ContentPage
                 row++;
             }
         }
-
-        //numbersLabel.Text = $"Numbers:  {numbers.Count()}";
-        //timeLabel.Text = $"Elapsed time:  {GetElapsedTime(numbers.Count())} hours";
-        //alreadyDoneLabel.Text = $"Already done numbers:  {Settings.Loaded.AlreadyDoneCount}";
     }
 
     private void AddNumber(string number, int row, int column)
