@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BulkSMSSender2._0.BlacklistPage">
+             x:Class="BulkSMSSender2._0.BlacklistPage"
+             xmlns:local="clr-namespace:BulkSMSSender2._0">
 
     <ScrollView>
 
@@ -34,7 +35,12 @@
         Text="Add to blacklist +"
         HorizontalOptions="CenterAndExpand"
         BackgroundColor="{StaticResource MyRed}"
-                    Clicked="AddToBlacklistButton"/>
+                    Clicked="AddToBlacklistButton">
+
+                    <Button.Behaviors>
+                        <local:ClickAnimation/>
+                    </Button.Behaviors>
+                </Button>
 
             </HorizontalStackLayout>
 

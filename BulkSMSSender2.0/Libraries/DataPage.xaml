@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BulkSMSSender2._0.DataPage">
+             x:Class="BulkSMSSender2._0.DataPage"
+             xmlns:local="clr-namespace:BulkSMSSender2._0">
 
     <ScrollView>
 
@@ -27,14 +28,24 @@
                     HorizontalOptions="End"
                     VerticalOptions="Center"
                     Clicked="ClearEditorField"
-                    BackgroundColor="{StaticResource MyYellow}"/>
+                    BackgroundColor="{StaticResource MyYellow}">
+
+                    <Button.Behaviors>
+                        <local:ClickAnimation/>
+                    </Button.Behaviors>
+                </Button>
                 
                 <Button
                     Text="Accept"
                     HorizontalOptions="End"
                     VerticalOptions="Center"
                     Clicked="AcceptEditorText"
-                    BackgroundColor="{StaticResource MyGreen}"/>
+                    BackgroundColor="{StaticResource MyGreen}">
+
+                    <Button.Behaviors>
+                        <local:ClickAnimation/>
+                    </Button.Behaviors>
+                </Button>
 
             </HorizontalStackLayout>
 
@@ -52,7 +63,12 @@
                 Text="Accept"
                 HorizontalOptions="CenterAndExpand"
                 Clicked="AcceptEditorText"
-                BackgroundColor="{StaticResource MyGreen}"/>
+                BackgroundColor="{StaticResource MyGreen}">
+
+                <Button.Behaviors>
+                    <local:ClickAnimation/>
+                </Button.Behaviors>
+            </Button>
 
         </VerticalStackLayout>
 

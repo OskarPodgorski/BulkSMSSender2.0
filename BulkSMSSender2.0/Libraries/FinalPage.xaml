@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BulkSMSSender2._0.FinalPage">
+             x:Class="BulkSMSSender2._0.FinalPage"
+             xmlns:local="clr-namespace:BulkSMSSender2._0">
 
     <ScrollView>
 
@@ -26,7 +27,12 @@
                     HorizontalOptions="End"
                     VerticalOptions="Center"
                     Clicked="StartSending"
-                    BackgroundColor="{StaticResource MyGreen}"/>
+                    BackgroundColor="{StaticResource MyGreen}">
+
+                    <Button.Behaviors>
+                        <local:ClickAnimation/>
+                    </Button.Behaviors>
+                </Button>
 
             </HorizontalStackLayout>
 
@@ -38,7 +44,12 @@
 Text="ReCalculate"
 HorizontalOptions="StartAndExpand"
 BackgroundColor="{StaticResource MyBlue}"
-                    Clicked="RecalculateButton"/>
+                    Clicked="RecalculateButton">
+
+                    <Button.Behaviors>
+                        <local:ClickAnimation/>
+                    </Button.Behaviors>
+                </Button>
 
                 <Label 
                     x:Name ="numbersLabel"
@@ -65,7 +76,12 @@ FontSize="18"/>
 Text="Reset done filter"
 HorizontalOptions="EndAndExpand"
 BackgroundColor="{StaticResource MyYellow}"
-                    Clicked="ClearAlreadyDone"/>
+                    Clicked="ClearAlreadyDone">
+
+                    <Button.Behaviors>
+                        <local:ClickAnimation/>
+                    </Button.Behaviors>
+                </Button>
 
             </HorizontalStackLayout>
 
@@ -84,8 +100,13 @@ BackgroundColor="{StaticResource MyYellow}"
     HorizontalOptions="CenterAndExpand"
                 VerticalOptions="Start"
     Clicked="StartSending"
-    BackgroundColor="{StaticResource MyGreen}"/>
-            
+    BackgroundColor="{StaticResource MyGreen}">
+
+                <Button.Behaviors>
+                    <local:ClickAnimation/>
+                </Button.Behaviors>
+            </Button>
+
         </VerticalStackLayout>
 
     </ScrollView>
