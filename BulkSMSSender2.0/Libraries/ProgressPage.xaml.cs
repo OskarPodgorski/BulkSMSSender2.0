@@ -13,20 +13,21 @@ public partial class ProgressPage : ContentPage
         ins ??= this;
     }
 
+    int row, col;
     public (Label, Frame) AddNumber(string number)
     {
         HorizontalStackLayout horizontalLayout = new()
         {
             Padding = 0,
             Spacing = 15,
-            HorizontalOptions = LayoutOptions.FillAndExpand
+            HorizontalOptions = LayoutOptions.CenterAndExpand
         };
 
         Label label = new()
         {
             Text = number,
-            VerticalOptions = LayoutOptions.FillAndExpand,
-            HorizontalOptions = LayoutOptions.Start,
+            VerticalOptions = LayoutOptions.CenterAndExpand,
+            HorizontalOptions = LayoutOptions.Center,
             FontSize = 16,
             TextColor = Colors.Black
         };
@@ -36,8 +37,8 @@ public partial class ProgressPage : ContentPage
         Label progressLabel = new()
         {
             Text = "0",
-            VerticalOptions = LayoutOptions.FillAndExpand,
-            HorizontalOptions = LayoutOptions.Start,
+            VerticalOptions = LayoutOptions.CenterAndExpand,
+            HorizontalOptions = LayoutOptions.Center,
             FontSize = 16,
             TextColor = Settings.Loaded.colors.gray
         };
@@ -53,14 +54,42 @@ public partial class ProgressPage : ContentPage
             Content = horizontalLayout
         };
 
-        numbersLayout.Children.Add(frame);
+        if (col == 0)
+        {
+            numbersGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        }
+
+        numbersGrid.Children.Add(frame);
+        Grid.SetRow(frame, row);
+        Grid.SetColumn(frame, col);
+
+        col++;
+
+        if (col >= 2)
+        {
+            col = 0;
+            row++;
+        }
 
         return new(progressLabel, frame);
     }
 
-    private void ClearProgressNumbers()
+    private void ClearGrid()
     {
-        numbersLayout.Children.Clear();
+        numbersGrid.Children.Clear();
+        numbersGrid.RowDefinitions.Clear();
+        numbersGrid.ColumnDefinitions.Clear();
+
+        numbersGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+        numbersGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Star });
+
+        row = 0;
+        col = 0;
+    }
+
+    private void ClearProgress()
+    {
+        ClearGrid();
 
         progressMessagesLabel.Text = $"0 / 0";
         progressNumbersLabel.Text = $"0 / 0";
@@ -75,7 +104,7 @@ public partial class ProgressPage : ContentPage
     float progressPercentMultiplier = 0;
     public void InitializeProgress(int numbersCount, int messagesCount)
     {
-        ClearProgressNumbers();
+        ClearProgress();
         progressMessagesCount = 0;
         progressNumbersCount = 0;
 
@@ -116,7 +145,7 @@ public partial class ProgressPage : ContentPage
 
             Shell.SetTabBarIsVisible(this, true);
 
-            ClearProgressNumbers();
+            ClearProgress();
         }
     }
 

@@ -84,13 +84,14 @@ FontSize="22"/>
 
             </HorizontalStackLayout>
 
-            <VerticalStackLayout
-                x:Name="numbersLayout"
-                Spacing="4"
-                HorizontalOptions="FillAndExpand">
+            <Grid
+    x:Name="numbersGrid"
+    RowSpacing="4"
+    ColumnSpacing="4"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="FillAndExpand">
 
-            </VerticalStackLayout>
-
+            </Grid>
 
         </VerticalStackLayout>
 

@@ -95,14 +95,14 @@ public partial class BlacklistPage : ContentPage
         HorizontalStackLayout horizontalLayout = new()
         {
             Padding = 0,
-            Spacing = 60,
+            Spacing = 65,
             HorizontalOptions = column == 1 ? LayoutOptions.StartAndExpand : LayoutOptions.EndAndExpand
         };
 
         Label label = new()
         {
             Text = number,
-            VerticalOptions = LayoutOptions.CenterAndExpand,
+            VerticalOptions = LayoutOptions.Center,
             HorizontalOptions = column == 1 ? LayoutOptions.Start : LayoutOptions.End,
             HorizontalTextAlignment = column == 1 ? TextAlignment.Start : TextAlignment.End,
             FontSize = 16,
