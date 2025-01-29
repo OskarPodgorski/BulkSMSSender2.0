@@ -4,10 +4,11 @@ using Settings;
 
 namespace BulkSMSSender2._0
 {
-    public sealed class SMSSending
+    public sealed class SMSSending : IDisposable
     {
         private bool paused = false;
-        public bool aborted = false;
+        private bool aborted = false;
+        private Task sending;
 
         public static string GetAndroidCommand(string number, string message)
         {
@@ -42,7 +43,6 @@ namespace BulkSMSSender2._0
         private IEnumerator<string>? numbers;
         private int numbersCount;
         private float progressMultiplier;
-        public Task? sendingTask { get; private set; }
 
         public async Task StartSendBulkAsync(List<string> numbersList)
         {
@@ -56,24 +56,15 @@ namespace BulkSMSSender2._0
 
                 ProgressPage.ins.InitializeProgress(numbersCount, Loaded.messages.Count);
 
-                sendingTask = ContinueSendBulkAsync();
-                await sendingTask;
+                sending = SendBulkAsync();
+                await sending;
             }
         }
 
         public void PauseBulkSending() => paused = true;
-        public async void ContinueBulkSending()
-        {
-            paused = false;
+        public void ContinueBulkSending() => paused = false;
 
-            if (numbers != null && (sendingTask == null || sendingTask.IsCompleted))
-            {
-                sendingTask = ContinueSendBulkAsync();
-                await sendingTask;
-            }
-        }
-
-        private async Task ContinueSendBulkAsync()
+        private async Task SendBulkAsync()
         {
             if (ProgressPage.ins != null && MainPage.ins != null && numbers != null)
             {
@@ -83,13 +74,11 @@ namespace BulkSMSSender2._0
 
                 await WaitForConnection();
 
-                while (!paused && !aborted && numbers.MoveNext())
+                while (!aborted && numbers.MoveNext())
                 {
                     await Loaded.AppendAlreadyDoneAsync(numbers.Current);
 
                     (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(numbers.Current);
-
-                    await WaitForConnection();
 
                     for (int i = 0; i < Loaded.messages.Count && !aborted; i++)
                     {
@@ -115,6 +104,9 @@ namespace BulkSMSSender2._0
 
                         ProgressPage.ins.EvaluateNumbersProgress();
                     }
+
+                    await WaitForUnpause();
+                    await WaitForConnection();
                 }
 
                 Loaded.DisconnectAlreadyDoneWriter();
@@ -136,6 +128,21 @@ namespace BulkSMSSender2._0
 
             if (!aborted)
                 ProgressPage.ins?.SetConnectedLabel($"{devices[0].Model} - {devices[0].Name} - {devices[0].Serial}");
+        }
+
+        private async Task WaitForUnpause()
+        {
+            while (paused && !aborted)
+            {
+                await Task.Delay(500);
+            }
+        }
+
+        public async void Dispose()
+        {
+            paused = false;
+            aborted = true;
+            await sending;
         }
     }
 }

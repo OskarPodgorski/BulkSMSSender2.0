@@ -17,12 +17,6 @@ public partial class SettingsPage : ContentPage
     }
     private void LoadSettings()
     {
-        androidPicker.SelectedIndex = Settings.Loaded.androidCompatibility;
-        regionPicker.SelectedIndex = Settings.Loaded.numbersExtractionRegion;
-
-        androidPicker.SelectedIndexChanged += OnSelectedPicker;
-        regionPicker.SelectedIndexChanged += OnSelectedPicker;
-
         messageDelayEntry.Text = Settings.Loaded.betweenMessagesDelay.ToString();
         numbersDelayEntry.Text = Settings.Loaded.betweenNumbersDelay.ToString();
         maxMessagesEntry.Text = Settings.Loaded.maxMessagesSafeLock.ToString();
@@ -42,13 +36,6 @@ public partial class SettingsPage : ContentPage
         Settings.Loaded.InsertCharsFromCharFormula(charTableEntry.Text);
     }
 
-    private void OnSelectedPicker(object? sender, EventArgs e)
-    {
-        Settings.Loaded.androidCompatibility = androidPicker.SelectedIndex;
-        Settings.Loaded.numbersExtractionRegion = regionPicker.SelectedIndex;
-    }
-
     private async void RestoreOutgoingLimitButton(object sender, EventArgs e) => await SMSSending.RestoreDefaultSMSOutgoingLimitAsync();
     private async void SetOutgoingLimitButton(object sender, EventArgs e) => await SMSSending.SetSMSOutgoingLimitAsync();
-
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Settings;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -6,57 +7,63 @@ namespace BulkSMSSender2._0
 {
     public class SettingsViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<string> androidVersionOptions { get; set; }
-        private string _androidVersion;
-
-        public string AndroidVersion
+        public ObservableCollection<string> androidVersionOptions { get; set; } = new()
         {
-            get => _androidVersion;
+            "Newest Androids",
+            "Newest Androids Alternative",
+            "Older Androids",
+            "Older Androids Alternative"
+        };
+
+        public int AndroidVersion
+        {
+            get => Loaded.androidCompatibility;
             set
             {
-                if (_androidVersion != value)
+                if (Loaded.androidCompatibility != value)
                 {
-                    _androidVersion = value;
+                    Loaded.androidCompatibility = value;
+
                     OnPropertyChanged();
                 }
             }
         }
 
-        public ObservableCollection<string> regionOptions { get; set; }
-        private string _region;
-
-        public string Region
+        public ObservableCollection<string> regionOptions { get; set; } = new()
         {
-            get => _region;
+            "Poland"
+        };
+
+        public int Region
+        {
+            get => Loaded.numbersExtractionRegion;
             set
             {
-                if (_region != value)
+                if (Loaded.numbersExtractionRegion != value)
                 {
-                    _region = value;
+                    Loaded.numbersExtractionRegion = value;
+
                     OnPropertyChanged();
                 }
             }
         }
 
-        public SettingsViewModel()
+        public bool CommandBlock
         {
-            androidVersionOptions = new()
+            get => Loaded.commandBlock;
+            set
             {
-                "Newest Androids",
-                "Newest Androids Alternative",
-                "Older Androids",
-                "Older Androids Alternative"
-            };
+                if (Loaded.commandBlock != value)
+                {
+                    Loaded.commandBlock = value;
 
-            regionOptions = new()
-            {
-                "Poland"
-            };
+                    OnPropertyChanged();
+                }
+            }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

@@ -135,12 +135,11 @@ public partial class ProgressPage : ContentPage
     private void PauseButton(object sender, EventArgs e) => SMSSending?.PauseBulkSending();
     private void ContinueButton(object sender, EventArgs e) => SMSSending?.ContinueBulkSending();
 
-    private async void AbortButton(object sender, EventArgs e)
+    private void AbortButton(object sender, EventArgs e)
     {
         if (SMSSending != null)
         {
-            SMSSending.aborted = true;
-            await SMSSending.sendingTask;
+            SMSSending.Dispose();
             SMSSending = null;
 
             Shell.SetTabBarIsVisible(this, true);

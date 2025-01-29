@@ -36,14 +36,14 @@
                     Grid.Row="0" Grid.Column="0"
                     Title="Android command compatibility:"
                         ItemsSource="{Binding androidVersionOptions}"
-                        SelectedItem="{Binding AndroidVersion, Mode=TwoWay}"
+                        SelectedIndex="{Binding AndroidVersion, Mode=TwoWay}"
                         />
 
                 <Picker x:Name="regionPicker"
                     Grid.Row="0" Grid.Column="1"
                     Title="Numbers extraction region:"
                         ItemsSource="{Binding regionOptions}"
-                        SelectedItem="{Binding Region, Mode=TwoWay}"
+                        SelectedIndex="{Binding Region, Mode=TwoWay}"
                         />
 
             </Grid>
@@ -151,6 +151,32 @@
     Grid.Row="5" Grid.Column="0"
     Placeholder="Enter characters by formula from info:"
        Unfocused="OnUnfocusedCharFormulaEntry"/>
+
+            </Grid>
+
+            <Label 
+Text="Testing:" 
+VerticalOptions="FillAndExpand"
+HorizontalOptions="CenterAndExpand"
+FontSize="20"/>
+
+            <Grid
+    ColumnSpacing="20"
+    RowSpacing="20"
+    VerticalOptions="StartAndExpand"
+    HorizontalOptions="FillAndExpand">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Switch IsToggled="{Binding CommandBlock}" 
+        Grid.Row="0" Grid.Column="0"/>
 
             </Grid>
 
