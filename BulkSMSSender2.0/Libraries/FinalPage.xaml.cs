@@ -219,9 +219,11 @@ public partial class FinalPage : ContentPage
             await Task.WhenAll(Shell.Current.GoToAsync("//progress"), Settings.Loaded.SaveSettingsAsync());
 
             if (ProgressPage.ins != null)
+            {
                 Shell.SetTabBarIsVisible(ProgressPage.ins, false);
 
-            await new SMSSending().StartSendBulkAsync(Numbers);
+                ProgressPage.ins.SMSSending = new SMSSending(Numbers);
+            }
         }
         else
             RecalculateButton(sender, e);

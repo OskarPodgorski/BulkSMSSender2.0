@@ -34,14 +34,12 @@
             <ShellContent ContentTemplate="{DataTemplate local:BlacklistPage}" />
         </Tab>
 
-        <Tab Title="Progress" Route="progress">
-            <ShellContent ContentTemplate="{DataTemplate local:ProgressPage}" />
-        </Tab>
-
         <Tab Title="Settings" Route="settings">
             <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" />
         </Tab>
 
     </TabBar>
-    
+
+    <ShellContent Route="progress" ContentTemplate="{DataTemplate local:ProgressPage}" />
+
 </Shell>

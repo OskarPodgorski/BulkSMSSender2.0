@@ -6,10 +6,6 @@ namespace BulkSMSSender2._0
 {
     public sealed class SMSSending : IDisposable
     {
-        private bool paused = false;
-        private bool aborted = false;
-        private Task sending;
-
         public static string GetAndroidCommand(string number, string message)
         {
             return Loaded.androidCompatibility switch
@@ -67,16 +63,23 @@ namespace BulkSMSSender2._0
             else { return false; }
         }
 
+        private Task sending;
+        private bool paused = false;
+        private bool aborted = false;
+
         private IEnumerator<string>? numbers;
         private int numbersCount;
         private float progressMultiplier;
 
-        public async Task StartSendBulkAsync(List<string> numbersList)
+        public SMSSending(List<string> numbersList)
+        {
+            StartSendBulkAsync(numbersList);
+        }
+
+        private async void StartSendBulkAsync(List<string> numbersList)
         {
             if (ProgressPage.ins != null)
             {
-                ProgressPage.ins.SMSSending = this;
-
                 numbersCount = numbersList.Count;
                 progressMultiplier = 100f / Loaded.messages.Count;
                 numbers = numbersList.GetEnumerator();
@@ -193,6 +196,10 @@ namespace BulkSMSSender2._0
                 Shell.SetTabBarIsVisible(ProgressPage.ins, true);
 
                 ProgressPage.ins.ClearProgress();
+
+                ProgressPage.ins.SMSSending = null;
+
+                await Shell.Current.GoToAsync("//final");
             }
         }
     }
