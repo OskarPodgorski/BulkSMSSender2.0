@@ -55,7 +55,7 @@
         {
             foreach (string message in Settings.Loaded.messages)
             {
-                await SMSSending.SendAsync(numberEntry.Text, message);
+                await SMSSending.TrySendAsync(numberEntry.Text, message);
             }
         }
 

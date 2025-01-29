@@ -155,16 +155,16 @@
             </Grid>
 
             <Label 
-Text="Testing:" 
-VerticalOptions="FillAndExpand"
-HorizontalOptions="CenterAndExpand"
-FontSize="20"/>
+                Text="Testing:" 
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                FontSize="20"/>
 
             <Grid
-    ColumnSpacing="20"
-    RowSpacing="20"
-    VerticalOptions="StartAndExpand"
-    HorizontalOptions="FillAndExpand">
+                ColumnSpacing="20"
+                RowSpacing="20"
+                VerticalOptions="StartAndExpand"
+                HorizontalOptions="FillAndExpand">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -175,8 +175,21 @@ FontSize="20"/>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Switch IsToggled="{Binding CommandBlock}" 
-        Grid.Row="0" Grid.Column="0"/>
+                <HorizontalStackLayout Grid.Row="0" Grid.Column="0"
+                    Spacing="20"
+                    HorizontalOptions="StartAndExpand">
+
+                    <Label 
+                        Text="Block sending commands to phone:"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start"
+                        FontSize="14"
+                        TextColor="#c8c8c8"/>
+
+                    <Switch IsToggled="{Binding CommandBlock}"
+                            VerticalOptions="Center"/>
+
+                </HorizontalStackLayout>
 
             </Grid>
 

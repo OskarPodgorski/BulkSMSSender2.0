@@ -15,7 +15,7 @@ namespace BulkSMSSender2._0
         public Task connectionLoop;
         private bool disableConnectionLoop = false;
 
-        public static List<DeviceData> devicesList { get; private set; } = new();
+        private static List<DeviceData> devicesList = new();
 
         public async Task StartAsync()
         {
@@ -92,5 +92,17 @@ namespace BulkSMSSender2._0
         }
 
         public static List<DeviceData> GetDevices() => devicesList = adbClient.GetDevices().ToList();
+
+        public static bool TryGetDevices(out List<DeviceData> devices)
+        {
+            if (!(devices = GetDevices()).IsNullOrEmpty())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

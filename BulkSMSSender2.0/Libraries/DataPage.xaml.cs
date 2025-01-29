@@ -4,8 +4,6 @@ public partial class DataPage : ContentPage
 {
     public static DataPage? ins { get; private set; }
 
-    public string Data => dataEditor.Text;
-
     public DataPage()
     {
         InitializeComponent();
@@ -14,20 +12,18 @@ public partial class DataPage : ContentPage
 
         LoadSettings();
     }
+    private void LoadSettings() => dataEditor.Text = Settings.Loaded.data;
 
     private void ClearEditorField(object sender, EventArgs e)
     {
         dataEditor.Text = string.Empty;
+        Settings.Loaded.data = dataEditor.Text;
     }
 
     private async void AcceptEditorText(object sender, EventArgs e)
     {
-        if (!string.IsNullOrEmpty(Data))
+        if (!string.IsNullOrEmpty(Settings.Loaded.data))
             await Shell.Current.GoToAsync("//final");
-    }
-    private void LoadSettings()
-    {
-        dataEditor.Text = Settings.Loaded.data;
     }
 
     private void OnUnfocusedEditor(object? sender, EventArgs e) => Settings.Loaded.data = dataEditor.Text;

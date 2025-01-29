@@ -87,7 +87,7 @@ public partial class ProgressPage : ContentPage
         col = 0;
     }
 
-    private void ClearProgress()
+    public void ClearProgress()
     {
         ClearGrid();
 
@@ -140,11 +140,7 @@ public partial class ProgressPage : ContentPage
         if (SMSSending != null)
         {
             SMSSending.Dispose();
-            SMSSending = null;
-
-            Shell.SetTabBarIsVisible(this, true);
-
-            ClearProgress();
+            SMSSending = null;     
         }
     }
 

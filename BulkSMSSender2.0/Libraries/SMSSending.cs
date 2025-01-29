@@ -24,20 +24,47 @@ namespace BulkSMSSender2._0
 
         public static async Task SetSMSOutgoingLimitAsync()
         {
-            if (!Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
-                await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"settings put global sms_outgoing_check_max_count {Loaded.maxMessagesSafeLock}"); // disabled for testing
+            if (!Loaded.commandBlock && PhoneConnection.TryGetDevices(out List<DeviceData> devices))
+            {
+                try
+                {
+                    await PhoneConnection.adbClient.ExecuteShellCommandAsync(devices[0], $"settings put global sms_outgoing_check_max_count {Loaded.maxMessagesSafeLock}");
+                }
+                catch { }
+            }
         }
 
         public static async Task RestoreDefaultSMSOutgoingLimitAsync()
         {
-            if (!Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
-                await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], $"settings put global sms_outgoing_check_max_count 30"); // disabled for testing
+            if (!Loaded.commandBlock && PhoneConnection.TryGetDevices(out List<DeviceData> devices))
+            {
+                try
+                {
+                    await PhoneConnection.adbClient.ExecuteShellCommandAsync(devices[0], $"settings put global sms_outgoing_check_max_count 30");
+                }
+                catch { }
+            }
         }
 
-        public static async Task SendAsync(string number, string message)
+        public static async Task<bool> TrySendAsync(string number, string message)
         {
-            //if (!Loaded.commandBlock && !PhoneConnection.devicesList.IsNullOrEmpty())
-            //    await PhoneConnection.adbClient.ExecuteShellCommandAsync(PhoneConnection.devicesList[0], GetAndroidCommand(number, message)); // disabled for testing
+            if (PhoneConnection.TryGetDevices(out List<DeviceData> devices))
+            {
+                if (Loaded.commandBlock)
+                {
+                    return true;
+                }
+                else
+                {
+                    try
+                    {
+                        await PhoneConnection.adbClient.ExecuteShellCommandAsync(devices[0], GetAndroidCommand(number, message));
+                        return true;
+                    }
+                    catch { return false; }
+                }
+            }
+            else { return false; }
         }
 
         private IEnumerator<string>? numbers;
@@ -80,29 +107,46 @@ namespace BulkSMSSender2._0
 
                     (Label, Frame) progressTuple = ProgressPage.ins.AddNumber(numbers.Current);
 
+                    bool error = false;
                     for (int i = 0; i < Loaded.messages.Count && !aborted; i++)
                     {
-                        await SendAsync(numbers.Current, Loaded.messages[i]);
+                        if (!await TrySendAsync(numbers.Current, Loaded.messages[i]))
+                        {
+                            await WaitForConnection();
 
-                        progressTuple.Item1.Text = $"{MathF.Round(progressMultiplier * i, 2)}%";
+                            if (!await TrySendAsync(numbers.Current, Loaded.messages[i]))
+                            {
+                                error = true;
+                                break;
+                            }
+                        }
+
+                        progressTuple.Item1.Text = $"{MathF.Round(progressMultiplier * (i + 1), 2)}%";
+                        ProgressPage.ins.EvaluateMessagesProgress();
 
                         if (i < Loaded.messages.Count - 1)
                             await Task.Delay(Loaded.betweenMessagesDelay);
-
-                        ProgressPage.ins.EvaluateMessagesProgress();
 
                         await WaitForConnection();
                     }
 
                     if (!aborted)
                     {
-                        if (!paused)
-                            await Task.Delay(Loaded.betweenNumbersDelay);
-
-                        progressTuple.Item1.Text = "100%";
-                        progressTuple.Item2.BackgroundColor = Loaded.colors.green;
+                        if (!error)
+                        {
+                            progressTuple.Item1.Text = "100%";
+                            progressTuple.Item2.BackgroundColor = Loaded.colors.green;
+                        }
+                        else
+                        {
+                            progressTuple.Item1.Text = $"{progressTuple.Item1.Text}   Error!";
+                            progressTuple.Item2.BackgroundColor = Loaded.colors.red;
+                        }
 
                         ProgressPage.ins.EvaluateNumbersProgress();
+
+                        if (!paused)
+                            await Task.Delay(Loaded.betweenNumbersDelay);
                     }
 
                     await WaitForUnpause();
@@ -119,7 +163,7 @@ namespace BulkSMSSender2._0
         {
             List<DeviceData> devices;
 
-            while ((devices = PhoneConnection.GetDevices()).Count == 0 && !aborted)
+            while (!PhoneConnection.TryGetDevices(out devices) && !aborted)
             {
                 ProgressPage.ins?.SetDisconnectedLabel();
 
@@ -143,6 +187,13 @@ namespace BulkSMSSender2._0
             paused = false;
             aborted = true;
             await sending;
+
+            if (ProgressPage.ins != null)
+            {
+                Shell.SetTabBarIsVisible(ProgressPage.ins, true);
+
+                ProgressPage.ins.ClearProgress();
+            }
         }
     }
 }
