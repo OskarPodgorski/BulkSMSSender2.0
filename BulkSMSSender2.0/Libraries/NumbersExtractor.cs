@@ -49,6 +49,8 @@ namespace BulkSMSSender2._0
         {
             StringBuilder builder = new(capacity: 1024);
 
+            HashSet<string> numbers = new();
+
             await Task.Run(() =>
             {
                 MatchCollection matches = Regex.Matches(data, Constants.REGIONREGEX[Loaded.numbersExtractionRegion]);
@@ -57,7 +59,8 @@ namespace BulkSMSSender2._0
                 {
                     string cleaned = match.Value.RemoveAllWhitespaces();
 
-                    builder.AppendLine(cleaned);
+                    if (numbers.Add(cleaned))
+                        builder.AppendLine(cleaned);
                 }
             });
 

@@ -14,15 +14,34 @@ public partial class FinalPage : ContentPage
         {
             List<string> numbers = new();
 
-            foreach (var child in numbersGrid.Children)
+            if (Settings.Loaded.olderComputer)
             {
-                if (child is Frame frame && frame.Content is HorizontalStackLayout layout)
+                foreach (var child in numbersGrid.Children)
                 {
-                    foreach (var innerChild in layout.Children)
+                    if (child is HorizontalStackLayout layout)
                     {
-                        if (innerChild is Label label)
+                        foreach (var innerChild in layout.Children)
                         {
-                            numbers.Add(label.Text);
+                            if (innerChild is Label label)
+                            {
+                                numbers.Add(label.Text);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (var child in numbersGrid.Children)
+                {
+                    if (child is Frame frame && frame.Content is HorizontalStackLayout layout)
+                    {
+                        foreach (var innerChild in layout.Children)
+                        {
+                            if (innerChild is Label label)
+                            {
+                                numbers.Add(label.Text);
+                            }
                         }
                     }
                 }
@@ -139,9 +158,10 @@ public partial class FinalPage : ContentPage
     {
         HorizontalStackLayout horizontalLayout = new()
         {
-            Padding = 0,
+            Padding = Settings.Loaded.olderComputer ? 8 : 0,
             Spacing = 65,
-            HorizontalOptions = column == 1 ? LayoutOptions.StartAndExpand : LayoutOptions.EndAndExpand
+            HorizontalOptions = column == 1 ? LayoutOptions.StartAndExpand : LayoutOptions.EndAndExpand,
+            VerticalOptions = LayoutOptions.Center
         };
 
         Label label = new()
@@ -151,7 +171,7 @@ public partial class FinalPage : ContentPage
             HorizontalOptions = column == 1 ? LayoutOptions.Start : LayoutOptions.End,
             HorizontalTextAlignment = column == 1 ? TextAlignment.Start : TextAlignment.End,
             FontSize = 16,
-            TextColor = Settings.Loaded.colors.gray
+            TextColor = Settings.Loaded.olderComputer ? Colors.White : Settings.Loaded.colors.gray
         };
 
         Button button = new()
@@ -179,20 +199,42 @@ public partial class FinalPage : ContentPage
             horizontalLayout.Add(label);
         }
 
-        Frame frame = new()
+        if (!Settings.Loaded.olderComputer)
         {
-            BackgroundColor = checkValid ? Settings.Loaded.colors.yellow : Settings.Loaded.colors.blue,
-            HasShadow = false,
-            CornerRadius = 8,
-            Padding = 8,
-            Content = horizontalLayout
-        };
+            Frame frame = new()
+            {
+                BackgroundColor = checkValid ? Settings.Loaded.colors.yellow : Settings.Loaded.colors.blue,
+                HasShadow = false,
+                CornerRadius = 8,
+                Padding = 8,
+                Content = horizontalLayout
+            };
 
-        button.Clicked += async (sender, args) =>
+            button.Clicked += (sender, args) =>
+            {
+                frame.BackgroundColor = Settings.Loaded.colors.red;
+                ButtonClicked();
+            };
+
+            numbersGrid.Children.Add(frame);
+            Grid.SetRow(frame, row);
+            Grid.SetColumn(frame, column);
+        }
+        else
+        {
+            button.Clicked += (sender, args) =>
+            {
+                ButtonClicked();
+            };
+
+            numbersGrid.Children.Add(horizontalLayout);
+            Grid.SetRow(horizontalLayout, row);
+            Grid.SetColumn(horizontalLayout, column);
+        }
+
+        async void ButtonClicked()
         {
             Settings.Loaded.blacklist.Add(number);
-
-            frame.BackgroundColor = Settings.Loaded.colors.red;
 
             forceReExtract = true;
 
@@ -205,11 +247,7 @@ public partial class FinalPage : ContentPage
             await Settings.Loaded.SaveBlacklistAsync();
 
             button.IsEnabled = false;
-        };
-
-        numbersGrid.Children.Add(frame);
-        Grid.SetRow(frame, row);
-        Grid.SetColumn(frame, column);
+        }
     }
 
     private async void StartSending(object sender, EventArgs e)

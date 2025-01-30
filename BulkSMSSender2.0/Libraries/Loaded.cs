@@ -208,6 +208,7 @@
             {
                 using StreamWriter writer = new(dataPath);
                 {
+                    writer.WriteLine(string.Empty);
                     await writer.WriteAsync(data);
                 }
             }

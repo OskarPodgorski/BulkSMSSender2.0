@@ -30,7 +30,9 @@ public partial class DataPage : ContentPage
     }
     private void LoadSettings()
     {
-        //dataEditor.Text = Settings.Loaded.data;
+        if (!Settings.Loaded.olderComputer)
+            dataEditor.Text = Settings.Loaded.data;
+
         dataEditor.TextChanged += OnEditorTextChanged;
     }
 
@@ -53,8 +55,8 @@ public partial class DataPage : ContentPage
 
     public void ClearEditorField(object sender, EventArgs e)
     {
-        EditorTextNoInvoke = string.Empty;
-        Settings.Loaded.data = dataEditor.Text;
+        Settings.Loaded.data = string.Empty;
+        EditorTextNoInvoke = Settings.Loaded.data;
     }
 
     private async void OpenDataFileButton(object sender, EventArgs e)
@@ -93,7 +95,9 @@ public partial class DataPage : ContentPage
     {
         Settings.Loaded.data = await NumbersExtractor.OptimizeData(Settings.Loaded.data);
 
-        if (!Settings.Loaded.olderComputer)
+        if (Settings.Loaded.olderComputer)
+            await Settings.Loaded.WriteDataFileAsync();
+        else
             EditorTextNoInvoke = Settings.Loaded.data;
     }
 
