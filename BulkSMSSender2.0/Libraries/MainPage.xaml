@@ -46,6 +46,18 @@
 
             </HorizontalStackLayout>
 
+            <Button
+    Text="Clear Data"
+    HorizontalOptions="Center"
+    VerticalOptions="Start"
+    Clicked="ClearDataButton"
+    BackgroundColor="{StaticResource MyYellow}">
+
+                <Button.Behaviors>
+                    <local:ClickAnimation/>
+                </Button.Behaviors>
+            </Button>
+
         </VerticalStackLayout>
         
     </ScrollView>

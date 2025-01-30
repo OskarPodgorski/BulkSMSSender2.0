@@ -153,6 +153,42 @@
        Unfocused="OnUnfocusedCharFormulaEntry"/>
 
             </Grid>
+            
+            <Label 
+    Text="Data:" 
+    VerticalOptions="FillAndExpand"
+    HorizontalOptions="CenterAndExpand"
+    FontSize="20"/>
+
+            <Grid
+    ColumnSpacing="20"
+    RowSpacing="20"
+    VerticalOptions="StartAndExpand"
+    HorizontalOptions="FillAndExpand">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0"
+            Text="Data length when auto optimization runs:"
+            VerticalOptions="End"
+            HorizontalOptions="Start"
+            FontSize="14"
+            TextColor="#c8c8c8"/>
+
+                <Entry x:Name="dataAutoOptimizationEntry"
+Grid.Row="1" Grid.Column="0"
+Placeholder="Enter length of data when auto optimization runs:"
+   Text="{Binding DataOptimizationThreshold}"/>
+
+            </Grid>
 
             <Label 
                 Text="Testing:" 
@@ -192,6 +228,7 @@
                 </HorizontalStackLayout>
 
             </Grid>
+
 
         </VerticalStackLayout>
 

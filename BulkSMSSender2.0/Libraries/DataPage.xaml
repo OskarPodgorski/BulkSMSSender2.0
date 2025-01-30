@@ -11,21 +11,21 @@
         Spacing="30"
             HorizontalOptions="FillAndExpand">
 
+            <Label 
+x:Name="dataMainLabel"
+Text="Insert data:" 
+VerticalOptions="CenterAndExpand"
+HorizontalOptions="CenterAndExpand"
+FontSize="20"/>
+
             <HorizontalStackLayout 
                 Spacing="25"
                 HorizontalOptions="CenterAndExpand">
-                
-            <Label 
-            x:Name="dataMainLabel"
-            Text="Insert data:" 
-            VerticalOptions="CenterAndExpand"
-            HorizontalOptions="CenterAndExpand"
-            FontSize="20"/>
-
+                           
                 <Button
                     x:Name="clearButton"
                     Text="Clear"
-                    HorizontalOptions="End"
+                    HorizontalOptions="Center"
                     VerticalOptions="Center"
                     Clicked="ClearEditorField"
                     BackgroundColor="{StaticResource MyYellow}">
@@ -34,10 +34,22 @@
                         <local:ClickAnimation/>
                     </Button.Behaviors>
                 </Button>
-                
+
+                <Button
+    Text="Optimize data"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    Clicked="OptimizeDataButton"
+    BackgroundColor="{StaticResource MyBlue}">
+
+                    <Button.Behaviors>
+                        <local:ClickAnimation/>
+                    </Button.Behaviors>
+                </Button>
+
                 <Button
                     Text="Accept"
-                    HorizontalOptions="End"
+                    HorizontalOptions="Center"
                     VerticalOptions="Center"
                     Clicked="AcceptEditorText"
                     BackgroundColor="{StaticResource MyGreen}">
@@ -57,7 +69,8 @@
                 HorizontalTextAlignment="Start"
                 AutoSize="TextChanges"
                 Placeholder="Insert text here and click accept"
-                Unfocused="OnUnfocusedEditor"/>
+                Unfocused="OnUnfocusedEditor"
+                />
 
             <Button
                 Text="Accept"

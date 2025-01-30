@@ -60,5 +60,13 @@
         }
 
         private void OnUnfocusedEntry(object? sender, EventArgs e) => Settings.Loaded.singleNumber = numberEntry.Text;
+
+        private void ClearDataButton(object sender, EventArgs e)
+        {
+            if (DataPage.ins != null)
+                DataPage.ins.ClearEditorField(sender, e);
+            else
+                Settings.Loaded.data = string.Empty;
+        }
     }
 }

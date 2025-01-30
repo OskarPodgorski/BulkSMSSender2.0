@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace BulkSMSSender2._0;
 
 public partial class DataPage : ContentPage
@@ -12,9 +14,13 @@ public partial class DataPage : ContentPage
 
         LoadSettings();
     }
-    private void LoadSettings() => dataEditor.Text = Settings.Loaded.data;
+    private void LoadSettings()
+    {
+        dataEditor.Text = Settings.Loaded.data;
+        dataEditor.TextChanged += OnEditorTextChanged;
+    }
 
-    private void ClearEditorField(object sender, EventArgs e)
+    public void ClearEditorField(object sender, EventArgs e)
     {
         dataEditor.Text = string.Empty;
         Settings.Loaded.data = dataEditor.Text;
@@ -26,5 +32,50 @@ public partial class DataPage : ContentPage
             await Shell.Current.GoToAsync("//final");
     }
 
+    private async void OptimizeDataButton(object sender, EventArgs e)
+    {
+        dataEditor.TextChanged -= OnEditorTextChanged;
+        dataEditor.Text = await NumbersExtractor.OptimizeData(dataEditor.Text);
+        Settings.Loaded.data = dataEditor.Text;
+        dataEditor.TextChanged += OnEditorTextChanged;
+    }
+
     private void OnUnfocusedEditor(object? sender, EventArgs e) => Settings.Loaded.data = dataEditor.Text;
+
+    private string previousText = string.Empty;
+    private bool isOptimizing = false;
+    private async void OnEditorTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        dataEditor.TextChanged -= OnEditorTextChanged;
+
+        if (isOptimizing) return;
+
+
+        if (e.NewTextValue.Length > previousText.Length + Settings.Loaded.dataOptimizationThreshold)
+        {
+            isOptimizing = true;
+
+            await OptimizeData(e.NewTextValue);
+        }
+
+        previousText = dataEditor.Text;
+
+        isOptimizing = false;
+
+        dataEditor.TextChanged += OnEditorTextChanged;
+    }
+
+    private async Task OptimizeData(string data)
+    {
+        string optimizedData = await NumbersExtractor.OptimizeData(data);
+
+        Debug.WriteLine("test");
+        if (!string.IsNullOrEmpty(optimizedData))
+        {
+            await Task.Delay(500);
+            dataEditor.Text = previousText + optimizedData;
+        }
+
+        isOptimizing = false;
+    }
 }

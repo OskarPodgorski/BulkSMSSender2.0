@@ -15,9 +15,11 @@
         public static int androidCompatibility = 0;
         public static int numbersExtractionRegion = 0;
 
-        public static int betweenMessagesDelay = 2000;
-        public static int betweenNumbersDelay = 1000;
-        public static int maxMessagesSafeLock = 10000;
+        public static int betweenMessagesDelay = 1500;
+        public static int betweenNumbersDelay = 500;
+        public static int maxMessagesSafeLock = 20000;
+
+        public static int dataOptimizationThreshold = 1000;
 
         public static string charFormulaSerialized = string.Empty;
         public static char[] charsOld { get; private set; }
@@ -34,23 +36,25 @@
 
         public static void Load()
         {
-            PureDataSettings pureDataSettings = SerializeDeserialize.LoadPureDataFile<PureDataSettings>(settingsPath);
+            PureDataSettings pureData = SerializeDeserialize.LoadPureDataFile<PureDataSettings>(settingsPath);
 
-            commandBlock = pureDataSettings.commandBlock;
+            commandBlock = pureData.commandBlock;
 
-            singleNumber = pureDataSettings.singleNumber;
-            messages = pureDataSettings.messages.ToList();
+            singleNumber = pureData.singleNumber;
+            messages = pureData.messages.ToList();
 
-            androidCompatibility = pureDataSettings.androidCompatibility;
-            numbersExtractionRegion = pureDataSettings.numbersExtractionRegion;
+            androidCompatibility = pureData.androidCompatibility;
+            numbersExtractionRegion = pureData.numbersExtractionRegion;
 
-            betweenMessagesDelay = pureDataSettings.betweenMessagesDelay;
-            betweenNumbersDelay = pureDataSettings.betweenNumbersDelay;
-            maxMessagesSafeLock = pureDataSettings.maxMessagesSafeLock;
+            betweenMessagesDelay = pureData.betweenMessagesDelay;
+            betweenNumbersDelay = pureData.betweenNumbersDelay;
+            maxMessagesSafeLock = pureData.maxMessagesSafeLock;
 
-            InsertCharsFromCharFormula(pureDataSettings.charReplaceFormula);
+            dataOptimizationThreshold = pureData.dataOptimizationThreshold;
 
-            data = pureDataSettings.data;
+            InsertCharsFromCharFormula(pureData.charReplaceFormula);
+
+            data = pureData.data;
         }
 
         private static Colors LoadColors()
@@ -88,6 +92,8 @@
                 betweenMessagesDelay = betweenMessagesDelay,
                 betweenNumbersDelay = betweenNumbersDelay,
                 maxMessagesSafeLock = maxMessagesSafeLock,
+
+                dataOptimizationThreshold = dataOptimizationThreshold,
 
                 charReplaceFormula = charFormulaSerialized,
 

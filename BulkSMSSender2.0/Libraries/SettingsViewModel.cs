@@ -62,6 +62,20 @@ namespace BulkSMSSender2._0
             }
         }
 
+        public int DataOptimizationThreshold
+        {
+            get => Loaded.dataOptimizationThreshold;
+            set
+            {
+                if (Loaded.dataOptimizationThreshold != value)
+                {
+                    Loaded.dataOptimizationThreshold = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {

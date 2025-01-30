@@ -1,4 +1,5 @@
 ﻿using Settings;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace BulkSMSSender2._0
@@ -42,6 +43,25 @@ namespace BulkSMSSender2._0
                 return true;
             else
                 return false;
+        }
+
+        public static async Task<string> OptimizeData(string data)
+        {
+            StringBuilder builder = new(capacity: 1024);
+
+            await Task.Run(() =>
+            {
+                MatchCollection matches = Regex.Matches(data, Constants.REGIONREGEX[Loaded.numbersExtractionRegion]);
+
+                foreach (Match match in matches.Cast<Match>())
+                {
+                    string cleaned = match.Value.RemoveAllWhitespaces();
+
+                    builder.AppendLine(cleaned);
+                }
+            });
+
+            return builder.ToString();
         }
     }
 }

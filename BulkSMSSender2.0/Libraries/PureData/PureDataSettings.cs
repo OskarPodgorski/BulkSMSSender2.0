@@ -14,6 +14,8 @@
         public int betweenNumbersDelay = 500;
         public int maxMessagesSafeLock = 20000;
 
+        public int dataOptimizationThreshold = 1000;
+
         public string charReplaceFormula = "ą=a|ś=s|ć=c|ę=e|ó=o|ł=l|ń=n|ż=z|ź=z|Ą=A|Ś=S|Ć=C|Ę=E|Ó=O|Ł=L|Ń=N|Ż=Z|Ź=Z";
 
         public string data = string.Empty;
