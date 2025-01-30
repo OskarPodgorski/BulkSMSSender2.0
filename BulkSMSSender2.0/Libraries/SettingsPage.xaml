@@ -46,6 +46,23 @@
                         SelectedIndex="{Binding Region, Mode=TwoWay}"
                         />
 
+                <HorizontalStackLayout Grid.Row="1" Grid.Column="0"
+    Spacing="20"
+    HorizontalOptions="CenterAndExpand">
+
+                    <Label 
+        Text="Older computers optimizations:"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        FontSize="14"
+        TextColor="#c8c8c8"/>
+
+                    <Switch IsToggled="{Binding OlderComputer}"
+            VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
+
+                </HorizontalStackLayout>
+
             </Grid>
 
             <Label 
@@ -213,17 +230,18 @@ Placeholder="Enter length of data when auto optimization runs:"
 
                 <HorizontalStackLayout Grid.Row="0" Grid.Column="0"
                     Spacing="20"
-                    HorizontalOptions="StartAndExpand">
+                    HorizontalOptions="CenterAndExpand">
 
                     <Label 
                         Text="Block sending commands to phone:"
                         VerticalOptions="Center"
-                        HorizontalOptions="Start"
+                        HorizontalOptions="Center"
                         FontSize="14"
                         TextColor="#c8c8c8"/>
 
                     <Switch IsToggled="{Binding CommandBlock}"
-                            VerticalOptions="Center"/>
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"/>
 
                 </HorizontalStackLayout>
 

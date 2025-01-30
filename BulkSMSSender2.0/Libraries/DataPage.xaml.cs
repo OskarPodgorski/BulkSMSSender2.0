@@ -6,6 +6,20 @@ public partial class DataPage : ContentPage
 {
     public static DataPage? ins { get; private set; }
 
+    private string EditorTextNoInvoke
+    {
+        get
+        {
+            return dataEditor.Text;
+        }
+        set
+        {
+            dataEditor.TextChanged -= OnEditorTextChanged;
+            dataEditor.Text = value;
+            dataEditor.TextChanged += OnEditorTextChanged;
+        }
+    }
+
     public DataPage()
     {
         InitializeComponent();
@@ -16,14 +30,57 @@ public partial class DataPage : ContentPage
     }
     private void LoadSettings()
     {
-        dataEditor.Text = Settings.Loaded.data;
+        //dataEditor.Text = Settings.Loaded.data;
         dataEditor.TextChanged += OnEditorTextChanged;
+    }
+
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (Settings.Loaded.olderComputer)
+        {
+            dataEditor.IsVisible = false;
+            acceptButtonBottom.IsVisible = false;
+        }
+        else
+        {
+            dataEditor.IsVisible = true;
+            acceptButtonBottom.IsVisible = true;
+        }
     }
 
     public void ClearEditorField(object sender, EventArgs e)
     {
-        dataEditor.Text = string.Empty;
+        EditorTextNoInvoke = string.Empty;
         Settings.Loaded.data = dataEditor.Text;
+    }
+
+    private async void OpenDataFileButton(object sender, EventArgs e)
+    {
+        await Launcher.OpenAsync(new OpenFileRequest
+        {
+            File = new ReadOnlyFile(Settings.Loaded.dataPath),
+        });
+
+        if (Application.Current?.MainPage != null)
+        {
+            bool answer = await Application.Current.MainPage.DisplayAlert(
+            "Optimization",
+            "Do you want to optimize data?",
+            "Yes",
+            "No"
+            );
+
+            Settings.Loaded.ReadDataFile();
+
+            if (answer)
+            {
+                Settings.Loaded.data = await NumbersExtractor.OptimizeData(Settings.Loaded.data);
+                await Settings.Loaded.WriteDataFileAsync();
+            }
+        }
     }
 
     private async void AcceptEditorText(object sender, EventArgs e)
@@ -34,13 +91,13 @@ public partial class DataPage : ContentPage
 
     private async void OptimizeDataButton(object sender, EventArgs e)
     {
-        dataEditor.TextChanged -= OnEditorTextChanged;
-        dataEditor.Text = await NumbersExtractor.OptimizeData(dataEditor.Text);
-        Settings.Loaded.data = dataEditor.Text;
-        dataEditor.TextChanged += OnEditorTextChanged;
+        Settings.Loaded.data = await NumbersExtractor.OptimizeData(Settings.Loaded.data);
+
+        if (!Settings.Loaded.olderComputer)
+            EditorTextNoInvoke = Settings.Loaded.data;
     }
 
-    private void OnUnfocusedEditor(object? sender, EventArgs e) => Settings.Loaded.data = dataEditor.Text;
+    private void OnUnfocusedEditor(object? sender, EventArgs e) => Settings.Loaded.data = EditorTextNoInvoke;
 
     private string previousText = string.Empty;
     private bool isOptimizing = false;

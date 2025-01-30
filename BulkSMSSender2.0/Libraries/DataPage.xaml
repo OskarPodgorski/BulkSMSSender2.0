@@ -61,6 +61,17 @@ FontSize="20"/>
 
             </HorizontalStackLayout>
 
+            <Button
+    Text="Open data input file"
+    HorizontalOptions="CenterAndExpand"
+    Clicked="OpenDataFileButton"
+    BackgroundColor="{StaticResource MyBlue}">
+
+                <Button.Behaviors>
+                    <local:ClickAnimation/>
+                </Button.Behaviors>
+            </Button>
+
             <Editor 
                 x:Name="dataEditor"
                 MinimumHeightRequest="400"
@@ -73,6 +84,7 @@ FontSize="20"/>
                 />
 
             <Button
+                x:Name="acceptButtonBottom"
                 Text="Accept"
                 HorizontalOptions="CenterAndExpand"
                 Clicked="AcceptEditorText"

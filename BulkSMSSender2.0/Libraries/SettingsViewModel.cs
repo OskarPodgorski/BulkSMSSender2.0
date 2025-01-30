@@ -76,6 +76,20 @@ namespace BulkSMSSender2._0
             }
         }
 
+        public bool OlderComputer
+        {
+            get => Loaded.olderComputer;
+            set
+            {
+                if (Loaded.olderComputer != value)
+                {
+                    Loaded.olderComputer = value;
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {

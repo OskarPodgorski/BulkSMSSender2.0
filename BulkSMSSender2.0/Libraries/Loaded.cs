@@ -6,8 +6,11 @@
         private readonly static string colorsPath = @"C:\bss\Colors.json";
         private readonly static string alreadyDonePath = @"C:\bss\AlreadyDone.bss";
         private readonly static string blacklistPath = @"C:\bss\Blacklist.json";
+        public readonly static string dataPath = @"C:\bss\Data.txt";
 
         public static bool commandBlock = false;
+
+        public static bool olderComputer = false;
 
         public static string singleNumber = string.Empty;
         public static List<string> messages = new();
@@ -40,6 +43,8 @@
 
             commandBlock = pureData.commandBlock;
 
+            olderComputer = pureData.olderComputer;
+
             singleNumber = pureData.singleNumber;
             messages = pureData.messages.ToList();
 
@@ -54,7 +59,7 @@
 
             InsertCharsFromCharFormula(pureData.charReplaceFormula);
 
-            data = pureData.data;
+            data = ReadDataFile();
         }
 
         private static Colors LoadColors()
@@ -83,6 +88,8 @@
             {
                 commandBlock = commandBlock,
 
+                olderComputer = olderComputer,
+
                 singleNumber = singleNumber,
                 messages = messages.ToArray(),
 
@@ -97,7 +104,7 @@
 
                 charReplaceFormula = charFormulaSerialized,
 
-                data = data,
+                //data = data,
             };
         }
 
@@ -177,6 +184,33 @@
 
             charsOld = charsOldList.ToArray();
             charsNew = charsNewList.ToArray();
+        }
+
+        public static string ReadDataFile()
+        {
+            if (File.Exists(dataPath))
+            {
+                string readed;
+
+                using StreamReader reader = new(dataPath);
+                {
+                    readed = reader.ReadToEnd();
+                }
+
+                return readed;
+            }
+            return string.Empty;
+        }
+
+        public static async Task WriteDataFileAsync()
+        {
+            if (File.Exists(dataPath))
+            {
+                using StreamWriter writer = new(dataPath);
+                {
+                    await writer.WriteAsync(data);
+                }
+            }
         }
     }
 }

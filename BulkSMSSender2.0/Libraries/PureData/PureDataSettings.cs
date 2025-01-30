@@ -3,6 +3,7 @@
     public sealed class PureDataSettings
     {
         public bool commandBlock = false;
+        public bool olderComputer = false;
 
         public string singleNumber = string.Empty;
         public string[] messages = new string[0];
@@ -18,6 +19,6 @@
 
         public string charReplaceFormula = "ą=a|ś=s|ć=c|ę=e|ó=o|ł=l|ń=n|ż=z|ź=z|Ą=A|Ś=S|Ć=C|Ę=E|Ó=O|Ł=L|Ń=N|Ż=Z|Ź=Z";
 
-        public string data = string.Empty;
+        //public string data = string.Empty;
     }
 }
