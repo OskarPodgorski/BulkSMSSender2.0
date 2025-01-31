@@ -18,8 +18,8 @@ public class ClickAnimation : Behavior<Button>
     {
         if (sender is Button button)
         {
-            await button.ScaleTo(0.88, 35);
-            await button.ScaleTo(1, 35);
+            await button.ScaleTo(0.88, 40);
+            await button.ScaleTo(1, 40);
         }
     }
 }

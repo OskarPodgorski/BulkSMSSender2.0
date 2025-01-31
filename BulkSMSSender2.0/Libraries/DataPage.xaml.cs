@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace BulkSMSSender2._0;
 
 public partial class DataPage : ContentPage
@@ -45,22 +43,34 @@ public partial class DataPage : ContentPage
         {
             dataEditor.IsVisible = false;
             acceptButtonBottom.IsVisible = false;
+            openDataFileButton.IsVisible = true;
+
+            EditorTextNoInvoke = string.Empty;
         }
         else
         {
             dataEditor.IsVisible = true;
             acceptButtonBottom.IsVisible = true;
+            openDataFileButton.IsVisible = false;
+
+            previousTextLength = Settings.Loaded.data.Length;
+            EditorTextNoInvoke = Settings.Loaded.data;
         }
     }
 
-    public void ClearEditorField(object sender, EventArgs e)
+    public async void ClearEditorField(object sender, EventArgs e)
     {
         Settings.Loaded.data = string.Empty;
         EditorTextNoInvoke = Settings.Loaded.data;
+        await Settings.Loaded.WriteDataFile();
     }
 
     private async void OpenDataFileButton(object sender, EventArgs e)
     {
+        if (!File.Exists(Settings.Loaded.dataPath))
+            File.Create(Settings.Loaded.dataPath).Dispose();
+
+
         await Launcher.OpenAsync(new OpenFileRequest
         {
             File = new ReadOnlyFile(Settings.Loaded.dataPath),
@@ -75,12 +85,12 @@ public partial class DataPage : ContentPage
             "No"
             );
 
-            Settings.Loaded.ReadDataFile();
+            Settings.Loaded.data = Settings.Loaded.ReadDataFile();
 
             if (answer)
             {
                 Settings.Loaded.data = await NumbersExtractor.OptimizeData(Settings.Loaded.data);
-                await Settings.Loaded.WriteDataFileAsync();
+                await Settings.Loaded.WriteDataFile();
             }
         }
     }
@@ -95,15 +105,15 @@ public partial class DataPage : ContentPage
     {
         Settings.Loaded.data = await NumbersExtractor.OptimizeData(Settings.Loaded.data);
 
-        if (Settings.Loaded.olderComputer)
-            await Settings.Loaded.WriteDataFileAsync();
-        else
+        if (!Settings.Loaded.olderComputer)
             EditorTextNoInvoke = Settings.Loaded.data;
+
+        await Settings.Loaded.WriteDataFile();
     }
 
     private void OnUnfocusedEditor(object? sender, EventArgs e) => Settings.Loaded.data = EditorTextNoInvoke;
 
-    private string previousText = string.Empty;
+    private int previousTextLength = 0;
     private bool isOptimizing = false;
     private async void OnEditorTextChanged(object? sender, TextChangedEventArgs e)
     {
@@ -112,29 +122,28 @@ public partial class DataPage : ContentPage
         if (isOptimizing) return;
 
 
-        if (e.NewTextValue.Length > previousText.Length + Settings.Loaded.dataOptimizationThreshold)
+        if (e.NewTextValue.Length > previousTextLength + Settings.Loaded.dataOptimizationThreshold)
         {
             isOptimizing = true;
 
-            await OptimizeData(e.NewTextValue);
+            await OptimizeData(e.OldTextValue, e.NewTextValue);
         }
 
-        previousText = dataEditor.Text;
+        previousTextLength = dataEditor.Text.Length;
 
         isOptimizing = false;
 
         dataEditor.TextChanged += OnEditorTextChanged;
     }
 
-    private async Task OptimizeData(string data)
+    private async Task OptimizeData(string oldData, string newData)
     {
-        string optimizedData = await NumbersExtractor.OptimizeData(data);
+        string optimizedData = await NumbersExtractor.OptimizeData(newData);
 
-        Debug.WriteLine("test");
         if (!string.IsNullOrEmpty(optimizedData))
         {
             await Task.Delay(500);
-            dataEditor.Text = previousText + optimizedData;
+            dataEditor.Text = oldData + optimizedData;
         }
 
         isOptimizing = false;

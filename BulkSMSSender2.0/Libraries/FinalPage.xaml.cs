@@ -4,8 +4,6 @@ public partial class FinalPage : ContentPage
 {
     public static FinalPage? ins { get; private set; }
 
-    //private readonly NumbersExtractor numbersExtractor = new();
-
     private bool forceReExtract = false;
 
     private List<string> Numbers
@@ -171,7 +169,7 @@ public partial class FinalPage : ContentPage
             HorizontalOptions = column == 1 ? LayoutOptions.Start : LayoutOptions.End,
             HorizontalTextAlignment = column == 1 ? TextAlignment.Start : TextAlignment.End,
             FontSize = 16,
-            TextColor = Settings.Loaded.olderComputer ? Colors.White : Settings.Loaded.colors.gray
+            TextColor = Settings.Loaded.olderComputer ? checkValid ? Settings.Loaded.colors.yellow : Colors.White : Settings.Loaded.colors.gray
         };
 
         Button button = new()

@@ -79,8 +79,17 @@
         private static HashSet<string> LoadBlacklist() => SerializeDeserialize.LoadPureDataFile<PureDataBlacklist>(blacklistPath).blacklisted.ToHashSet();
         public static async Task SaveBlacklistAsync() => await SerializeDeserialize.SavePureDataFileAsync(new PureDataBlacklist() { blacklisted = blacklist.ToArray() }, blacklistPath);
 
-        public static void SaveSettings() => SerializeDeserialize.SavePureDataFile(PreparePureDataSettings(), settingsPath);
-        public static async Task SaveSettingsAsync() => await SerializeDeserialize.SavePureDataFileAsync(PreparePureDataSettings(), settingsPath);
+        public static void SaveSettings()
+        {
+            SerializeDeserialize.SavePureDataFile(PreparePureDataSettings(), settingsPath);
+            WriteDataFile(false);
+        }
+
+        public static async Task SaveSettingsAsync()
+        {
+            await SerializeDeserialize.SavePureDataFileAsync(PreparePureDataSettings(), settingsPath);
+            await WriteDataFile();
+        }
 
         private static PureDataSettings PreparePureDataSettings()
         {
@@ -103,8 +112,6 @@
                 dataOptimizationThreshold = dataOptimizationThreshold,
 
                 charReplaceFormula = charFormulaSerialized,
-
-                //data = data,
             };
         }
 
@@ -158,9 +165,7 @@
             alreadyDoneNumbers.Clear();
 
             if (File.Exists(alreadyDonePath))
-            {
                 File.Delete(alreadyDonePath);
-            }
         }
 
         public static bool AlreadyDoneContains(string number) => alreadyDoneNumbers.Contains(number);
@@ -202,15 +207,19 @@
             return string.Empty;
         }
 
-        public static async Task WriteDataFileAsync()
+        public static async Task WriteDataFile(bool isAsync = true)
         {
-            if (File.Exists(dataPath))
+            if (!File.Exists(dataPath))
+                File.Create(dataPath).Dispose();
+
+            using StreamWriter writer = new(dataPath);
             {
-                using StreamWriter writer = new(dataPath);
-                {
-                    writer.WriteLine(string.Empty);
+                writer.WriteLine(string.Empty);
+
+                if (isAsync)
                     await writer.WriteAsync(data);
-                }
+                else
+                    writer.Write(data);
             }
         }
     }
