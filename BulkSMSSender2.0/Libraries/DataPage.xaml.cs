@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace BulkSMSSender2._0;
 
 public partial class DataPage : ContentPage
@@ -117,23 +119,26 @@ public partial class DataPage : ContentPage
     private bool isOptimizing = false;
     private async void OnEditorTextChanged(object? sender, TextChangedEventArgs e)
     {
-        dataEditor.TextChanged -= OnEditorTextChanged;
-
         if (isOptimizing) return;
-
 
         if (e.NewTextValue.Length > previousTextLength + Settings.Loaded.dataOptimizationThreshold)
         {
+            dataEditor.TextChanged -= OnEditorTextChanged;
+
             isOptimizing = true;
 
             await OptimizeData(e.OldTextValue, e.NewTextValue);
+
+            previousTextLength = dataEditor.Text.Length;
+
+            Debug.WriteLine("Task");
+
+            isOptimizing = false;
+
+            dataEditor.TextChanged += OnEditorTextChanged;
         }
-
-        previousTextLength = dataEditor.Text.Length;
-
-        isOptimizing = false;
-
-        dataEditor.TextChanged += OnEditorTextChanged;
+        else
+            previousTextLength = dataEditor.Text.Length;
     }
 
     private async Task OptimizeData(string oldData, string newData)
@@ -142,10 +147,7 @@ public partial class DataPage : ContentPage
 
         if (!string.IsNullOrEmpty(optimizedData))
         {
-            await Task.Delay(500);
             dataEditor.Text = oldData + optimizedData;
         }
-
-        isOptimizing = false;
     }
 }
