@@ -191,21 +191,7 @@
             charsNew = charsNewList.ToArray();
         }
 
-        public static string ReadDataFile()
-        {
-            if (File.Exists(dataPath))
-            {
-                string readed;
-
-                using StreamReader reader = new(dataPath);
-                {
-                    readed = reader.ReadToEnd();
-                }
-
-                return readed;
-            }
-            return string.Empty;
-        }
+        public static string ReadDataFile() => SerializeDeserialize.ReadFileContent(dataPath);
 
         public static async Task WriteDataFile(bool isAsync = true)
         {

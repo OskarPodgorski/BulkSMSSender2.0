@@ -97,6 +97,39 @@ public partial class DataPage : ContentPage
         }
     }
 
+    private async void InsertFileContentButton(object sender, EventArgs e)
+    {
+        FileResult? result = await FilePicker.Default.PickAsync();
+
+        if (result != null)
+        {
+            if (Application.Current?.MainPage != null)
+            {
+                bool answer = await Application.Current.MainPage.DisplayAlert(
+                "Optimization",
+                "Do you want to optimize picked file data?",
+                "Yes",
+                "No"
+                );
+
+                if (answer)
+                {
+                    Settings.Loaded.data += await NumbersExtractor.OptimizeData(SerializeDeserialize.ReadFileContent(result.FullPath));
+                }
+                else
+                    Settings.Loaded.data += SerializeDeserialize.ReadFileContent(result.FullPath);
+
+                await Settings.Loaded.WriteDataFile();
+            }
+
+            if (!Settings.Loaded.olderComputer)
+            {
+                previousTextLength = Settings.Loaded.data.Length;
+                EditorTextNoInvoke = Settings.Loaded.data;
+            }
+        }
+    }
+
     private async void AcceptEditorText(object sender, EventArgs e)
     {
         if (!string.IsNullOrEmpty(Settings.Loaded.data))

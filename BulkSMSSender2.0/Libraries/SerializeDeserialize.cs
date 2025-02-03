@@ -59,4 +59,33 @@ public static class SerializeDeserialize
             }
         }
     }
+
+    /// <summary>
+    /// using StreamWriter to read all content of file as string
+    /// </summary>
+    /// <returns></returns>
+    public static string ReadFileContent(string fullPath)
+    {
+        if (File.Exists(fullPath))
+        {
+            string readed;
+
+            using StreamReader reader = new(fullPath);
+            {
+                try
+                {
+                    readed = reader.ReadToEnd();
+                }
+                catch
+                {
+                    reader.Close();
+                    reader.Dispose();
+                    return string.Empty;
+                }
+            }
+
+            return readed;
+        }
+        return string.Empty;
+    }
 }

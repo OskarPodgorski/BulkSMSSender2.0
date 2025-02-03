@@ -61,17 +61,38 @@ FontSize="20"/>
 
             </HorizontalStackLayout>
 
-            <Button
-                x:Name="openDataFileButton"
-    Text="Open data input file"
-    HorizontalOptions="CenterAndExpand"
-    Clicked="OpenDataFileButton"
-    BackgroundColor="{StaticResource MyViolet}">
+            <HorizontalStackLayout 
+                x:Name ="fileButtonsLayout"
+Spacing="25"
+HorizontalOptions="CenterAndExpand">
 
-                <Button.Behaviors>
-                    <local:ClickAnimation/>
-                </Button.Behaviors>
-            </Button>
+                <Button
+            x:Name="openDataFileButton"
+Text="Open data input file"
+HorizontalOptions="CenterAndExpand"
+Clicked="OpenDataFileButton"
+BackgroundColor="{StaticResource MyViolet}">
+
+                    <Button.Behaviors>
+                        <local:ClickAnimation/>
+                    </Button.Behaviors>
+                </Button>
+
+                <Button
+            x:Name="insertFileButton"
+Text="Insert selected file content"
+HorizontalOptions="CenterAndExpand"
+Clicked="InsertFileContentButton"
+BackgroundColor="{StaticResource MyViolet}">
+
+                    <Button.Behaviors>
+                        <local:ClickAnimation/>
+                    </Button.Behaviors>
+                </Button>
+
+            </HorizontalStackLayout>
+
+           
 
             <Editor 
                 x:Name="dataEditor"
@@ -95,6 +116,8 @@ FontSize="20"/>
                     <local:ClickAnimation/>
                 </Button.Behaviors>
             </Button>
+
+            
 
         </VerticalStackLayout>
 
